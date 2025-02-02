@@ -13,14 +13,14 @@ html, body {
 /* استایل کلی بدن صفحه */
 body {
   font-family: 'Vazir', sans-serif;
-  background: #34495E;       /* آبی تیره */
+  background: #2C3E50;       /* زمینه اصلی تیره */
   color: #ECF0F1;            /* متن روشن */
   line-height: 1.6;
 }
 
 /* هدر و منو */
 header {
-  background: linear-gradient(45deg, #16A085, #1ABC9C);  /* گرادیان سبزآبی */
+  background: linear-gradient(45deg, #16A085, #1ABC9C);  /* گرادیان سبزآبی (قبلی) */
   padding: 20px 0;
 }
 
@@ -66,7 +66,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #F39C12;   /* طلایی */
+  color: #F1C40F;   /* طلایی */
 }
 
 /* استایل بخش‌های اصلی */
@@ -79,7 +79,7 @@ section {
 /* بخش پخش زنده */
 .live-stream {
   text-align: center;
-  background: #2C3E50;  /* زمینه تیره‌تر */
+  background: #34495E;  /* زمینه بخش پخش زنده */
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -137,7 +137,7 @@ section {
 
 /* دکمه مشاهده زنده */
 .watch-live-btn {
-  background: #F39C12;
+  background: #F1C40F;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -148,7 +148,7 @@ section {
 }
 
 .watch-live-btn:hover {
-  background: #D35400;
+  background: #D4AC0D;
 }
 
 .live-description {
@@ -159,7 +159,7 @@ section {
 
 /* بخش بازی‌ها (برنامه مسابقات) */
 .games-section {
-  background: #2C3E50;
+  background: #34495E;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -169,7 +169,7 @@ section {
 .games-section h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #F39C12;
+  color: #F1C40F;
 }
 
 .games-container {
@@ -178,10 +178,10 @@ section {
   flex-wrap: wrap;
 }
 
-/* استفاده از یک رنگ ثابت برای کارت‌های بازی (رنگ جدید: #D35400) */
+/* کارت‌های بازی: استفاده از یک رنگ ثابت نارنجی (#F39C12) */
 .game-card {
   width: 32%;
-  background: #D35400;
+  background: #F39C12;
   border-radius: 10px;
   margin-bottom: 20px;
   cursor: pointer;
@@ -201,7 +201,7 @@ section {
   object-fit: cover;
 }
 
-/* تغییر رنگ متون داخل کارت‌های بازی به سفید برای خوانایی */
+/* متون داخل کارت‌های بازی: سفید برای خوانایی */
 .game-card h3,
 .game-card p {
   padding: 10px;
@@ -212,7 +212,7 @@ section {
 
 /* دکمه جزئیات در کارت بازی */
 .details-btn {
-  background: #D35400;
+  background: #F39C12;
   border: none;
   color: #fff;
   padding: 10px;
@@ -223,7 +223,7 @@ section {
 }
 
 .details-btn:hover {
-  background: #BA4A00;
+  background: #E67E22;
 }
 
 .game-details {
@@ -244,7 +244,7 @@ section {
 
 /* بخش جدول مسابقات (دور مقدماتی) */
 .bracket-section {
-  background: #2C3E50;
+  background: #34495E;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -254,7 +254,7 @@ section {
 
 .bracket-section h2 {
   margin-bottom: 20px;
-  color: #F39C12;
+  color: #F1C40F;
 }
 
 .bracket-container {
@@ -281,7 +281,7 @@ section {
 
 /* بخش اخبار */
 .news-section {
-  background: #2C3E50;
+  background: #34495E;
   padding: 40px 20px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -290,7 +290,7 @@ section {
 }
 
 .news-section h2 {
-  color: #F39C12;
+  color: #F1C40F;
   margin-bottom: 20px;
 }
 
@@ -300,9 +300,9 @@ section {
   justify-content: space-between;
 }
 
-/* استفاده از یک رنگ ثابت برای کارت‌های اخبار (رنگ جدید: #D35400) */
+/* کارت‌های اخبار: استفاده از یک رنگ ثابت نارنجی (#F39C12) */
 .news-card {
-  background: #D35400;
+  background: #F39C12;
   width: 32%;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -326,7 +326,7 @@ section {
   text-align: right;
 }
 
-/* تغییر رنگ متون داخل اخبار به سفید برای خوانایی */
+/* متون داخل کارت‌های اخبار: سفید برای خوانایی */
 .news-content h3 {
   margin-bottom: 10px;
   color: #fff;
@@ -339,7 +339,7 @@ section {
 }
 
 .read-more {
-  background: #D35400;
+  background: #F39C12;
   color: #fff;
   text-decoration: none;
   padding: 8px 12px;
@@ -348,12 +348,12 @@ section {
 }
 
 .read-more:hover {
-  background: #BA4A00;
+  background: #E67E22;
 }
 
 /* بخش اسپانسرها */
 .sponsors-section {
-  background: #2C3E50;
+  background: #34495E;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
@@ -362,7 +362,7 @@ section {
 
 .sponsors-section h2 {
   margin-bottom: 20px;
-  color: #F39C12;
+  color: #F1C40F;
 }
 
 .sponsors-container {
@@ -380,7 +380,7 @@ section {
   transform: scale(1.2);
 }
 
-/* فوتر */
+/* فوتر: استفاده از گرادیان قبلی */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -418,7 +418,7 @@ footer {
     display: none;
     flex-direction: column;
     width: 100%;
-    background: rgba(22, 160, 133, 0.9);
+    background: #16A085; /* رنگ منوی همبرگر به صورت solid */
     position: absolute;
     top: 60px;
     left: 0;
