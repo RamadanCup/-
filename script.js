@@ -11,17 +11,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // منوی همبرگر: نمایش/مخفی کردن منو در موبایل
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navUl = document.querySelector('nav ul');
+  menuToggle.addEventListener('click', function() {
+    navUl.classList.toggle('active');
+  });
+
+  // بررسی وضعیت پخش زنده (با استفاده از data-live)
+  const liveStreamSection = document.getElementById('live');
+  const isLive = liveStreamSection.getAttribute('data-live');
+  const liveOverlay = document.querySelector('.live-overlay');
+  if(isLive === "false") {
+    liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
+  }
+  
   // دکمه‌های جزئیات: تنها توضیحات کارت مربوطه باز شود
   const detailButtons = document.querySelectorAll('.details-btn');
   detailButtons.forEach(btn => {
     btn.addEventListener('click', function() {
-      // ابتدا توضیحات همه کارت‌ها را مخفی می‌کنیم
       document.querySelectorAll('.game-details').forEach(detail => {
         if (detail !== this.nextElementSibling) {
           detail.style.display = "none";
         }
       });
-      // سپس توضیحات کارت فعلی را تغییر وضعیت می‌دهیم
       const details = this.nextElementSibling;
       if (details.style.display === "none" || details.style.display === "") {
         details.style.display = "block";
