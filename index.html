@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جام رمضان شهرستان اوز</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- هدر و منو -->
+  <header>
+    <nav>
+      <div class="logo">جام رمضان اوز</div>
+      <ul>
+        <li><a href="#live">پخش زنده</a></li>
+        <li><a href="#schedule">برنامه مسابقات</a></li>
+        <li><a href="#bracket">جدول مسابقات</a></li>
+        <li><a href="#sponsors">اسپانسرها</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- محتوای اصلی -->
+  <main>
+    <!-- بخش پخش زنده -->
+    <section id="live" class="live-stream">
+      <h1>بازی‌های در حال پخش</h1>
+      <div class="video-container">
+        <video controls id="liveVideo" poster="live-poster.jpg">
+          <source src="live-stream.mp4" type="video/mp4">
+          مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+        </video>
+      </div>
+      <div class="live-description">
+        <h2>تیم الف vs تیم ب</h2>
+        <p>وضعیت: در حال پخش</p>
+      </div>
+    </section>
+
+    <!-- بخش برنامه مسابقات (بازی‌های آینده) -->
+    <section id="schedule" class="games-section">
+      <h2>برنامه مسابقات</h2>
+      <div class="games-container">
+        <!-- کارت بازی ۱ -->
+        <div class="game-card">
+          <img src="game1.jpg" alt="بازی ۱">
+          <h3>بازی ۱: تیم الف vs تیم ب</h3>
+          <p>زمان پخش: ۲۰:۰۰</p>
+          <!-- شمارش معکوس شروع بازی -->
+          <div class="countdown" data-matchtime="2025-02-01T20:00:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>در این بازی، تیم الف با تاکتیک‌های مدرن در برابر تیم ب قرار می‌گیرد. محل برگزاری: ورزشگاه مرکزی اوز.</p>
+          </div>
+        </div>
+        <!-- کارت بازی ۲ -->
+        <div class="game-card">
+          <img src="game2.jpg" alt="بازی ۲">
+          <h3>بازی ۲: تیم ج vs تیم د</h3>
+          <p>زمان پخش: ۲۲:۰۰</p>
+          <div class="countdown" data-matchtime="2025-02-01T22:00:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>تیم ج و تیم د در مسابقه‌ای نفس‌گیر به مصاف یکدیگر می‌روند. محل برگزاری: ورزشگاه شهرداری اوز.</p>
+          </div>
+        </div>
+        <!-- کارت بازی ۳ -->
+        <div class="game-card">
+          <img src="game3.jpg" alt="بازی ۳">
+          <h3>بازی ۳: تیم ه vs تیم و</h3>
+          <p>زمان پخش: ۰۰:۰۰</p>
+          <div class="countdown" data-matchtime="2025-02-02T00:00:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>در این دیدار حساس، تیم ه و تیم و به رقابت خواهند نشست. محل برگزاری: ورزشگاه لوکال اوز.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- بخش جدول مسابقات (دور مقدماتی) -->
+    <section id="bracket" class="bracket-section">
+      <h2>جدول مسابقات (دور مقدماتی)</h2>
+      <div class="bracket-container">
+        <table>
+          <thead>
+            <tr>
+              <th>بازی</th>
+              <th>تیم ۱</th>
+              <th>تیم ۲</th>
+              <th>نتیجه</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>بازی ۱</td>
+              <td>تیم الف</td>
+              <td>تیم ب</td>
+              <td>۱-۰</td>
+            </tr>
+            <tr>
+              <td>بازی ۲</td>
+              <td>تیم ج</td>
+              <td>تیم د</td>
+              <td>۲-۱</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- بخش اسپانسرها -->
+    <section id="sponsors" class="sponsors-section">
+      <h2>اسپانسرها</h2>
+      <div class="sponsors-container">
+        <div class="sponsor">
+          <img src="sponsor1.png" alt="اسپانسر ۱">
+          <p>اسپانسر ۱</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor2.png" alt="اسپانسر ۲">
+          <p>اسپانسر ۲</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor3.png" alt="اسپانسر ۳">
+          <p>اسپانسر ۳</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- فوتر -->
+  <footer>
+    <p>کلیه حقوق محفوظ است © 2025</p>
+  </footer>
+
+  <!-- دکمه بازگشت به بالا -->
+  <button id="back-to-top">بازگشت به بالا</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
