@@ -2,7 +2,8 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- تنظیمات viewport برای جلوگیری از زوم افقی -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>جام رمضان شهرستان اوز</title>
   <!-- اضافه کردن فونت فارسی Vazir -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
@@ -13,6 +14,8 @@
   <header>
     <nav>
       <div class="logo">جام رمضان اوز</div>
+      <!-- دکمه منوی همبرگر (برای موبایل) -->
+      <button class="menu-toggle">&#9776;</button>
       <ul>
         <li><a href="#live">پخش زنده</a></li>
         <li><a href="#schedule">برنامه مسابقات</a></li>
@@ -25,10 +28,15 @@
 
   <!-- محتوای اصلی -->
   <main>
-    <!-- بخش پخش زنده -->
-    <section id="live" class="live-stream">
+    <!-- بخش پخش زنده (data-live در اینجا "false" است به معنی عدم فعال بودن پخش زنده) -->
+    <section id="live" class="live-stream" data-live="false">
       <h1>بازی‌های در حال پخش</h1>
       <div class="video-container">
+        <!-- لایه پوششی برای نمایش وضعیت پخش زنده -->
+        <div class="live-overlay">
+          <span class="live-badge">LIVE</span>
+          <button class="watch-live-btn">مشاهده زنده</button>
+        </div>
         <video controls id="liveVideo" poster="live-poster.jpg">
           <source src="live-stream.mp4" type="video/mp4">
           مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
