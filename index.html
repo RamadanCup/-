@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>جام رمضان شهرستان اوز</title>
+  <!-- اضافه کردن فونت فارسی Vazir -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,6 +17,7 @@
         <li><a href="#live">پخش زنده</a></li>
         <li><a href="#schedule">برنامه مسابقات</a></li>
         <li><a href="#bracket">جدول مسابقات</a></li>
+        <li><a href="#news">اخبار</a></li>
         <li><a href="#sponsors">اسپانسرها</a></li>
       </ul>
     </nav>
@@ -46,7 +49,6 @@
           <img src="game1.jpg" alt="بازی ۱">
           <h3>بازی ۱: تیم الف vs تیم ب</h3>
           <p>زمان پخش: ۲۰:۰۰</p>
-          <!-- شمارش معکوس شروع بازی -->
           <div class="countdown" data-matchtime="2025-02-01T20:00:00"></div>
           <button class="details-btn">جزئیات</button>
           <div class="game-details" style="display: none;">
@@ -106,6 +108,40 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- بخش اخبار -->
+    <section id="news" class="news-section">
+      <h2>اخبار</h2>
+      <div class="news-container">
+        <!-- خبر ۱ -->
+        <article class="news-card">
+          <img src="news1.jpg" alt="خبر ۱">
+          <div class="news-content">
+            <h3>عنوان خبر اول</h3>
+            <p>خلاصه خبر اول: گزارش ویژه از تغییرات اخیر در برنامه مسابقات جام رمضان شهرستان اوز.</p>
+            <a href="#" class="read-more">ادامه خبر</a>
+          </div>
+        </article>
+        <!-- خبر ۲ -->
+        <article class="news-card">
+          <img src="news2.jpg" alt="خبر ۲">
+          <div class="news-content">
+            <h3>عنوان خبر دوم</h3>
+            <p>خلاصه خبر دوم: نتایج بازی‌های دور مقدماتی و تحلیل عملکرد تیم‌ها.</p>
+            <a href="#" class="read-more">ادامه خبر</a>
+          </div>
+        </article>
+        <!-- خبر ۳ -->
+        <article class="news-card">
+          <img src="news3.jpg" alt="خبر ۳">
+          <div class="news-content">
+            <h3>عنوان خبر سوم</h3>
+            <p>خلاصه خبر سوم: حضور مهمانان ویژه در مراسم افتتاحیه و اتفاقات روز.</p>
+            <a href="#" class="read-more">ادامه خبر</a>
+          </div>
+        </article>
       </div>
     </section>
 
