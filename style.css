@@ -20,7 +20,7 @@ body {
 
 /* هدر و منو */
 header {
-  background: linear-gradient(45deg, #16A085, #1ABC9C);  /* گرادیان سبزآبی (قبلی) */
+  background: linear-gradient(45deg, #16A085, #1ABC9C);  /* گرادیان سبزآبی */
   padding: 20px 0;
 }
 
@@ -380,7 +380,7 @@ section {
   transform: scale(1.2);
 }
 
-/* فوتر: استفاده از گرادیان قبلی */
+/* فوتر */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -418,11 +418,12 @@ footer {
     display: none;
     flex-direction: column;
     width: 100%;
-    background: #16A085; /* رنگ منوی همبرگر به صورت solid */
+    background: #16A085; /* رنگ ثابت منو (بدون شفافیت) */
     position: absolute;
     top: 60px;
     left: 0;
     padding: 10px 0;
+    z-index: 1000;
   }
   nav ul.active {
     display: flex;
