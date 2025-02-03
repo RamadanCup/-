@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const liveStreamSection = document.getElementById('live');
   const isLive = liveStreamSection.getAttribute('data-live');
   const liveOverlay = document.querySelector('.live-overlay');
-  if(isLive === "false") {
+  if (isLive === "false") {
     liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
   }
   
