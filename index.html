@@ -28,19 +28,25 @@
 
   <!-- محتوای اصلی -->
   <main>
-    <!-- بخش پخش زنده (data-live="false" به معنی عدم دسترسی به پخش زنده) -->
+    <!-- بخش پخش زنده: در اینجا data-live="false" به معنای عدم فعال بودن پخش زنده است -->
     <section id="live" class="live-stream" data-live="false">
       <h1>بازی‌های در حال پخش</h1>
       <div class="video-container">
-        <!-- لایه پوششی برای نمایش وضعیت پخش زنده -->
+        <!-- افزودن استایل embed Aparat -->
+        <style>
+          .h_iframe-aparat_embed_frame { position: relative; }
+          .h_iframe-aparat_embed_frame .ratio { display: block; width: 100%; height: auto; }
+          .h_iframe-aparat_embed_frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        </style>
+        <!-- اگر پخش زنده فعال نباشد، overlay پیام را نشان می‌دهد؛ در غیر این صورت، می‌توانید embed Aparat را جایگزین کنید -->
         <div class="live-overlay">
-          <span class="live-badge">LIVE</span>
-          <button class="watch-live-btn">مشاهده زنده</button>
+          <span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>
         </div>
-        <video controls id="liveVideo" poster="live-poster.jpg">
-          <source src="live-stream.mp4" type="video/mp4">
-          مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-        </video>
+        <!-- برای نمونه از کد embed Aparat استفاده شده است -->
+        <div class="h_iframe-aparat_embed_frame">
+          <span style="display: block; padding-top: 57%;"></span>
+          <iframe scrolling="no" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://www.aparat.com/embed/live/EvazCup"></iframe>
+        </div>
       </div>
       <div class="live-description">
         <h2>تیم الف vs تیم ب</h2>
