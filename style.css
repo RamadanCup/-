@@ -91,6 +91,7 @@ section {
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
+  min-height: 300px;  /* اطمینان از وجود فضای کافی حتی در صورت عدم فعال بودن پخش */
 }
 
 .video-container video {
@@ -178,7 +179,7 @@ section {
   flex-wrap: wrap;
 }
 
-/* کارت‌های بازی: استفاده از یک رنگ ثابت نارنجی (#F39C12) */
+/* کارت‌های بازی: استفاده از رنگ ثابت نارنجی (#F39C12) */
 .game-card {
   width: 32%;
   background: #F39C12;
@@ -300,7 +301,7 @@ section {
   justify-content: space-between;
 }
 
-/* کارت‌های اخبار: استفاده از یک رنگ ثابت نارنجی (#F39C12) */
+/* کارت‌های اخبار: استفاده از رنگ ثابت نارنجی (#F39C12) */
 .news-card {
   background: #F39C12;
   width: 32%;
@@ -418,7 +419,7 @@ footer {
     display: none;
     flex-direction: column;
     width: 100%;
-    background: #16A085; /* رنگ ثابت منو (بدون شفافیت) */
+    background: #16A085; /* رنگ ثابت منوی همبرگر */
     position: absolute;
     top: 60px;
     left: 0;
