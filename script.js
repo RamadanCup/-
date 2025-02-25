@@ -18,14 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
     navUl.classList.toggle('active');
   });
 
-  // بررسی وضعیت پخش زنده (با استفاده از data-live)
-  const liveStreamSection = document.getElementById('live');
-  const isLive = liveStreamSection.getAttribute('data-live');
+  // بررسی وضعیت پخش زنده:
+  // اگر src آیفریم برابر با "https://www.aparat.com/embed/live/EvazCup" باشد، پیام "LIVE در حال پخش" نمایش داده می‌شود
+  const liveIframe = document.querySelector('.h_iframe-aparat_embed_frame iframe');
   const liveOverlay = document.querySelector('.live-overlay');
-  if (isLive === "false") {
+  if (liveIframe && liveIframe.getAttribute('src') === "https://www.aparat.com/embed/live/EvazCup") {
+    liveOverlay.innerHTML = '<span class="live-badge">LIVE در حال پخش</span>';
+  } else {
     liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
   }
-  
+
   // دکمه‌های جزئیات: تنها توضیحات کارت مربوطه باز شود
   const detailButtons = document.querySelectorAll('.details-btn');
   detailButtons.forEach(btn => {
