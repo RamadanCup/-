@@ -13,14 +13,14 @@ html, body {
 /* استایل کلی بدن صفحه */
 body {
   font-family: 'Vazir', sans-serif;
-  background: #2C3E50;       /* زمینه اصلی تیره */
-  color: #ECF0F1;            /* متن روشن */
+  background: #2C3E50;
+  color: #ECF0F1;
   line-height: 1.6;
 }
 
 /* هدر و منو */
 header {
-  background: linear-gradient(45deg, #16A085, #1ABC9C);  /* گرادیان سبزآبی */
+  background: linear-gradient(45deg, #16A085, #1ABC9C);
   padding: 20px 0;
   text-align: center;
 }
@@ -40,7 +40,7 @@ nav .logo {
 }
 
 nav .logo img {
-  height: 70px;   /* لوگو بزرگتر شده */
+  height: 70px;
   margin-right: 10px;
 }
 
@@ -64,8 +64,8 @@ nav .logo img {
 /* عنوان فرعی در هدر */
 .header-subtitle {
   margin-top: 10px;
-  font-size: 1.2em;      /* افزایش اندازه فونت */
-  color: #FFC107;        /* رنگ زرد پررنگ */
+  font-size: 1.2em;
+  color: #FFC107;
   font-weight: bold;
 }
 
@@ -97,7 +97,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #F1C40F;   /* طلایی */
+  color: #F1C40F;
 }
 
 /* استایل بخش‌های اصلی */
@@ -110,7 +110,7 @@ section {
 /* بخش پخش زنده */
 .live-stream {
   text-align: center;
-  background: #34495E;  /* زمینه بخش پخش زنده */
+  background: #34495E;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 40px;
@@ -122,7 +122,7 @@ section {
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
-  min-height: 300px;  /* فضای کافی برای ویدیو */
+  min-height: 300px;
 }
 
 .video-container video {
@@ -131,7 +131,7 @@ section {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* لایه پوششی برای بخش پخش زنده */
+/* لایه پوششی برای پخش زنده */
 .live-overlay {
   position: absolute;
   top: 10px;
@@ -273,7 +273,7 @@ section {
   margin: 5px 10px;
 }
 
-/* بخش جدول مسابقات (دور مقدماتی) */
+/* بخش جدول مسابقات */
 .bracket-section {
   background: #34495E;
   padding: 20px;
@@ -288,24 +288,29 @@ section {
   color: #F1C40F;
 }
 
-.bracket-container {
-  overflow-x: auto;
+/* جدول گروه‌ها */
+.group-table {
+  margin-bottom: 30px;
 }
 
-.bracket-container table {
+.group-table h3 {
+  margin-bottom: 10px;
+  color: #F1C40F;
+}
+
+.group-table table {
   width: 100%;
   border-collapse: collapse;
-  margin: auto;
 }
 
-.bracket-container th,
-.bracket-container td {
-  padding: 10px;
+.group-table th,
+.group-table td {
+  padding: 8px;
   border: 1px solid #444;
   text-align: center;
 }
 
-.bracket-container th {
+.group-table th {
   background: #16A085;
   color: #fff;
 }
@@ -403,8 +408,8 @@ section {
 
 .sponsor img {
   width: 150px;
-  height: 150px;        /* سایز ثابت برای تصاویر اسپانسر */
-  object-fit: cover;    /* جلوگیری از تغییر اندازه نامناسب */
+  height: 150px;
+  object-fit: cover;
   transition: transform 0.3s;
 }
 
