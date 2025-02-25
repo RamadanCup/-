@@ -25,29 +25,25 @@ header {
   text-align: center;
 }
 
-nav {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
+.logo-container {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-nav .logo {
-  display: flex;
+.logo {
+  display: inline-flex;
   align-items: center;
 }
 
-nav .logo img {
+.logo img {
   height: 70px;
   margin-right: 10px;
 }
 
 .logo-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .logo-text .logo-main {
@@ -67,9 +63,16 @@ nav .logo img {
   font-size: 1.2em;
   color: #FFC107;
   font-weight: bold;
+  padding: 0 20px;
+  text-align: center;
 }
 
-/* دکمه منوی همبرگر (نمایش فقط در موبایل) */
+/* منو */
+nav {
+  width: 90%;
+  margin: auto;
+}
+
 .menu-toggle {
   background: none;
   border: none;
@@ -79,15 +82,16 @@ nav .logo img {
   display: none;
 }
 
-/* منو */
 nav ul {
   list-style: none;
   display: flex;
-  margin: 0;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 0;
 }
 
 nav ul li {
-  margin-left: 20px;
+  margin: 0 10px;
 }
 
 nav ul li a {
@@ -131,7 +135,6 @@ section {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* لایه پوششی برای پخش زنده */
 .live-overlay {
   position: absolute;
   top: 10px;
@@ -142,7 +145,6 @@ section {
   gap: 10px;
 }
 
-/* استایل در حال پخش */
 .live-badge {
   background: red;
   color: #fff;
@@ -158,7 +160,6 @@ section {
   100% { opacity: 1; }
 }
 
-/* استایل زمانی که پخش زنده در دسترس نیست */
 .live-notice {
   background: #7F8C8D;
   color: #fff;
@@ -167,7 +168,6 @@ section {
   font-weight: bold;
 }
 
-/* دکمه مشاهده زنده */
 .watch-live-btn {
   background: #F1C40F;
   border: none;
@@ -189,7 +189,7 @@ section {
   direction: rtl;
 }
 
-/* بخش بازی‌ها (برنامه مسابقات) */
+/* بخش بازی‌ها */
 .games-section {
   background: #34495E;
   padding: 20px;
@@ -210,7 +210,6 @@ section {
   flex-wrap: wrap;
 }
 
-/* کارت‌های بازی */
 .game-card {
   width: 32%;
   background: #F39C12;
@@ -241,7 +240,6 @@ section {
   color: #fff;
 }
 
-/* دکمه جزئیات در کارت بازی */
 .details-btn {
   background: #F39C12;
   border: none;
@@ -266,7 +264,6 @@ section {
   color: #fff;
 }
 
-/* استایل شمارش معکوس */
 .countdown {
   font-size: 0.9em;
   color: #fff;
@@ -288,7 +285,6 @@ section {
   color: #F1C40F;
 }
 
-/* جدول گروه‌ها */
 .group-table {
   margin-bottom: 30px;
 }
@@ -301,6 +297,7 @@ section {
 .group-table table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: auto;
 }
 
 .group-table th,
@@ -336,7 +333,6 @@ section {
   justify-content: space-between;
 }
 
-/* کارت‌های اخبار */
 .news-card {
   background: #F39C12;
   width: 32%;
@@ -469,14 +465,16 @@ footer {
     margin: 10px 0;
   }
   
-  /* تغییر نحوه نمایش لوگو در موبایل: قرارگیری تصویر بالای متن */
-  nav .logo {
-    flex-direction: column;
-    align-items: center;
+  /* تنظیم مجدد لوگو و متن در موبایل */
+  .logo-container {
+    padding: 0 10px;
   }
-  nav .logo img {
-    margin-right: 0;
-    margin-bottom: 5px;
+  .logo {
+    display: block;
+    margin: 0 auto;
+  }
+  .logo-text {
+    text-align: center;
   }
   .logo-text .logo-main {
     font-size: 1.3em;
@@ -487,6 +485,8 @@ footer {
   
   .header-subtitle {
     font-size: 1em;
+    padding: 0 10px;
+    text-align: center;
   }
   
   section {
@@ -521,7 +521,9 @@ footer {
     font-size: 1em;
   }
   
-  .bracket-container table {
+  /* نمایش جدول مسابقات کامل بدون کشیدن به سمت چپ/راست */
+  .group-table table {
+    table-layout: fixed;
     font-size: 0.8em;
   }
 }

@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   // اسکرول نرم برای لینک‌های منو
   const navLinks = document.querySelectorAll('nav ul li a');
+  const navUl = document.querySelector('nav ul');
+  const menuToggle = document.querySelector('.menu-toggle');
+
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -8,18 +11,25 @@ document.addEventListener('DOMContentLoaded', function() {
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
       }
+      // بستن منو پس از کلیک روی لینک
+      navUl.classList.remove('active');
     });
   });
 
   // منوی همبرگر: نمایش/مخفی کردن منو در موبایل
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navUl = document.querySelector('nav ul');
-  menuToggle.addEventListener('click', function() {
+  menuToggle.addEventListener('click', function(e) {
+    e.stopPropagation(); // جلوگیری از انتشار رویداد کلیک به سند
     navUl.classList.toggle('active');
   });
 
+  // بستن منو در صورت کلیک روی هر جای دیگر صفحه
+  document.addEventListener('click', function(e) {
+    if (!navUl.contains(e.target) && !menuToggle.contains(e.target)) {
+      navUl.classList.remove('active');
+    }
+  });
+
   // بررسی وضعیت پخش زنده:
-  // اگر src آیفریم برابر با "https://www.aparat.com/embed/live/EvazCup" باشد، پیام "LIVE در حال پخش" نمایش داده می‌شود
   const liveIframe = document.querySelector('.h_iframe-aparat_embed_frame iframe');
   const liveOverlay = document.querySelector('.live-overlay');
   if (liveIframe && liveIframe.getAttribute('src') === "https://www.aparat.com/embed/live/EvazCup") {
@@ -28,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
   }
 
-  // دکمه‌های جزئیات: تنها توضیحات کارت مربوطه باز شود
+  // دکمه‌های جزئیات: نمایش/پنهان کردن توضیحات کارت بازی
   const detailButtons = document.querySelectorAll('.details-btn');
   detailButtons.forEach(btn => {
     btn.addEventListener('click', function() {
