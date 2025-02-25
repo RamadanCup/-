@@ -22,6 +22,7 @@ body {
 header {
   background: linear-gradient(45deg, #16A085, #1ABC9C);  /* گرادیان سبزآبی */
   padding: 20px 0;
+  text-align: center;
 }
 
 nav {
@@ -34,7 +35,37 @@ nav {
 }
 
 nav .logo {
-  font-size: 2em;
+  display: flex;
+  align-items: center;
+}
+
+nav .logo img {
+  height: 70px;   /* لوگو بزرگتر شده */
+  margin-right: 10px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo-text .logo-main {
+  font-size: 1.5em;
+  color: #ECF0F1;
+}
+
+.logo-text .logo-sub {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #ECF0F1;
+}
+
+/* عنوان فرعی در هدر */
+.header-subtitle {
+  margin-top: 10px;
+  font-size: 1.2em;      /* افزایش اندازه فونت */
+  color: #FFC107;        /* رنگ زرد پررنگ */
   font-weight: bold;
 }
 
@@ -91,7 +122,7 @@ section {
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
-  min-height: 300px;  /* اطمینان از وجود فضای کافی حتی در صورت عدم فعال بودن پخش */
+  min-height: 300px;  /* فضای کافی برای ویدیو */
 }
 
 .video-container video {
@@ -111,7 +142,7 @@ section {
   gap: 10px;
 }
 
-/* اگر پخش زنده فعال باشد */
+/* استایل در حال پخش */
 .live-badge {
   background: red;
   color: #fff;
@@ -127,7 +158,7 @@ section {
   100% { opacity: 1; }
 }
 
-/* در صورتی که پخش زنده غیر فعال باشد */
+/* استایل زمانی که پخش زنده در دسترس نیست */
 .live-notice {
   background: #7F8C8D;
   color: #fff;
@@ -179,7 +210,7 @@ section {
   flex-wrap: wrap;
 }
 
-/* کارت‌های بازی: استفاده از رنگ ثابت نارنجی (#F39C12) */
+/* کارت‌های بازی */
 .game-card {
   width: 32%;
   background: #F39C12;
@@ -202,7 +233,6 @@ section {
   object-fit: cover;
 }
 
-/* متون داخل کارت‌های بازی: سفید برای خوانایی */
 .game-card h3,
 .game-card p {
   padding: 10px;
@@ -301,7 +331,7 @@ section {
   justify-content: space-between;
 }
 
-/* کارت‌های اخبار: استفاده از رنگ ثابت نارنجی (#F39C12) */
+/* کارت‌های اخبار */
 .news-card {
   background: #F39C12;
   width: 32%;
@@ -327,7 +357,6 @@ section {
   text-align: right;
 }
 
-/* متون داخل کارت‌های اخبار: سفید برای خوانایی */
 .news-content h3 {
   margin-bottom: 10px;
   color: #fff;
@@ -374,6 +403,8 @@ section {
 
 .sponsor img {
   width: 150px;
+  height: 150px;        /* سایز ثابت برای تصاویر اسپانسر */
+  object-fit: cover;    /* جلوگیری از تغییر اندازه نامناسب */
   transition: transform 0.3s;
 }
 
@@ -419,7 +450,7 @@ footer {
     display: none;
     flex-direction: column;
     width: 100%;
-    background: #16A085; /* رنگ ثابت منوی همبرگر */
+    background: #16A085;
     position: absolute;
     top: 60px;
     left: 0;
@@ -431,6 +462,26 @@ footer {
   }
   nav ul li {
     margin: 10px 0;
+  }
+  
+  /* تغییر نحوه نمایش لوگو در موبایل: قرارگیری تصویر بالای متن */
+  nav .logo {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav .logo img {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  .logo-text .logo-main {
+    font-size: 1.3em;
+  }
+  .logo-text .logo-sub {
+    font-size: 1.1em;
+  }
+  
+  .header-subtitle {
+    font-size: 1em;
   }
   
   section {
