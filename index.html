@@ -2,9 +2,13 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <!-- تنظیمات viewport برای جلوگیری از زوم افقی -->
+  <!-- تنظیمات viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>جام رمضان شهرستان اوز</title>
+  <title>جام رمضان اوز</title>
+  <!-- تگ‌های SEO -->
+  <meta name="keywords" content="پخش زنده مسابقات جام رمضان شهرستان اوز, پخش زنده مسابقات فوتسال جام رمضان شهرستان اوز, مسابقات جام رمضان, مسابقات فوتسال رمضان, مسابقات اوز">
+  <meta name="description" content="پخش زنده مسابقات جام رمضان و فوتسال در شهرستان اوز. لذت ببرید از تمامی بازی‌های زنده در روزهای رمضان و تجربه هیجان مسابقات در اوز.">
+  <meta name="robots" content="index, follow">
   <!-- اضافه کردن فونت فارسی Vazir -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
   <link rel="stylesheet" href="style.css">
@@ -13,7 +17,13 @@
   <!-- هدر و منو -->
   <header>
     <nav>
-      <div class="logo">جام رمضان اوز</div>
+      <div class="logo">
+        <img src="https://evazcup.ir/Picsart_25-02-07_09-53-08-546.png" alt="لوگو مسابقات">
+        <div class="logo-text">
+           <div class="logo-main">Ramadan Cup</div>
+           <div class="logo-sub"><strong>Evaz 2025</strong></div>
+        </div>
+      </div>
       <!-- دکمه منوی همبرگر (برای موبایل) -->
       <button class="menu-toggle">&#9776;</button>
       <ul>
@@ -24,25 +34,24 @@
         <li><a href="#sponsors">اسپانسرها</a></li>
       </ul>
     </nav>
+    <!-- عنوان فرعی در هدر -->
+    <div class="header-subtitle">سی و سومین دوره مسابقات جام رمضان شهرستان اوز</div>
   </header>
 
   <!-- محتوای اصلی -->
   <main>
-    <!-- بخش پخش زنده: در اینجا data-live="false" به معنای عدم فعال بودن پخش زنده است -->
-    <section id="live" class="live-stream" data-live="false">
+    <!-- بخش پخش زنده -->
+    <section id="live" class="live-stream">
       <h1>بازی‌های در حال پخش</h1>
       <div class="video-container">
-        <!-- افزودن استایل embed Aparat -->
+        <!-- استایل اختصاصی embed Aparat -->
         <style>
           .h_iframe-aparat_embed_frame { position: relative; }
           .h_iframe-aparat_embed_frame .ratio { display: block; width: 100%; height: auto; }
           .h_iframe-aparat_embed_frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         </style>
-        <!-- اگر پخش زنده فعال نباشد، overlay پیام را نشان می‌دهد؛ در غیر این صورت، می‌توانید embed Aparat را جایگزین کنید -->
-        <div class="live-overlay">
-          <span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>
-        </div>
-        <!-- برای نمونه از کد embed Aparat استفاده شده است -->
+        <div class="live-overlay"></div>
+        <!-- توجه: اگر src آیفریم برابر با "https://www.aparat.com/embed/live/EvazCup" باشد، پیام LIVE در حال پخش نمایش داده می‌شود -->
         <div class="h_iframe-aparat_embed_frame">
           <span style="display: block; padding-top: 57%;"></span>
           <iframe scrolling="no" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://www.aparat.com/embed/live/EvazCup"></iframe>
@@ -54,7 +63,7 @@
       </div>
     </section>
 
-    <!-- بخش برنامه مسابقات (بازی‌های آینده) -->
+    <!-- بخش برنامه مسابقات -->
     <section id="schedule" class="games-section">
       <h2>برنامه مسابقات</h2>
       <div class="games-container">
@@ -65,9 +74,7 @@
           <p></p>
           <div class="countdown" data-matchtime="2025-02-01T20:00:00"></div>
           <button class="details-btn">جزئیات</button>
-          <div class="game-details" style="display: none;">
-            <p>‌ .</p>
-          </div>
+          <div class="game-details" style="display: none;"><p>‌ .</p></div>
         </div>
         <!-- کارت بازی ۲ -->
         <div class="game-card">
@@ -76,25 +83,21 @@
           <p></p>
           <div class="countdown" data-matchtime="2025-02-01T22:00:00"></div>
           <button class="details-btn">جزئیات</button>
-          <div class="game-details" style="display: none;">
-            <p></p>
-          </div>
+          <div class="game-details" style="display: none;"><p></p></div>
         </div>
         <!-- کارت بازی ۳ -->
         <div class="game-card">
           <img src="game3.jpg" alt="بازی ۳">
           <h3>مشخص نیست</h3>
-          <p> </p>
+          <p></p>
           <div class="countdown" data-matchtime="2025-02-02T00:00:00"></div>
           <button class="details-btn">جزئیات</button>
-          <div class="game-details" style="display: none;">
-            <p></p>
-          </div>
+          <div class="game-details" style="display: none;"><p></p></div>
         </div>
       </div>
     </section>
 
-    <!-- بخش جدول مسابقات (دور مقدماتی) -->
+    <!-- بخش جدول مسابقات -->
     <section id="bracket" class="bracket-section">
       <h2>جدول مسابقات (دور مقدماتی)</h2>
       <div class="bracket-container">
@@ -133,27 +136,18 @@
         <article class="news-card">
           <img src="news1.jpg" alt="خبر ۱">
           <div class="news-content">
-            <h3>عنوان خبر اول</h3>
-            <p>خلاصه خبر اول: گزارش ویژه از تغییرات اخیر در برنامه مسابقات جام رمضان شهرستان اوز.</p>
-            <a href="#" class="read-more">ادامه خبر</a>
+            <h3>برگزاری مراسم قرعه‌کشی سی‌وسومین دوره مسابقات فوتسال جام رمضان اوز</h3>
+            <p>مراسم قرعه‌کشی سی‌وسومین دوره مسابقات فوتسال جام رمضان شهرستان اوز برگزار شد. این رویداد با حضور جمعی از مسئولان ورزشی، سرپرستان و نمایندگان تیم‌های شرکت‌کننده انجام شد. در این مراسم، آقای مهرداد پیشداد، رئیس هیئت فوتبال شهرستان اوز، سخنرانی کرد و نکاتی پیرامون مسابقات بیان نمود.</p>
+            <a href="https://www.instagram.com/p/DGfD7NbCO-E/?igsh=MTI0Y2twajhqdWo4bQ==" class="read-more">ادامه خبر</a>
           </div>
         </article>
         <!-- خبر ۲ -->
         <article class="news-card">
           <img src="news2.jpg" alt="خبر ۲">
           <div class="news-content">
-            <h3>عنوان خبر دوم</h3>
-            <p> خبر دوم:‌.</p>
-            <a href="#" class="read-more">ادامه خبر</a>
-          </div>
-        </article>
-        <!-- خبر ۳ -->
-        <article class="news-card">
-          <img src="news3.jpg" alt="خبر ۳">
-          <div class="news-content">
-            <h3>عنوان خبر سوم</h3>
-            <p>خلاصه خبر سوم:.</p>
-            <a href="#" class="read-more">ادامه خبر</a>
+            <h3>اعلام نتایج قرعه‌کشی سی‌وسومین دوره مسابقات فوتسال جام رمضان اوز</h3>
+            <p>مراسم قرعه‌کشی سی‌وسومین دوره مسابقات فوتسال جام رمضان شهرستان اوز برگزار شد و تیم‌های شرکت‌کننده در دو گروه A و B قرار گرفتند. این مسابقات در شب‌های ماه مبارک رمضان برگزار خواهد شد و تیم‌ها برای کسب عنوان قهرمانی با یکدیگر رقابت خواهند کرد. برای اطلاع از جزئیات و برنامه مسابقات، صفحه رسمی این رویداد در اینستاگرام @evazcup و سایت evazcup.ir را دنبال کنید.</p>
+            <a href="https://www.instagram.com/p/DGfE5kLiEeK/?igsh=M2Vhd21rOXMyY2F6" class="read-more">ادامه خبر</a>
           </div>
         </article>
       </div>
