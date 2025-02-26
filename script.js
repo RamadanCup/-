@@ -16,20 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // منوی همبرگر: نمایش/مخفی کردن منو در موبایل
+  // منوی همبرگری
   menuToggle.addEventListener('click', function(e) {
-    e.stopPropagation(); // جلوگیری از انتشار رویداد کلیک به سند
+    e.stopPropagation();
     navUl.classList.toggle('active');
   });
 
-  // بستن منو در صورت کلیک روی هر جای دیگر صفحه
+  // بستن منو در صورت کلیک خارج از منو
   document.addEventListener('click', function(e) {
     if (!navUl.contains(e.target) && !menuToggle.contains(e.target)) {
       navUl.classList.remove('active');
     }
   });
 
-  // بررسی وضعیت پخش زنده:
+  // بررسی وضعیت پخش زنده
   const liveIframe = document.querySelector('.h_iframe-aparat_embed_frame iframe');
   const liveOverlay = document.querySelector('.live-overlay');
   if (liveIframe && liveIframe.getAttribute('src') === "https://www.aparat.com/embed/live/EvazCup") {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
   }
 
-  // دکمه‌های جزئیات: نمایش/پنهان کردن توضیحات کارت بازی
+  // دکمه‌های جزئیات بازی
   const detailButtons = document.querySelectorAll('.details-btn');
   detailButtons.forEach(btn => {
     btn.addEventListener('click', function() {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // تابع به‌روز‌رسانی شمارش معکوس برای هر کارت بازی
+  // به‌روز‌رسانی شمارش معکوس (افزودن روز)
   function updateCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
     countdownElements.forEach(el => {
@@ -64,10 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const now = new Date();
       const diff = matchTime - now;
       if (diff > 0) {
-        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        el.textContent = `شروع در: ${hours}ساعت ${minutes}دقیقه ${seconds}ثانیه`;
+        el.textContent = `شروع در: ${days} روز ${hours} ساعت ${minutes} دقیقه ${seconds} ثانیه`;
       } else {
         el.textContent = "شروع شده";
       }
