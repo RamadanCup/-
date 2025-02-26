@@ -28,21 +28,24 @@ header {
 .logo-container {
   text-align: center;
   margin-bottom: 10px;
+  /* در موبایل لوگو و متن به صورت ستونی نمایش داده شوند */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .logo img {
   height: 70px;
-  margin-right: 10px;
+  margin-bottom: 10px; /* فاصله بین لوگو و متن */
 }
 
 .logo-text {
-  display: inline-block;
-  vertical-align: middle;
   text-align: center;
 }
 
@@ -383,12 +386,13 @@ section {
   align-items: center;
 }
 
-/* در موبایل: استفاده از گرید برای تقسیم‌بندی 5 اسپانسر (3 در ردیف اول و 2 در ردیف دوم) */
+/* در موبایل: استفاده از گرید برای 5 اسپانسر (3 در ردیف اول، 2 در ردیف دوم) */
 @media (max-width: 768px) {
   .sponsors-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    justify-items: center;
   }
   .sponsor {
     width: 100%;
@@ -448,11 +452,14 @@ footer {
     margin: 10px 0;
   }
   
+  /* تنظیم مجدد لوگو و متن در موبایل */
   .logo-container {
     padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .logo {
-    display: block;
     margin: 0 auto;
   }
   .logo-text {
