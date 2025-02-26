@@ -18,7 +18,7 @@ body {
   line-height: 1.6;
 }
 
-/* هدر و منو */
+/* هدر */
 header {
   background: linear-gradient(45deg, #16A085, #1ABC9C);
   padding: 20px 0;
@@ -104,14 +104,14 @@ nav ul li a:hover {
   color: #F1C40F;
 }
 
-/* استایل بخش‌های اصلی */
+/* سکشن‌ها */
 section {
   padding: 40px 0;
   width: 90%;
   margin: auto;
 }
 
-/* بخش پخش زنده */
+/* پخش زنده */
 .live-stream {
   text-align: center;
   background: #34495E;
@@ -127,12 +127,6 @@ section {
   max-width: 800px;
   margin: 20px auto;
   min-height: 300px;
-}
-
-.video-container video {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .live-overlay {
@@ -168,28 +162,13 @@ section {
   font-weight: bold;
 }
 
-.watch-live-btn {
-  background: #F1C40F;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #000;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.watch-live-btn:hover {
-  background: #D4AC0D;
-}
-
 .live-description {
   margin-top: 20px;
   text-align: right;
   direction: rtl;
 }
 
-/* بخش بازی‌ها */
+/* برنامه مسابقات */
 .games-section {
   background: #34495E;
   padding: 20px;
@@ -206,8 +185,8 @@ section {
 
 .games-container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .game-card {
@@ -240,6 +219,12 @@ section {
   color: #fff;
 }
 
+.countdown {
+  font-size: 0.9em;
+  color: #fff;
+  margin: 5px 10px;
+}
+
 .details-btn {
   background: #F39C12;
   border: none;
@@ -256,7 +241,7 @@ section {
 }
 
 .game-details {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0,0,0,0.2);
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
@@ -264,13 +249,7 @@ section {
   color: #fff;
 }
 
-.countdown {
-  font-size: 0.9em;
-  color: #fff;
-  margin: 5px 10px;
-}
-
-/* بخش جدول مسابقات */
+/* جدول مسابقات */
 .bracket-section {
   background: #34495E;
   padding: 20px;
@@ -312,7 +291,7 @@ section {
   color: #fff;
 }
 
-/* بخش اخبار */
+/* اخبار */
 .news-section {
   background: #34495E;
   padding: 40px 20px;
@@ -356,6 +335,7 @@ section {
 .news-content {
   padding: 15px;
   text-align: right;
+  direction: rtl;
 }
 
 .news-content h3 {
@@ -382,7 +362,7 @@ section {
   background: #E67E22;
 }
 
-/* بخش اسپانسرها */
+/* اسپانسرها */
 .sponsors-section {
   background: #34495E;
   padding: 20px;
@@ -396,21 +376,24 @@ section {
   color: #F1C40F;
 }
 
+/* در دسکتاپ: اسپانسرها به صورت افقی */
 .sponsors-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.sponsor img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.sponsor img:hover {
-  transform: scale(1.2);
+/* در موبایل: استفاده از گرید برای تقسیم‌بندی 5 اسپانسر (3 در ردیف اول و 2 در ردیف دوم) */
+@media (max-width: 768px) {
+  .sponsors-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .sponsor {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 /* فوتر */
@@ -442,7 +425,7 @@ footer {
   background: #1ABC9C;
 }
 
-/* مدیا کوئری برای موبایل و تبلت */
+/* مدیا کوئری موبایل */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -465,7 +448,6 @@ footer {
     margin: 10px 0;
   }
   
-  /* تنظیم مجدد لوگو و متن در موبایل */
   .logo-container {
     padding: 0 10px;
   }
@@ -510,7 +492,7 @@ footer {
   }
   
   h1 {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
   
   h2 {
@@ -521,9 +503,13 @@ footer {
     font-size: 1em;
   }
   
-  /* نمایش جدول مسابقات کامل بدون کشیدن به سمت چپ/راست */
   .group-table table {
     table-layout: fixed;
-    font-size: 0.8em;
+    font-size: 0.75em;
+  }
+  
+  .group-table th, 
+  .group-table td {
+    padding: 4px;
   }
 }
