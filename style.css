@@ -181,7 +181,7 @@ section {
   color: #F1C40F;
 }
 
-/* تنظیم اسلاید افقی برای برنامه مسابقات */
+/* نمایش افقی بازی‌ها */
 .games-container {
   display: flex;
   gap: 20px;
@@ -195,7 +195,7 @@ section {
 }
 
 .game-card {
-  min-width: 300px;
+  min-width: 250px;
   background: #F39C12;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -222,6 +222,11 @@ section {
   text-align: right;
   direction: rtl;
   color: #fff;
+}
+
+/* زمان (ساعت) بولد */
+.game-card p strong {
+  font-weight: bold;
 }
 
 /* سبک نوشته جزئیات */
@@ -314,17 +319,16 @@ section {
   margin-bottom: 20px;
 }
 
+/* تنظیمات اخبار به صورت شبکه منظم */
 .news-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
 .news-card {
   background: #F39C12;
-  width: 32%;
   border-radius: 10px;
-  margin-bottom: 20px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -370,7 +374,7 @@ section {
   background: #E67E22;
 }
 
-/* اسپانسرها */
+/* اسپانسرها - نمایش عمودی */
 .sponsors-section {
   background: #34495E;
   padding: 20px;
@@ -384,21 +388,33 @@ section {
   color: #F1C40F;
 }
 
-.sponsors-container {
+.sponsors-container-vertical {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 20px;
   align-items: center;
 }
 
-.sponsor img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  transition: transform 0.3s;
+.sponsor {
+  width: 300px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
 }
 
-.sponsor img:hover {
-  transform: scale(1.2);
+.sponsor img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.sponsor p {
+  margin: 8px 0;
+  color: #2C3E50;
+  font-weight: bold;
+  text-align: center;
 }
 
 /* لینک اینستاگرام */
@@ -516,7 +532,7 @@ footer {
     max-width: 100%;
   }
   
-  /* در اسلایدی، نمایش افقی بازی‌ها */
+  /* در اسلایدی بازی‌ها، نمایش افقی بدون شکست */
   .games-container {
     flex-wrap: nowrap;
   }
@@ -524,6 +540,13 @@ footer {
   .game-card {
     min-width: 250px;
     margin: 0 5px;
+  }
+  
+  /* تنظیمات اخبار به صورت شبکه منظم */
+  .news-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
   
   h1 {
