@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navUl.classList.toggle('active');
   });
 
-  // بستن منو در صورت کلیک خارج از منو
+  // بستن منو در صورت کلیک خارج از آن
   document.addEventListener('click', function(e) {
     if (!navUl.contains(e.target) && !menuToggle.contains(e.target)) {
       navUl.classList.remove('active');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // به‌روز‌رسانی شمارش معکوس (افزودن روز)
+  // شمارش معکوس
   function updateCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
     countdownElements.forEach(el => {
