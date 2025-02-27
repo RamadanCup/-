@@ -19,8 +19,9 @@
   <!-- هدر -->
   <header>
     <div class="logo-container">
-      <div class="logo">
-        <img src="logo.png" alt="لوگو مسابقات">
+      <!-- لوگو و متن در یک ردیف (در دسکتاپ)؛ در موبایل با flex-direction: column -->
+      <div class="logo-row">
+        <img src="logo.png" alt="لوگو مسابقات" class="logo-img">
         <div class="logo-text">
           <div class="logo-main">Ramadan Cup</div>
           <div class="logo-sub"><strong>Evaz 2025</strong></div>
@@ -65,17 +66,191 @@
       </div>
     </section>
 
-    <!-- بخش برنامه مسابقات -->
+    <!-- بخش برنامه مسابقات: مطابق اطلاعات جدید -->
     <section id="schedule" class="games-section">
       <h2>برنامه مسابقات</h2>
       <div class="games-container">
-        <!-- نمونه کارت‌های مسابقه (مانند نمونه‌های قبلی) -->
-        <!-- ... (کدهای قبلی مانند مسابقه 1 تا کارت برنامه کلی) ... -->
+
+        <!-- یکشنبه 12 اسفند 1403 -->
+        <!-- بازی 1: شاهین اوز vs جوانان نفت اوز -->
+        <div class="game-card">
+          <img src="match1.jpg" alt="شاهین اوز vs جوانان نفت اوز">
+          <h3>شاهین اوز vs جوانان نفت اوز</h3>
+          <p>گروه A - یکشنبه 12 اسفند 1403 - ساعت 21:30</p>
+          <div class="countdown" data-matchtime="2025-03-02T21:30:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 1 - گروه A<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              این دیدار آغازگر مسابقات شب نخست است و هر دو تیم برای کسب اولین امتیاز تلاش خواهند کرد.
+            </p>
+          </div>
+        </div>
+
+        <!-- بازی 2: وحدت کوره vs سده -->
+        <div class="game-card">
+          <img src="match2.jpg" alt="وحدت کوره vs سده">
+          <h3>وحدت کوره vs سده</h3>
+          <p>گروه A - یکشنبه 12 اسفند 1403 - ساعت 22:45</p>
+          <div class="countdown" data-matchtime="2025-03-02T22:45:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 2 - گروه A<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              دومین مسابقه شب اول، می‌تواند نقش مهمی در تعیین جایگاه ابتدایی گروه A داشته باشد.
+            </p>
+          </div>
+        </div>
+
+        <!-- دوشنبه 13 اسفند 1403 -->
+        <!-- بازی 3: شاهین فیشور vs گراش جوان -->
+        <div class="game-card">
+          <img src="match3.jpg" alt="شاهین فیشور vs گراش جوان">
+          <h3>شاهین فیشور vs گراش جوان</h3>
+          <p>گروه A - دوشنبه 13 اسفند 1403 - ساعت 21:30</p>
+          <div class="countdown" data-matchtime="2025-03-03T21:30:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 3 - گروه A<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              در شب دوم، شاهین فیشور و گراش جوان رو‌در‌رو می‌شوند تا برای صعود از گروه A امتیاز جمع کنند.
+            </p>
+          </div>
+        </div>
+
+        <!-- بازی 4: نیکپا vs شمس اوز -->
+        <div class="game-card">
+          <img src="match4.jpg" alt="نیکپا vs شمس اوز">
+          <h3>نیکپا vs شمس اوز</h3>
+          <p>گروه B - دوشنبه 13 اسفند 1403 - ساعت 22:45</p>
+          <div class="countdown" data-matchtime="2025-03-03T22:45:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 4 - گروه B<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              اولین مسابقه گروه B در این دوره؛ هر دو تیم برای نمایش توانایی‌های خود آماده‌اند.
+            </p>
+          </div>
+        </div>
+
+        <!-- سه‌شنبه 14 اسفند 1403 -->
+        <!-- بازی 5: شهید پالاهنگ دیده‌بان vs شهید قاسمی باغان -->
+        <div class="game-card">
+          <img src="match5.jpg" alt="شهید پالاهنگ دیده‌بان vs شهید قاسمی باغان">
+          <h3>شهید پالاهنگ دیده‌بان vs شهید قاسمی باغان</h3>
+          <p>گروه B - سه‌شنبه 14 اسفند 1403 - ساعت 21:30</p>
+          <div class="countdown" data-matchtime="2025-03-04T21:30:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 5 - گروه B<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              آغاز شب سوم برای گروه B؛ نتیجه این دیدار در جایگاه تیم‌ها تأثیرگذار خواهد بود.
+            </p>
+          </div>
+        </div>
+
+        <!-- بازی 6: نفت اوز vs شهید احراری باغان -->
+        <div class="game-card">
+          <img src="match6.jpg" alt="نفت اوز vs شهید احراری باغان">
+          <h3>نفت اوز vs شهید احراری باغان</h3>
+          <p>گروه B - سه‌شنبه 14 اسفند 1403 - ساعت 22:45</p>
+          <div class="countdown" data-matchtime="2025-03-04T22:45:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 6 - گروه B<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              این بازی می‌تواند رقابت در گروه B را داغ‌تر کند و تیم‌ها برای صعود، نیازمند امتیاز هستند.
+            </p>
+          </div>
+        </div>
+
+        <!-- چهارشنبه 15 اسفند 1403 -->
+        <!-- بازی 7: جوانان نفت اوز vs جوانان سده -->
+        <div class="game-card">
+          <img src="match7.jpg" alt="جوانان نفت اوز vs جوانان سده">
+          <h3>جوانان نفت اوز vs جوانان سده</h3>
+          <p>گروه A - چهارشنبه 15 اسفند 1403 - ساعت 21:30</p>
+          <div class="countdown" data-matchtime="2025-03-05T21:30:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 7 - گروه A<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              در شب چهارم، این مسابقه نقش مهمی در تعیین تیم‌های صعودکننده از گروه A خواهد داشت.
+            </p>
+          </div>
+        </div>
+
+        <!-- بازی 8: شاهین اوز vs شاهین فیشور -->
+        <div class="game-card">
+          <img src="match8.jpg" alt="شاهین اوز vs شاهین فیشور">
+          <h3>شاهین اوز vs شاهین فیشور</h3>
+          <p>گروه A - چهارشنبه 15 اسفند 1403 - ساعت 22:45</p>
+          <div class="countdown" data-matchtime="2025-03-05T22:45:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 8 - گروه A<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              آخرین مسابقه دور مقدماتی در گروه A؛ این دیدار می‌تواند سرنوشت تیم‌های صعودکننده را مشخص کند.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- سایر بخش‌ها مانند جدول مسابقات، اخبار، اسپانسرها و ... -->
-    <!-- ... -->
+    <!-- بخش جدول مسابقات (در صورت نیاز) -->
+    <section id="bracket" class="bracket-section">
+      <h2>جدول مسابقات (دور مقدماتی)</h2>
+      <!-- ... (کد جدول گروه‌ها) ... -->
+    </section>
+
+    <!-- بخش اخبار (در صورت نیاز) -->
+    <section id="news" class="news-section">
+      <h2>اخبار</h2>
+      <!-- ... (کد اخبار) ... -->
+    </section>
+
+    <!-- بخش اسپانسرها -->
+    <section id="sponsors" class="sponsors-section">
+      <h2>اسپانسرها</h2>
+      <div class="sponsors-container">
+        <div class="sponsor">
+          <img src="sponsor1.png" alt="اسپانسر ۱">
+          <p>اسپانسر ۱</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor2.png" alt="اسپانسر ۲">
+          <p>اسپانسر ۲</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor3.png" alt="اسپانسر ۳">
+          <p>اسپانسر ۳</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor4.png" alt="اسپانسر ۴">
+          <p>اسپانسر ۴</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor5.png" alt="اسپانسر ۵">
+          <p>اسپانسر ۵</p>
+        </div>
+      </div>
+      <!-- لینک اینستاگرام در انتهای بخش اسپانسرها -->
+      <div class="instagram-link">
+        <a href="https://www.instagram.com/evazcup" target="_blank">
+          <img src="instagram.png" alt="Instagram" class="instagram-icon">
+          <span>@evazcup</span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <!-- فوتر -->
