@@ -414,15 +414,7 @@ section {
 }
 
 .sponsor p {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background: rgba(255,255,255,0.8);
-  color: #2C3E50;
-  margin: 0;
-  padding: 5px 0;
-  font-weight: bold;
+  display: none;
 }
 
 /* لینک اینستاگرام */
