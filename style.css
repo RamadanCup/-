@@ -181,42 +181,17 @@ section {
   color: #F1C40F;
 }
 
-/* اسلایدر برنامه مسابقات */
-.slider-container {
-  position: relative;
-  overflow: hidden;
-}
-
+/* تنظیم اسلاید افقی برای برنامه مسابقات */
 .games-container {
   display: flex;
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
+  flex-wrap: nowrap;
   padding: 10px 0;
 }
 .games-container::-webkit-scrollbar {
   display: none;
-}
-
-.slider-prev, .slider-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  font-size: 2em;
-  cursor: pointer;
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.slider-prev {
-  left: 10px;
-}
-.slider-next {
-  right: 10px;
 }
 
 .game-card {
@@ -541,12 +516,12 @@ footer {
     max-width: 100%;
   }
   
-  .games-container, .news-container {
-    flex-direction: row;
-    /* در اسلایدر، از اسکرول افقی استفاده می‌کنیم */
+  /* در اسلایدی، نمایش افقی بازی‌ها */
+  .games-container {
+    flex-wrap: nowrap;
   }
   
-  .game-card, .news-card {
+  .game-card {
     min-width: 250px;
     margin: 0 5px;
   }
