@@ -224,7 +224,7 @@ section {
   color: #fff;
 }
 
-/* زمان (ساعت) بولد */
+/* ساعت بولد در متن بازی */
 .game-card p strong {
   font-weight: bold;
 }
@@ -319,7 +319,6 @@ section {
   margin-bottom: 20px;
 }
 
-/* تنظیمات اخبار به صورت شبکه منظم */
 .news-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -374,7 +373,7 @@ section {
   background: #E67E22;
 }
 
-/* اسپانسرها - نمایش عمودی */
+/* اسپانسرها - نمایش پوستر با نسبت 16:9 */
 .sponsors-section {
   background: #34495E;
   padding: 20px;
@@ -388,15 +387,17 @@ section {
   color: #F1C40F;
 }
 
-.sponsors-container-vertical {
-  display: flex;
-  flex-direction: column;
+.sponsors-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  align-items: center;
+  padding: 10px 0;
 }
 
 .sponsor {
-  width: 300px;
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
   border: 2px solid #fff;
   border-radius: 8px;
   overflow: hidden;
@@ -404,17 +405,24 @@ section {
 }
 
 .sponsor img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 
 .sponsor p {
-  margin: 8px 0;
-  color: #2C3E50;
-  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   text-align: center;
+  background: rgba(255,255,255,0.8);
+  color: #2C3E50;
+  margin: 0;
+  padding: 5px 0;
+  font-weight: bold;
 }
 
 /* لینک اینستاگرام */
@@ -532,7 +540,6 @@ footer {
     max-width: 100%;
   }
   
-  /* در اسلایدی بازی‌ها، نمایش افقی بدون شکست */
   .games-container {
     flex-wrap: nowrap;
   }
@@ -542,11 +549,9 @@ footer {
     margin: 0 5px;
   }
   
-  /* تنظیمات اخبار به صورت شبکه منظم */
+  /* اخبار: نمایش به صورت تک ستونی */
   .news-container {
-    display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
   }
   
   h1 {
