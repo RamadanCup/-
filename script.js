@@ -77,19 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // اسلایدر برنامه مسابقات
-  const sliderContainer = document.querySelector('.slider-container');
-  const gamesContainer = document.querySelector('.games-container');
-  const btnPrev = document.querySelector('.slider-prev');
-  const btnNext = document.querySelector('.slider-next');
-
-  btnNext.addEventListener('click', () => {
-    gamesContainer.scrollBy({ left: 300, behavior: 'smooth' });
-  });
-  btnPrev.addEventListener('click', () => {
-    gamesContainer.scrollBy({ left: -300, behavior: 'smooth' });
-  });
-
   // دکمه بازگشت به بالا
   const backToTop = document.getElementById('back-to-top');
   window.addEventListener('scroll', function() {
