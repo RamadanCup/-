@@ -28,21 +28,17 @@ header {
 .logo-container {
   text-align: center;
   margin-bottom: 10px;
-  /* در موبایل لوگو و متن به صورت ستونی نمایش داده شوند */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.logo {
-  display: flex;
+.logo-row {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
 
-.logo img {
+.logo-img {
   height: 70px;
-  margin-bottom: 10px; /* فاصله بین لوگو و متن */
 }
 
 .logo-text {
@@ -60,7 +56,6 @@ header {
   color: #ECF0F1;
 }
 
-/* عنوان فرعی در هدر */
 .header-subtitle {
   margin-top: 10px;
   font-size: 1.2em;
@@ -70,7 +65,7 @@ header {
   text-align: center;
 }
 
-/* منو */
+/* منوی همبرگری */
 nav {
   width: 90%;
   margin: auto;
@@ -222,6 +217,18 @@ section {
   color: #fff;
 }
 
+/* جزییات */
+.game-details {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 12px;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: right;
+  color: #fff;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
 .countdown {
   font-size: 0.9em;
   color: #fff;
@@ -241,15 +248,6 @@ section {
 
 .details-btn:hover {
   background: #E67E22;
-}
-
-.game-details {
-  background: rgba(0,0,0,0.2);
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  text-align: right;
-  color: #fff;
 }
 
 /* جدول مسابقات */
@@ -379,25 +377,49 @@ section {
   color: #F1C40F;
 }
 
-/* در دسکتاپ: اسپانسرها به صورت افقی */
 .sponsors-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-/* در موبایل: استفاده از گرید برای 5 اسپانسر (3 در ردیف اول، 2 در ردیف دوم) */
-@media (max-width: 768px) {
-  .sponsors-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    justify-items: center;
-  }
-  .sponsor {
-    width: 100%;
-    text-align: center;
-  }
+.sponsor img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.sponsor img:hover {
+  transform: scale(1.2);
+}
+
+/* لینک اینستاگرام */
+.instagram-link {
+  margin-top: 20px;
+}
+
+.instagram-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  background: #F39C12;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.instagram-link a:hover {
+  background: #E67E22;
+}
+
+.instagram-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
 }
 
 /* فوتر */
@@ -452,18 +474,19 @@ footer {
     margin: 10px 0;
   }
   
-  /* تنظیم مجدد لوگو و متن در موبایل */
   .logo-container {
     padding: 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .logo {
-    margin: 0 auto;
+  .logo-row {
+    flex-direction: row;
+    align-items: center;
   }
-  .logo-text {
-    text-align: center;
+  .logo-img {
+    height: 60px;
+    margin-right: 8px;
   }
   .logo-text .logo-main {
     font-size: 1.3em;
