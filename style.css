@@ -65,7 +65,7 @@ header {
   text-align: center;
 }
 
-/* منوی همبرگری */
+/* منو */
 nav {
   width: 90%;
   margin: auto;
@@ -181,14 +181,46 @@ section {
   color: #F1C40F;
 }
 
+/* اسلایدر برنامه مسابقات */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
 .games-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+.games-container::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-prev, .slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.slider-prev {
+  left: 10px;
+}
+.slider-next {
+  right: 10px;
 }
 
 .game-card {
-  width: 32%;
+  min-width: 300px;
   background: #F39C12;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -217,7 +249,7 @@ section {
   color: #fff;
 }
 
-/* جزییات */
+/* سبک نوشته جزئیات */
 .game-details {
   background: rgba(0, 0, 0, 0.7);
   padding: 12px;
@@ -509,16 +541,14 @@ footer {
     max-width: 100%;
   }
   
-  .games-container,
-  .news-container {
-    flex-direction: column;
-    align-items: center;
+  .games-container, .news-container {
+    flex-direction: row;
+    /* در اسلایدر، از اسکرول افقی استفاده می‌کنیم */
   }
   
-  .game-card,
-  .news-card {
-    width: 90%;
-    margin: 10px auto;
+  .game-card, .news-card {
+    min-width: 250px;
+    margin: 0 5px;
   }
   
   h1 {
