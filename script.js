@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // شمارش معکوس
+  // به‌روز‌رسانی شمارش معکوس
   function updateCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
     countdownElements.forEach(el => {
@@ -76,6 +76,19 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // اسلایدر برنامه مسابقات
+  const sliderContainer = document.querySelector('.slider-container');
+  const gamesContainer = document.querySelector('.games-container');
+  const btnPrev = document.querySelector('.slider-prev');
+  const btnNext = document.querySelector('.slider-next');
+
+  btnNext.addEventListener('click', () => {
+    gamesContainer.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+  btnPrev.addEventListener('click', () => {
+    gamesContainer.scrollBy({ left: -300, behavior: 'smooth' });
+  });
 
   // دکمه بازگشت به بالا
   const backToTop = document.getElementById('back-to-top');
