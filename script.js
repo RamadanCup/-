@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // بررسی وضعیت پخش زنده
   const liveIframe = document.querySelector('.h_iframe-aparat_embed_frame iframe');
   const liveOverlay = document.querySelector('.live-overlay');
-  if (liveIframe && liveIframe.getAttribute('src') === "https://www.aparat.com/embed/live/EvazCup") {
+  if (liveIframe && liveIframe.getAttribute('src') === "https://www.aparat.com/embed/live/ramadancup") {
     liveOverlay.innerHTML = '<span class="live-badge">LIVE در حال پخش</span>';
   } else {
     liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
