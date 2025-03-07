@@ -45,13 +45,54 @@
 
   <!-- محتوای اصلی -->
   <main>
-    <!-- سایر بخش‌ها بدون تغییر -->
-    <!-- ... -->
+    <!-- بخش پخش زنده -->
+    <section id="live" class="live-stream">
+      <h1>بازی‌های در حال پخش</h1>
+      <div class="video-container">
+        <style>
+          .h_iframe-aparat_embed_frame { position: relative; }
+          .h_iframe-aparat_embed_frame .ratio { display: block; width: 100%; height: auto; }
+          .h_iframe-aparat_embed_frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        </style>
+        <div class="live-overlay"></div>
+        <div class="h_iframe-aparat_embed_frame">
+          <span style="display: block; padding-top: 57%;"></span>
+          <iframe scrolling="no" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" src="https://www.aparat.com/embed/live/ramadancup"></iframe>
+        </div>
+      </div>
+      <div class="live-description">
+        <h2>شهید احراری بلغان  vs نفت اوز</h2>
+        <p>در حال پخش</p>
+      </div>
+    </section>
+
+    <!-- بخش برنامه مسابقات (نمایش افقی در یک ردیف) -->
+    <section id="schedule" class="games-section">
+      <h2>برنامه مسابقات</h2>
+      <div class="games-container">
+        <!-- نمونه‌ای از یک بازی، سایر بازی‌ها بدون تغییر -->
+        <div class="game-card">
+          <img src="match1.jpg" alt="شاهین اوز vs جوانان نفت اوز">
+          <h3>شاهین اوز vs جوانان نفت اوز</h3>
+          <p>گروه A - یکشنبه 12 اسفند 1403 - <strong>ساعت 21:30</strong></p>
+          <div class="countdown" data-matchtime="2025-03-02T21:30:00"></div>
+          <button class="details-btn">جزئیات</button>
+          <div class="game-details" style="display: none;">
+            <p>
+              بازی شماره 1 - گروه A<br>
+              مکان: سالن ورزشی سرپوشیده میراحمدی اوز<br><br>
+              این نخستین بازی است؛ شروعی برای مسابقات گروه A.
+            </p>
+          </div>
+        </div>
+        <!-- سایر بازی‌ها در صورت نیاز می‌توانند اضافه شوند -->
+      </div>
+    </section>
 
     <!-- بخش جدول مسابقات -->
     <section id="bracket" class="bracket-section">
       <h2>جدول مسابقات (دور مقدماتی)</h2>
-      <!-- جدول گروه A (همان نسخه قبلی) -->
+      <!-- جدول گروه A -->
       <div class="group-table">
         <h3>گروه A</h3>
         <table>
@@ -70,7 +111,6 @@
             </tr>
           </thead>
           <tbody>
-            <!-- ردیف‌های گروه A طبق تغییرات قبلی -->
             <tr>
               <td>1</td>
               <td>شاهین اوز</td>
@@ -243,8 +283,63 @@
       </div>
     </section>
 
-    <!-- سایر بخش‌ها مانند اخبار و اسپانسرها بدون تغییر -->
-    <!-- ... -->
+    <!-- بخش اخبار -->
+    <section id="news" class="news-section">
+      <h2>اخبار</h2>
+      <div class="news-container">
+        <!-- خبر ۱ -->
+        <article class="news-card">
+          <img src="news1.jpg" alt="خبر ۱">
+          <div class="news-content">
+            <h3>برگزاری مراسم قرعه‌کشی سی‌وسومین دوره مسابقات فوتسال اوز</h3>
+            <p>مراسم قرعه‌کشی سی‌وسومین دوره مسابقات فوتسال اوز برگزار شد. در این مراسم، آقای مهرداد پیشداد رئیس هیئت فوتبال اوز سخنرانی کرد.</p>
+            <a href="https://www.instagram.com/p/DGfD7NbCO-E/?igsh=MTI0Y2twajhqdWo4bQ==" class="read-more">ادامه خبر</a>
+          </div>
+        </article>
+        <!-- خبر ۲ -->
+        <article class="news-card">
+          <img src="news2.jpg" alt="خبر ۲">
+          <div class="news-content">
+            <h3>اعلام نتایج قرعه‌کشی دوره فوتسال اوز</h3>
+            <p>نتایج قرعه‌کشی دوره فوتسال اوز اعلام شد. برای مشاهده جزئیات و برنامه مسابقات، به صفحه رسمی این رویداد مراجعه کنید.</p>
+            <a href="https://www.instagram.com/p/DGfE5kLiEeK/?igsh=M2Vhd21rOXMyY2F6" class="read-more">ادامه خبر</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- بخش اسپانسرها -->
+    <section id="sponsors" class="sponsors-section">
+      <h2>اسپانسرها</h2>
+      <div class="sponsors-container">
+        <div class="sponsor">
+          <img src="sponsor1.jpg" alt="اسپانسر ۱">
+          <p>اسپانسر ۱</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor2.jpg" alt="اسپانسر ۲">
+          <p>اسپانسر ۲</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor3.jpg" alt="اسپانسر ۳">
+          <p>اسپانسر ۳</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor4.jpg" alt="اسپانسر ۴">
+          <p>اسپانسر ۴</p>
+        </div>
+        <div class="sponsor">
+          <img src="sponsor5.jpg" alt="اسپانسر ۵">
+          <p>اسپانسر ۵</p>
+        </div>
+      </div>
+      <div class="instagram-link">
+        <a href="https://www.instagram.com/evazcup" target="_blank">
+          <img src="Instagram.png" alt="Instagram" class="instagram-icon">
+          <span>evazcup</span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <!-- فوتر -->
