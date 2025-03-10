@@ -55,7 +55,17 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+// حرکت به سمت راست
+document.querySelector('.slider-container::after').addEventListener('click', function() {
+  const slider = document.querySelector('.game-slider');
+  slider.style.transform = 'translateX(-100%)';
+});
 
+// حرکت به سمت چپ
+document.querySelector('.slider-container::before').addEventListener('click', function() {
+  const slider = document.querySelector('.game-slider');
+  slider.style.transform = 'translateX(0)';
+});
   // به‌روز‌رسانی شمارش معکوس
   function updateCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
