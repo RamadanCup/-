@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // ------------------------------
+  // کدهای اولیه (منو، اسکرول نرم، پخش زنده، شمارش معکوس و دکمه بازگشت به بالا)
+  // ------------------------------
+  
   // اسکرول نرم برای لینک‌های منو
   const navLinks = document.querySelectorAll('nav ul li a');
   const navUl = document.querySelector('nav ul');
@@ -38,27 +42,25 @@ document.addEventListener('DOMContentLoaded', function() {
     liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
   }
 
-        document.addEventListener('DOMContentLoaded', function() {
-  const slider = document.querySelector('.game-slider');
-  let gameCards = document.querySelectorAll('.game-card');
-  const leftBtn = document.querySelector('.left-btn');
-  const rightBtn = document.querySelector('.right-btn');
-  let currentIndex = 0;
-  let cardWidth = 0;
-  
-  // تابع به‌روز‌رسانی عرض کارت‌ها (با استفاده از getBoundingClientRect)
-  function updateCardWidth() {
-    if (gameCards.length > 0) {
-      cardWidth = gameCards[0].getBoundingClientRect().width + 20; // عرض کارت + فاصله (margin)
-      // به‌روز‌رسانی موقعیت اسلاید همزمان با تغییر اندازه
-      slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    }
-  }
-  
-  // تابع حذف بازی‌های شروع‌شده
-  function removeExpiredGames() {
-    const now = new Date();
-    gameCards.forEach(card => {
+  // دکمه‌های جزئیات بازی
+  const detailButtons = document.querySelectorAll('.details-btn');
+  detailButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // مخفی کردن سایر جزئیات
+      document.querySelectorAll('.game-details').forEach(detail => {
+        if (detail !== this.nextElementSibling) {
+          detail.style.display = "none";
+        }
+      });
+      const details = this.nextElementSibling;
+      if (details.style.display === "none" || details.style.display === "") {
+        details.style.display = "block";
+      } else {
+        details.style.display = "none";
+      }
+    });
+  });
+
   // به‌روز‌رسانی شمارش معکوس
   function updateCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
@@ -91,5 +93,65 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   backToTop.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  // ------------------------------
+  // کد جدید: اسلاید برنامه مسابقات
+  // ------------------------------
+  
+  const slider = document.querySelector('.game-slider');
+  let gameCards = document.querySelectorAll('.game-card');
+  const leftBtn = document.querySelector('.left-btn');
+  const rightBtn = document.querySelector('.right-btn');
+  let currentIndex = 0;
+  let cardWidth = 0;
+  
+  // تابع به‌روز‌رسانی عرض کارت‌ها (با استفاده از getBoundingClientRect)
+  function updateCardWidth() {
+    if (gameCards.length > 0) {
+      cardWidth = gameCards[0].getBoundingClientRect().width + 20; // عرض کارت + فاصله (margin)
+      // به‌روز‌رسانی موقعیت اسلاید بر اساس currentIndex
+      slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+  }
+  
+  // تابع حذف بازی‌های شروع‌شده
+  function removeExpiredGames() {
+    const now = new Date();
+    gameCards.forEach(card => {
+      const matchTimeStr = card.getAttribute('data-matchtime');
+      if (matchTimeStr) {
+        const matchTime = new Date(matchTimeStr);
+        if (matchTime <= now) {
+          card.remove();
+          console.log('Removed expired game:', card);
+        }
+      }
+    });
+    // به‌روز‌رسانی لیست کارت‌ها پس از حذف
+    gameCards = document.querySelectorAll('.game-card');
+  }
+  
+  // اجرای اولیه حذف بازی‌های منقضی و به‌روز‌رسانی عرض کارت‌ها
+  removeExpiredGames();
+  updateCardWidth();
+  
+  // به‌روز‌رسانی عرض کارت‌ها هنگام تغییر اندازه پنجره
+  window.addEventListener('resize', updateCardWidth);
+  
+  // حرکت به سمت راست (جهت جلو رفتن)
+  rightBtn.addEventListener('click', function() {
+    if (currentIndex < gameCards.length - 1) {
+      currentIndex++;
+      slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+  });
+  
+  // حرکت به سمت چپ (جهت عقب رفتن)
+  leftBtn.addEventListener('click', function() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
   });
 });
