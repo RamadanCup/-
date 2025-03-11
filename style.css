@@ -166,120 +166,136 @@ section {
   direction: rtl;
 }
 
-/* برنامه مسابقات */
+ /* برنامه مسابقات 
+/* بخش برنامه مسابقات */
 .games-section {
   background: #34495E;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 40px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  text-align: center;
 }
 
+/* عنوان بخش */
 .games-section h2 {
-  text-align: center;
   margin-bottom: 20px;
   color: #F1C40F;
 }
-/* استایل کلی برای نمایش اسلاید */
+
+/* توضیحات زیر عنوان (مثلاً مکان برگزاری) */
+.games-section p {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* کانتینر اصلی اسلاید */
 .slider-container {
   width: 100%;
   overflow: hidden;
-  margin: 20px 0;
+  position: relative;
+  margin: 0 auto;
 }
 
+/* اسلایدها به صورت افقی */
 .game-slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
+/* کارت‌های بازی */
 .game-card {
-  min-width: 300px;
+  min-width: 250px;
   margin: 0 10px;
-  background-color: #34495E;
-  color: #ECF0F1;
-  padding: 20px;
+  background: #F39C12;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  text-align: right;
+  direction: rtl;
 }
 
 .game-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6);
 }
 
+.game-card h3,
+.game-card p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+/* دکمه جزئیات */
 .details-btn {
-  background-color: #F39C12;
+  background: #F39C12;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.details-btn:hover {
+  background: #E67E22;
+}
+
+/* جزییات بازی (ابتدا مخفی) */
+.game-details {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 0.95em;
+  line-height: 1.5;
+  display: none; /* مخفی بودن پیش‌فرض */
+}
+
+/* دکمه‌های جهت اسلاید (چپ و راست) */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  background: #F39C12;
   border: none;
   color: #fff;
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.details-btn:hover {
-  background-color: #E67E22;
-}
-
-.game-details {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  margin-top: 10px;
-  color: #fff;
-  border-radius: 5px;
-}
-
-.countdown {
-  font-size: 0.9em;
-  color: #fff;
-}
-
-/* استایل برای دکمه‌های جهت حرکت */
-.slider-container::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  background-color: #F39C12;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
   font-size: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: translateY(-50%);
+  transition: background 0.3s;
 }
 
-.slider-container::after:hover {
-  background-color: #E67E22;
-}
-
-.slider-container::before {
-  content: '';
-  position: absolute;
-  top: 50%;
+.left-btn {
   left: 10px;
-  width: 30px;
-  height: 30px;
-  background-color: #F39C12;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-size: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s;
 }
 
-.slider-container::before:hover {
-  background-color: #E67E22;
+.right-btn {
+  right: 10px;
+}
+
+.slider-btn:hover {
+  background: #E67E22;
+}
+
+/* ریسپانسیو موبایل برای اسلاید */
+@media (max-width: 768px) {
+  .game-card {
+    min-width: 250px;
+    margin: 0 5px;
+  }
+  .slider-btn {
+    font-size: 18px;
+    padding: 8px;
+  }
 }
 /* نمایش افقی بازی‌ها */
 .games-container {
