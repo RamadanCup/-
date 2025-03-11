@@ -38,98 +38,27 @@ document.addEventListener('DOMContentLoaded', function() {
     liveOverlay.innerHTML = '<span class="live-notice">پخش زنده در حال حاضر در دسترس نیست</span>';
   }
 
-  // دکمه‌های جزئیات بازی
-  const detailButtons = document.querySelectorAll('.details-btn');
-  detailButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.game-details').forEach(detail => {
-        if (detail !== this.nextElementSibling) {
-          detail.style.display = "none";
-        }
-      });
-      const details = this.nextElementSibling;
-      if (details.style.display === "none" || details.style.display === "") {
-        details.style.display = "block";
-      } else {
-        details.style.display = "none";
-      }
-    });
-  });
-// حرکت به سمت راست
-document.querySelector('.slider-container::after').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
   const slider = document.querySelector('.game-slider');
-  slider.style.transform = 'translateX(-100%)';
-});
-
-// حرکت به سمت چپ
-document.querySelector('.slider-container::before').addEventListener('click', function() {
-  const slider = document.querySelector('.game-slider');
-  slider.style.transform = 'translateX(0)';
-});
-document.addEventListener('DOMContentLoaded', function() {
-  const slider = document.querySelector('.game-slider');
-  const gameCards = document.querySelectorAll('.game-card');
-  const totalSlides = gameCards.length;
+  let gameCards = document.querySelectorAll('.game-card');
   const leftBtn = document.querySelector('.left-btn');
   const rightBtn = document.querySelector('.right-btn');
-  
   let currentIndex = 0;
-  
-  // عرض تقریبی هر کارت + فاصله‌ها (margin 10px چپ و راست)
-  // اگر نیاز بود با توجه به استایل نهایی، این مقدار را تنظیم کنید.
   let cardWidth = 0;
-
-  // محاسبه دقیق عرض هر کارت بعد از لود شدن
-  if (gameCards.length > 0) {
-    // عرض یک کارت + دو طرف margin
-    cardWidth = gameCards[0].offsetWidth + 20;
-  }
-
-  // 1) حذف خودکار بازی‌هایی که زمان شروع‌شان گذشته است
-  const now = new Date();
-  gameCards.forEach(card => {
-    const matchTimeStr = card.getAttribute('data-matchtime');
-    if (matchTimeStr) {
-      const matchTime = new Date(matchTimeStr);
-      // اگر زمان شروع بازی از الان گذشته باشد، حذفش کن
-      if (matchTime <= now) {
-        card.remove();
-      }
-    }
-  });
-
-  // بعد از حذف کارت‌های گذشته، مجدداً اسلایدها را بازیابی کنید
-  const updatedCards = document.querySelectorAll('.game-card');
-  let updatedTotal = updatedCards.length;
-
-  // 2) دکمه‌های حرکت اسلاید به چپ/راست
-  rightBtn.addEventListener('click', () => {
-    if (currentIndex < updatedTotal - 1) {
-      currentIndex++;
-      slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    }
-  });
   
-  leftBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex--;
+  // تابع به‌روز‌رسانی عرض کارت‌ها (با استفاده از getBoundingClientRect)
+  function updateCardWidth() {
+    if (gameCards.length > 0) {
+      cardWidth = gameCards[0].getBoundingClientRect().width + 20; // عرض کارت + فاصله (margin)
+      // به‌روز‌رسانی موقعیت اسلاید همزمان با تغییر اندازه
       slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
     }
-  });
-
-  // 3) نمایش/مخفی کردن جزئیات بازی هنگام کلیک روی دکمه "جزئیات"
-  const detailButtons = document.querySelectorAll('.details-btn');
-  detailButtons.forEach(btn => {
-    btn.addEventListener('click', function() {
-      const details = this.nextElementSibling;
-      if (details.style.display === 'none' || details.style.display === '') {
-        details.style.display = 'block';
-      } else {
-        details.style.display = 'none';
-      }
-    });
-  });
-});
+  }
+  
+  // تابع حذف بازی‌های شروع‌شده
+  function removeExpiredGames() {
+    const now = new Date();
+    gameCards.forEach(card => {
   // به‌روز‌رسانی شمارش معکوس
   function updateCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
