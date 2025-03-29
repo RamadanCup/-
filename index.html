@@ -1,31 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <!-- تنظیمات viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>پخش زنده جام رمضان فوتسال شهرستان اوز</title>
-  <!-- favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
-  <!-- تگ‌های SEO -->
-  <meta name="keywords" content="پخش زنده جام رمضان اوز, پخش زنده مسابقات جام رمضان اوز, پخش زنده مسابقات فوتسال جام رمضان اوز, اوز کاپ, جام رمضان اوز, جام رمضان شهرستان اوز, سایت جام رمضان شهرستان اوز, پخش زنده جام رمضان فوتسال شهرستان اوز">
-  <meta name="description" content="تجربه هیجان‌انگیز از پخش زنده مسابقات جام رمضان فوتسال در شهرستان اوز با حضور تیم‌های برتر و اجرای زنده. همراه باشید و از برنامه و نتایج مسابقات سایت جام رمضان شهرستان اوز لذت ببرید.">
-  <meta name="robots" content="index, follow">
-  <!-- اضافه کردن فونت فارسی Vazir -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سی و سومین دوره مسابقات جام رمضان شهرستان اوز</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <header class="main-header">
     <div class="container">
-      <img src="logo.png" alt="Ramadan Cup Logo" class="logo">
+      <img src="ramadan_logo.png" alt="Ramadan Cup Logo" class="logo">
       <h2>سی و سومین دوره مسابقات جام رمضان شهرستان اوز</h2>
     </div>
   </header>
+
   <main>
+    <!-- پخش زنده -->
     <section id="live" class="tab active">
       <h1>پخش زنده</h1>
       <div class="video-frame">
@@ -33,6 +26,7 @@
       </div>
     </section>
 
+    <!-- خانه -->
     <section id="home" class="tab">
       <h1>خانه</h1>
       <p>به مسابقات رمضان خوش آمدید</p>
@@ -48,20 +42,45 @@
       </div>
     </section>
 
+    <!-- اخبار -->
     <section id="news" class="tab">
       <h1>اخبار</h1>
-      <article class="news-card">
-        <h3>شروع مسابقات رمضان</h3>
-        <p>مسابقات فوتسال رمضان به صورت رسمی آغاز شد...</p>
-      </article>
+      <div class="news-container">
+        <div class="news-card">
+          <img src="8312F4B2-F760-4B38-9E7C-FAA80B7591DB.jpeg" alt="News Image">
+          <h3>شروع مسابقات رمضان</h3>
+          <p>مسابقات فوتسال رمضان به صورت رسمی آغاز شد...</p>
+        </div>
+        <div class="news-card">
+          <img src="8312F4B2-F760-4B38-9E7C-FAA80B7591DB.jpeg" alt="News Image">
+          <h3>اعلام زمان‌بندی مسابقات</h3>
+          <p>زمان‌بندی کامل مسابقات جام رمضان اعلام شد، برای اطلاع بیشتر به بخش برنامه مسابقات مراجعه کنید.</p>
+        </div>
+      </div>
     </section>
 
+    <!-- برنامه مسابقات -->
     <section id="schedule" class="tab">
       <h1>برنامه مسابقات</h1>
-      <ul class="matches">
-        <li>شاهین اوز vs نفت اوز - 13 فروردین</li>
-        <li>شمس اوز vs گراش جوان - 14 فروردین</li>
-      </ul>
+      <div class="bracket-section">
+        <h2>مرحله نیمه نهایی و فینال</h2>
+        <div class="matches">
+          <div class="match">
+            <span class="team-name">شاهین اوز</span>
+            <span class="team-name">شمس اوز</span>
+            <p>زمان: 14 فروردین 2025</p>
+            <div class="countdown">00:15:30</div>
+            <button class="details-btn">جزئیات</button>
+          </div>
+          <div class="match">
+            <span class="team-name">گراش جوان</span>
+            <span class="team-name">نفت اوز</span>
+            <p>زمان: 14 فروردین 2025</p>
+            <div class="countdown">00:30:15</div>
+            <button class="details-btn">جزئیات</button>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 

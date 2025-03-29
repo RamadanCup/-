@@ -1,9 +1,9 @@
 
 body {
   margin: 0;
-  font-family: sans-serif;
-  background: #C99F35;
-  color: #fff;
+  font-family: 'Vazir', sans-serif;
+  background: #2C3E50;
+  color: #ECF0F1;
 }
 
 header .container {
@@ -64,19 +64,98 @@ h1 {
   border-radius: 6px;
 }
 
+.news-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .news-card {
   background: #1e1e1e;
   padding: 15px;
   border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.news-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+
+.news-card h3 {
+  margin-bottom: 10px;
+  color: #F1C40F;
+}
+
+.news-card p {
+  font-size: 1em;
+  color: #ECF0F1;
+}
+
+.bracket-section {
+  background: #34495E;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.bracket-section h2 {
+  margin-bottom: 20px;
+  color: #F1C40F;
 }
 
 .matches {
-  list-style-type: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.matches li {
-  margin: 10px 0;
+.match {
+  background: #F39C12;
+  padding: 15px;
+  border-radius: 10px;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.match:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+}
+
+.team-name {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.countdown {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #ECF0F1;
+}
+
+.details-btn {
+  background: #F39C12;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.details-btn:hover {
+  background: #E67E22;
 }
 
 .bottom-nav {
