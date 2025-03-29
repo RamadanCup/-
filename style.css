@@ -547,31 +547,36 @@ body.dark-mode .read-more {
     padding: 0 20%;
   }
 }
-.live-container {
+/* استایل اصلی پخش زنده */
+.video-container {
   width: 100%;
-  margin-bottom: 1rem;
-  border-radius: 8px;
+  max-width: 800px; /* محدودیت عرض برای پخش */
+  margin: 0 auto;
+}
+
+.live-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* نسبت 16:9 برای پخش */
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: #000;
 }
 
-.live-iframe {
+.live-stream {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 300px; /* ارتفاع ثابت برای پخش */
+  height: 100%;
   border: none;
-  display: block;
 }
 
-.match-info {
-  padding: 1rem;
+/* استایل اطلاعات مسابقه */
+.stream-info {
+  padding: 12px 15px;
   background: #f8f9fa;
-  text-align: center;
-}
-
-.match-info h3 {
-  color: #2C3E50;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  border-top: 2px solid var(--primary-color);
 }
 
 .teams {
@@ -579,36 +584,51 @@ body.dark-mode .read-more {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 0.5rem 0;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .team {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  max-width: 150px;
   white-space: nowrap;
-  max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .vs {
-  color: #FFD700;
+  color: var(--accent-color);
   font-weight: bold;
+  padding: 0 5px;
 }
 
-.match-time {
-  color: #666;
+.match-details {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
   font-size: 0.85rem;
+  color: #555;
+}
+
+.match-details span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.match-details i {
+  color: var(--secondary-color);
 }
 
 /* حالت دارک */
-body.dark-mode .match-info {
+body.dark-mode .stream-info {
   background: #2d2d2d;
+  border-top-color: var(--accent-color);
 }
 
-body.dark-mode .match-info h3 {
-  color: #fff;
-}
-
-body.dark-mode .team {
+body.dark-mode .team,
+body.dark-mode .match-details {
   color: #e0e0e0;
 }
