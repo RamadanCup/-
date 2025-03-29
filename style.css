@@ -515,50 +515,29 @@ body.dark-mode .read-more {
   color: var(--primary-color);
 }
 
-/* ریسپانسیو */
-@media (min-width: 768px) {
-  .main-header h1 {
-    font-size: 1.3rem;
-  }
-  
-  .sponsors-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 992px) {
-  .content-section {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .sponsors-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  
-  .matches-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .main-nav {
-    padding: 0 20%;
-  }
-}
-/* استایل اصلی پخش زنده */
+/* استایل پخش زنده با برجستگی */
 .video-container {
   width: 100%;
-  max-width: 800px; /* محدودیت عرض برای پخش */
+  max-width: 800px;
   margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: white;
+  margin-bottom: 2rem;
+}
+
+.video-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }
 
 .live-wrapper {
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: 56.25%; /* نسبت 16:9 برای پخش */
+  padding-bottom: 56.25%;
   overflow: hidden;
   background: #000;
 }
@@ -572,11 +551,11 @@ body.dark-mode .read-more {
   border: none;
 }
 
-/* استایل اطلاعات مسابقه */
 .stream-info {
   padding: 12px 15px;
-  background: #f8f9fa;
+  background: white;
   border-top: 2px solid var(--primary-color);
+  transition: background 0.3s, color 0.3s;
 }
 
 .teams {
@@ -622,13 +601,51 @@ body.dark-mode .read-more {
   color: var(--secondary-color);
 }
 
-/* حالت دارک */
+/* حالت دارک برای پخش زنده */
+body.dark-mode .video-container {
+  background: #2D2D2D;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
 body.dark-mode .stream-info {
-  background: #2d2d2d;
+  background: #252525;
   border-top-color: var(--accent-color);
 }
 
 body.dark-mode .team,
 body.dark-mode .match-details {
   color: #e0e0e0;
+}
+
+/* ریسپانسیو */
+@media (min-width: 768px) {
+  .main-header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .sponsors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .content-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .sponsors-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .matches-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .main-nav {
+    padding: 0 20%;
+  }
 }
