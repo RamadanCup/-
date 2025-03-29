@@ -7,63 +7,66 @@ document.addEventListener('DOMContentLoaded', function() {
     item.addEventListener('click', function(e) {
       e.preventDefault();
       
-      // حذف کلاس active از همه
       navItems.forEach(nav => nav.classList.remove('active'));
       tabs.forEach(tab => tab.classList.remove('active'));
       
-      // اضافه کردن کلاس active به آیتم انتخاب شده
       this.classList.add('active');
       const targetTab = this.getAttribute('href');
       document.querySelector(targetTab).classList.add('active');
     });
   });
 
-  // تایمر معکوس مسابقات با تاریخ‌های مشخص
+  // تایمر معکوس مسابقات ۲۰۲۵
   function updateCountdowns() {
     const matchCards = document.querySelectorAll('.match-card');
     const now = new Date();
     
-    // تاریخ‌های مسابقات
+    // تنظیم دقیق زمان‌ها برای ۲۹ مارس ۲۰۲۵
     const matchDates = [
-      new Date('2024-03-29T21:30:00'), // بازی اول ۲۹ مارس ساعت ۲۱:۳۰
-      new Date('2024-03-29T22:45:00')  // بازی دوم ۲۹ مارس ساعت ۲۲:۴۵
+      new Date(2025, 2, 29, 21, 30, 0), // بازی اول: ۲۹ مارس ۲۰۲۵ ساعت ۲۱:۳۰
+      new Date(2025, 2, 29, 22, 45, 0)   // بازی دوم: ۲۹ مارس ۲۰۲۵ ساعت ۲۲:۴۵
     ];
     
     matchCards.forEach((card, index) => {
       const matchTime = matchDates[index];
       const countdownElement = card.querySelector('.countdown');
       const statusElement = card.querySelector('.match-status');
-      
       const diff = matchTime - now;
       
       if (diff > 0) {
         // قبل از شروع بازی
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+        const totalSeconds = Math.floor(diff / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
         
         countdownElement.textContent = 
-          `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+          `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
         statusElement.textContent = 'شروع نشده';
         statusElement.className = 'match-status';
       } 
-      else if (diff > -3600000) {
-        // در حال پخش (1 ساعت اول)
-        countdownElement.textContent = 'در حال پخش';
+      else if (diff > -5400000) { // 90 دقیقه پس از شروع (مدت بازی فوتسال)
+        // در حال پخش
+        const timePassed = Math.abs(diff);
+        const minutesPassed = Math.floor(timePassed / (1000 * 60));
+        const secondsPassed = Math.floor((timePassed % (1000 * 60)) / 1000);
+        
+        countdownElement.textContent = 
+          `${minutesPassed.toString().padStart(2, '0')}:${secondsPassed.toString().padStart(2, '0')}`;
         statusElement.textContent = 'در حال پخش';
         statusElement.className = 'match-status live';
       } 
       else {
         // بازی تمام شده
-        countdownElement.textContent = 'پایان یافته';
+        countdownElement.textContent = '۰۰:۰۰:۰۰';
         statusElement.textContent = 'پایان یافته';
-        statusElement.className = 'match-status';
+        statusElement.className = 'match-status ended';
       }
     });
   }
 
-  // مدیریت دکمه‌های جزئیات
+  // سایر توابع (مدیریت دکمه‌ها و حالت دارک)
   document.querySelectorAll('.match-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const details = this.parentElement.querySelector('.match-details');
@@ -71,11 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // مدیریت حالت دارک
   const darkModeToggle = document.getElementById('darkModeToggle');
   const body = document.body;
   
-  // بررسی ذخیره شده در localStorage
   if (localStorage.getItem('darkMode') === 'enabled') {
     body.classList.add('dark-mode');
     darkModeToggle.innerHTML = '<i class="fas fa-sun"></i><span>حالت روز</span>';
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // به‌روزرسانی اولیه و هر ثانیه
+  // شروع تایمر
   updateCountdowns();
   setInterval(updateCountdowns, 1000);
 });
