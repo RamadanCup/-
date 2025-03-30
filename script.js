@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // تنظیم دقیق زمان‌ها برای ۲۹ مارس ۲۰۲۵
     const matchDates = [
-      new Date(2025, 2, 29, 21, 30, 0), // بازی اول: ۲۹ مارس ۲۰۲۵ ساعت ۲۱:۳۰
-      new Date(2025, 2, 29, 22, 45, 0)   // بازی دوم: ۲۹ مارس ۲۰۲۵ ساعت ۲۲:۴۵
+      new Date(2025, 2, 30, 21, 30, 0), // بازی اول: ۲۹ مارس ۲۰۲۵ ساعت ۲۱:۳۰
+
     ];
     
     matchCards.forEach((card, index) => {
