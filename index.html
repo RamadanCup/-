@@ -1,180 +1,849 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta charset="UTF-8">
-  <!-- تنظیمات viewport -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>پخش زنده جام رمضان فوتسال شهرستان اوز</title>
-  <!-- favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
-  <!-- تگ‌های SEO -->
-  <meta name="keywords" content="پخش زنده جام رمضان اوز, پخش زنده مسابقات جام رمضان اوز, پخش زنده مسابقات فوتسال جام رمضان اوز, اوز کاپ, جام رمضان اوز, جام رمضان شهرستان اوز, سایت جام رمضان شهرستان اوز, پخش زنده جام رمضان فوتسال شهرستان اوز">
-  <meta name="description" content="تجربه هیجان‌انگیز از پخش زنده مسابقات جام رمضان فوتسال در شهرستان اوز با حضور تیم‌های برتر و اجرای زنده. همراه باشید و از برنامه و نتایج مسابقات سایت جام رمضان شهرستان اوز لذت ببرید.">
-  <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>جام رمضان اوز ۲۰۲۶</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#071A2F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="RamadanCup">
+    
+    <!-- Icons & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            /* Theme: Premium Navy & Gold */
+            --bg-body: #071A2F;          /* Deep Navy Background */
+            --bg-sidebar: #0A2342;       /* Sidebar Navy */
+            --bg-card: #0E2A4B;          /* Card Background */
+            --bg-card-hover: #13345E;    /* Card Hover Lighter Navy */
+            
+            --primary: #D6B25E;          /* Main Metallic Gold */
+            --primary-bright: #F2D27A;   /* Bright Gold (Highlights) */
+            --primary-dark: #B8923A;     /* Deep Gold (Shadows) */
+            
+            --accent-blue: #2DA8FF;      /* Minimal Blue Accent */
+            
+            --accent-glow: rgba(214, 178, 94, 0.25); /* Gold Glow */
+            
+            --text-main: #EAEAEA;        /* Light Text */
+            --text-muted: #A3A3A3;       /* Muted Text */
+            --border: rgba(255, 255, 255, 0.08); /* Subtle Border */
+            
+            --radius: 16px;
+            --sidebar-width: 280px;
+            --header-height: 80px;      
+            --bottom-nav-height: 70px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Vazirmatn', sans-serif;
+            overflow-x: hidden;
+            padding-bottom: var(--bottom-nav-height);
+        }
+
+        @media (min-width: 769px) {
+            body { padding-bottom: 0; padding-right: var(--sidebar-width); padding-left: 0; }
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; cursor: pointer; }
+        ul { list-style: none; }
+        img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+
+        /* --- UI COMPONENTS --- */
+        
+        /* 1. SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: var(--sidebar-width);
+            background: var(--bg-sidebar);
+            border-left: 1px solid var(--border);
+            padding: 30px 20px;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-logo {
+            width: 100%;
+            max-width: 130px; /* Limit max width */
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(214, 178, 94, 0.3));
+            margin-bottom: 15px;
+            border-radius: 0 !important; /* No border radius for transparent logo */
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--text-main);
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .menu-item:hover { 
+            background: var(--bg-card-hover); 
+            color: var(--primary-bright);
+            border-color: var(--border);
+        }
+        .menu-item.active {
+            background: linear-gradient(90deg, rgba(214, 178, 94, 0.15), transparent);
+            color: var(--primary);
+            border-right: 3px solid var(--primary);
+            border-top: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* 2. HEADER */
+        .top-header {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: rgba(7, 26, 47, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+            border-bottom: 1px solid var(--border);
+            gap: 15px; /* Gap between logo and text */
+        }
+
+        /* Responsive Header Logo */
+        .header-logo {
+            height: 55px; /* Default height */
+            width: auto;
+            max-width: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(214, 178, 94, 0.3));
+            border-radius: 0 !important;
+            flex-shrink: 0; /* Prevent logo from shrinking too much */
+        }
+
+        .header-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            flex-grow: 1; /* Take up available space */
+            min-width: 0; /* Important for text truncation */
+        }
+        
+        .page-title { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            text-align: left; /* Align text next to logo */
+            direction: rtl;
+        }
+        .page-subtitle { 
+            font-size: 0.75rem; 
+            color: var(--primary); 
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            text-align: left;
+            direction: rtl;
+        }
+
+        /* Mobile Adjustments for Header */
+        @media (max-width: 480px) {
+            .top-header { padding: 10px 15px; }
+            .header-logo { height: 45px; } /* Smaller logo on mobile */
+            .page-title { font-size: 0.95rem; }
+            .page-subtitle { font-size: 0.65rem; }
+        }
+
+        /* 3. HERO & COUNTDOWN */
+        .main-content { padding: 20px; max-width: 1200px; margin: 0 auto; min-height: 80vh; }
+
+        .hero-banner {
+            min-height: 420px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(7, 26, 47, 0.4) 0%, rgba(7, 26, 47, 0.95) 100%),
+                        url('https://placehold.co/1200x800/0A2342/D6B25E?text=Ramadan+Cup+2026');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero-badge {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #051424;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 12px;
+            align-self: flex-start;
+            box-shadow: 0 4px 15px rgba(214, 178, 94, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .hero-title { 
+            font-size: 2.4rem; 
+            font-weight: 900; 
+            line-height: 1.2; 
+            margin-bottom: 25px; 
+            color: #fff;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        
+        .countdown-container {
+            background: rgba(14, 42, 75, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            flex-wrap: wrap; /* Prevent overflow on tiny screens */
+        }
+        .countdown-item {
+            text-align: center;
+            min-width: 50px;
+        }
+        .count-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(180deg, var(--primary-bright), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            font-family: 'Vazirmatn', sans-serif;
+            filter: drop-shadow(0 0 5px rgba(214, 178, 94, 0.3));
+        }
+        .count-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #071A2F;
+            font-weight: 800;
+            padding: 14px 32px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            align-self: flex-start;
+            margin-top: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 25px rgba(214, 178, 94, 0.25);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 30px rgba(214, 178, 94, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* 4. SECTIONS */
+        .page-view { display: none; animation: fadeIn 0.4s ease-out; }
+        .page-view.active { display: block; }
+
+        .section-header { margin: 10px 0 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .section-title { 
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: var(--text-main); 
+            border-right: 4px solid var(--primary); 
+            padding-right: 15px;
+            display: inline-block;
+        }
+        
+        .schedule-group { margin-bottom: 30px; }
+        
+        .date-header {
+            background: linear-gradient(90deg, #0A2342, #0E2A4B);
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .date-header i { color: var(--primary-bright); }
+
+        .match-row {
+            display: grid;
+            grid-template-columns: 50px 70px 1fr;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .match-row::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 4px; height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .match-row:hover { 
+            border-color: rgba(214, 178, 94, 0.3); 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); 
+            background: var(--bg-card-hover);
+        }
+        .match-row:hover::before { opacity: 1; }
+        .match-row.faded { opacity: 0.5; filter: grayscale(80%); }
+
+        .match-number-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.2);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+        }
+
+        .match-time {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--border);
+            padding-right: 12px;
+            margin-right: 8px;
+            color: var(--primary-bright);
+        }
+        .time-val { 
+            font-size: 1.25rem; 
+            font-weight: 800; 
+            direction: ltr; 
+            line-height: 1; 
+            text-shadow: 0 0 10px rgba(214, 178, 94, 0.2);
+        }
+        .group-tag { font-size: 0.65rem; color: var(--text-muted); margin-top: 5px; letter-spacing: 0.5px; }
+        
+        .match-teams { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 20px; 
+            padding-right: 15px;
+        }
+        .team { font-weight: 600; font-size: 1rem; text-align: center; color: var(--text-main); }
+        .vs-badge { 
+            background: rgba(0,0,0,0.3); 
+            color: var(--primary);
+            width: 28px; height: 28px; 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; font-weight: 800;
+            flex-shrink: 0;
+            border: 1px solid var(--border);
+        }
+
+        /* 5. TABLES */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .group-header {
+            background: linear-gradient(90deg, #0A2342, #11345c);
+            color: var(--primary);
+            padding: 15px 20px;
+            font-weight: 800;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .group-header::before {
+            content: '';
+            display: block;
+            width: 8px; height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary);
+        }
+        table { width: 100%; border-collapse: collapse; text-align: center; }
+        th { 
+            background: rgba(0,0,0,0.2); 
+            padding: 16px; 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            font-weight: 600;
+        }
+        td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        tr:last-child td { border-bottom: none; }
+        .t-name { text-align: right; font-weight: 700; color: var(--text-main); }
+        tr:hover td { background: rgba(255,255,255,0.02); }
+        
+        /* 6. TEAMS GRID */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .team-card {
+            background: var(--bg-card);
+            padding: 25px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card:hover { 
+            border-color: var(--primary); 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .team-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0; transition: 0.3s;
+        }
+        .team-card:hover::after { opacity: 1; }
+
+        .team-avatar {
+            width: 65px; height: 65px;
+            background: #071A2F;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            font-size: 1.8rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .team-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; color: var(--text-main); }
+        .team-group { font-size: 0.75rem; color: var(--primary-bright); opacity: 0.8; }
+
+        /* 7. BOTTOM NAV */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; width: 100%;
+            height: var(--bottom-nav-height);
+            background: rgba(7, 26, 47, 0.95);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid var(--border);
+            display: flex; justify-content: space-around; align-items: center;
+            z-index: 1000;
+            padding-bottom: 5px;
+        }
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 6px; color: var(--text-muted);
+            transition: 0.2s;
+            cursor: pointer;
+            padding: 8px;
+            position: relative;
+        }
+        .nav-item.active { color: var(--primary); }
+        .nav-item.active i { text-shadow: 0 0 10px var(--accent-glow); }
+        .nav-item i { font-size: 1.3rem; transition: 0.2s; }
+        .nav-item.active i { transform: translateY(-2px); }
+        .nav-item span { font-size: 0.7rem; font-weight: 600; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (min-width: 769px) {
+            .sidebar { display: flex; }
+            .bottom-nav { display: none; }
+        }
+        @media (max-width: 600px) {
+            .match-row {
+                grid-template-columns: 40px 65px 1fr;
+                padding: 12px;
+            }
+            .match-teams { flex-direction: column; gap: 5px; align-items: flex-start; padding-right: 12px; border-right: 1px solid var(--border); margin-right: 10px;}
+            .vs-badge { display: none; }
+            .team { font-size: 0.9rem; text-align: right; }
+            .hero-title { font-size: 1.8rem; }
+            .match-time { border-right: none; margin-right: 0; padding-right: 0; align-items: center; }
+        }
+    </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="header-content">
-      <img src="logo.png" alt="جام رمضان اوز" class="logo">
-      <h1> سی و سومین دوره مسابقات جام رمضان شهرستان اوز  </h1>
-      <button id="darkModeToggle" class="dark-mode-toggle">
-        <i class="fas fa-moon"></i>
-        <span>حالت شب</span>
-      </button>
-    </div>
-  </header>
 
-  <main>
-    <!-- صفحه اصلی -->
-    <section id="home" class="tab active">
- <div class="video-container">
-  <!-- پخش زنده با نسبت ابعاد واقعی -->
-  <div class="live-wrapper">
-    <iframe src="https://www.aparat.com/embed/live/ramadancup" 
-            class="live-stream"
-            allowfullscreen
-            webkitallowfullscreen
-            mozallowfullscreen></iframe>
-  </div>
-  
-  <!-- اطلاعات مسابقه - دقیقاً زیر پخش -->
-  <div class="stream-info">
-    <div class="teams">
-      <span class="team"> شاهین اوز </span>
-      <span class="vs">vs</span>
-      <span class="team">  شهید پالاهنگ دیده بان  </span>
-    </div>
-    <div class="match-details">
-      <span><i class="fas fa-calendar"></i> یکشنبه ۱۱ فروردین ۱۴۰۴ </span>
-      <span><i class="fas fa-clock"></i> ۲۱:۳۰</span>
-      <span><i class="fas fa-trophy"></i>فینال</span>
-    </div>
-  </div>
-</div>
-          
-  <!-- متن اطلاعات مسابقه -->
+    <!-- Sidebar (Desktop) -->
+    <aside class="sidebar">
+        <div class="sidebar-logo-container">
+            <!-- Sidebar Logo: Auto width, controlled max width -->
+            <img src="logo.png" alt="Ramadan Cup Logo" class="sidebar-logo">
+            <div class="logo-text">جام رمضان اوز</div>
+        </div>
+        <nav>
+            <div onclick="showPage('home')" class="menu-item active" id="desk-home"><i class="fas fa-home"></i> خانه</div>
+            <div onclick="showPage('schedule')" class="menu-item" id="desk-schedule"><i class="fas fa-calendar-alt"></i> برنامه بازی‌ها</div>
+            <div onclick="showPage('standings')" class="menu-item" id="desk-standings"><i class="fas fa-list-ol"></i> جدول</div>
+            <div onclick="showPage('teams')" class="menu-item" id="desk-teams"><i class="fas fa-shield-alt"></i> تیم‌ها</div>
+        </nav>
+    </aside>
 
-      <div class="content-section">
-        <div class="about-box">
-          <h3><i class="fas fa-info-circle"></i> درباره مسابقات</h3>
-          <p>جام رمضان اوز یکی از معتبرترین مسابقات فوتسال در سطح منطقه است که هر ساله با استقبال بی‌نظیر مردم برگزار می‌شود.</p>
+    <!-- Main Wrapper -->
+    <main>
+        <header class="top-header">
+            <!-- HEADER LOGO: Fixed Height, Auto Width -->
+            <img src="logo.png" alt="Ramadan Cup Logo" class="header-logo">
+            
+            <div class="header-title-wrapper">
+                <span class="page-title">جام رمضان اوز ۲۰۲۶</span>
+                <span class="page-subtitle">سی‌و‌چهارمین دوره مسابقات</span>
+            </div>
+            <div style="width: 10px;"></div> <!-- Small Spacer -->
+        </header>
+
+        <!-- PAGE 1: HOME -->
+        <div id="page-home" class="page-view active">
+            <!-- Hero with Countdown -->
+            <section class="hero-banner">
+                <div class="hero-badge">مرحله مقدماتی</div>
+                <h1 class="hero-title">جام رمضان<br>شهرستان اوز ۲۰۲۶</h1>
+                
+                <div class="countdown-container" id="countdownBox">
+                    <div class="countdown-item">
+                        <div class="count-val" id="cd-days">0</div>
+                        <div class="count-label">روز</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="count-val" id="cd-hours">0</div>
+                        <div class="count-label">ساعت</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="count-val" id="cd-min">0</div>
+                        <div class="count-label">دقیقه</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="count-val" id="cd-sec">0</div>
+                        <div class="count-label">ثانیه</div>
+                    </div>
+                </div>
+
+                <div class="btn-primary" onclick="showPage('schedule')">
+                    <i class="fas fa-calendar-check"></i> مشاهده برنامه کامل
+                </div>
+            </section>
+
+            <!-- Matches List (Dynamic Today/Next) -->
+            <section>
+                <div id="homeMatchList">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
         </div>
 
-        <div class="sponsors-box">
-          <h3><i class="fas fa-handshake"></i> حامیان رسمی</h3>
-          <div class="sponsors-grid">
-            <div class="sponsor-card"><img src="sponsor1.jpg" alt="حامی ۱"></div>
-            <div class="sponsor-card"><img src="sponsor2.jpg" alt="حامی ۲"></div>
-            <div class="sponsor-card"><img src="sponsor3.jpg" alt="حامی ۳"></div>
-            <div class="sponsor-card"><img src="sponsor4.jpg" alt="حامی ۴"></div>
-            <div class="sponsor-card"><img src="sponsor5.jpg" alt="حامی ۵"></div>
-          </div>
+        <!-- PAGE 2: SCHEDULE -->
+        <div id="page-schedule" class="page-view">
+            <div class="section-header">
+                <h2 class="section-title">برنامه کامل مسابقات</h2>
+            </div>
+            <div id="fullScheduleList">
+                <!-- Populated by JS -->
+            </div>
         </div>
 
-        <div class="social-box">
-          <a href="https://instagram.com/evazcup" class="instagram-btn">
-            <i class="fab fa-instagram"></i>
-            <span>ما را در اینستاگرام دنبال کنید</span>
-          </a>
+        <!-- PAGE 3: STANDINGS -->
+        <div id="page-standings" class="page-view">
+            <div class="section-header">
+                <h2 class="section-title">جدول رده‌بندی</h2>
+            </div>
+            <div class="table-container">
+                <div class="group-header">گروه A</div>
+                <table>
+                    <thead><tr><th>#</th><th style="text-align:right">تیم</th><th>بازی</th><th>امتیاز</th></tr></thead>
+                    <tbody id="tableGroupA"></tbody>
+                </table>
+            </div>
+            <div class="table-container">
+                <div class="group-header">گروه B</div>
+                <table>
+                    <thead><tr><th>#</th><th style="text-align:right">تیم</th><th>بازی</th><th>امتیاز</th></tr></thead>
+                    <tbody id="tableGroupB"></tbody>
+                </table>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <!-- صفحه اخبار -->
-    <section id="news" class="tab">
-      <div class="news-container">
-        <h2 class="section-title"><i class="fas fa-newspaper"></i> آخرین اخبار</h2>
-        
-        <div class="news-grid">
-          <article class="news-card">
-            <div class="news-image">
-              <img src="news1.jpg" alt="خبر مسابقات">
-              <span class="news-tag">جدید</span>
+        <!-- PAGE 4: TEAMS -->
+        <div id="page-teams" class="page-view">
+            <div class="section-header">
+                <h2 class="section-title">تیم‌های حاضر</h2>
             </div>
-            <div class="news-body">
-              <h3> معرفی تیم های راه یافته به نیمه نهایی  </h3>
-              <p class="news-excerpt">شهید احراری بلغان - شهید پالاهنگ دیده بان - شمس اوز - شاهین اوز</p>
-              <div class="news-footer">
-                <span class="news-date">جمعه ۹ فروزدین ۱۴۰۴ </span>
-                <a href="https://www.instagram.com/p/DHwheX-CV1-/?igsh=MTI0dWNvNDV2N3Jlbw==" class="read-more">ادامه مطلب</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="news-card">
-            <div class="news-image">
-              <img src="news2.jpg" alt="قرعه کشی">
-              <span class="news-tag">گزارش</span>
-            </div>
-            <div class="news-body">
-              <h3> گروه بندی مرحله دوم مسابقات جام رمضان اوز</h3>
-              <p class="news-excerpt">هردو گروه نبرد سختی را دارند برای راه یافتن به نیمه نهایی</p>
-              <div class="news-footer">
-                <span class="news-date">  سه شنبه ۲۸ اسفند ۱۴۰۳  </span>
-                <a href="https://www.instagram.com/p/DHwheX-CV1-/?igsh=MTI0dWNvNDV2N3Jlbw==" class="read-more">ادامه مطلب</a>
-              </div>
-            </div>
-          </article>
+            <div class="teams-grid" id="teamsGrid"></div>
         </div>
-      </div>
-    </section>
 
-    <!-- صفحه برنامه مسابقات -->
-    <section id="schedule" class="tab">
-      <div class="schedule-container">
-        <h2 class="section-title"><i class="fas fa-calendar-alt"></i> برنامه مسابقات</h2>
-        
-        <div class="matches-grid">
-          <div class="match-card">
-            <div class="match-header">
-              <span class="match-stage">فینال</span>
-              <span class="match-date"> یکشنبه ۱۱ فروردین ۱۴۰۴ </span>
-            </div>
-            <div class="match-teams">
-              <span class="team team-home">شاهین اوز</span>
-              <span class="vs">vs</span>
-              <span class="team team-away"> شهید پالاهنگ دیده بان</span>
-            </div>
-            <div class="match-details">
-              <p><i class="far fa-clock"></i> ساعت ۲۱:۳۰</p>
-              <p><i class="fas fa-map-marker-alt"></i> سالن سرپوشیده میر احمدی اوز</p>
-              <div class="countdown-box">
-                <span class="countdown">12:34:56</span>
-                <span class="match-status">شروع نشده</span>
-              </div>
-            </div>
-          </div>
+        <footer style="text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px;">
+            <p>طراحی و توسعه برای جام رمضان اوز &copy; ۲۰۲۶</p>
+        </footer>
+    </main>
 
-  
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav">
+        <div onclick="showPage('home')" class="nav-item active" id="mob-home">
+            <i class="fas fa-home"></i><span>خانه</span>
         </div>
-      </div>
-    </section>
-  </main>
+        <div onclick="showPage('schedule')" class="nav-item" id="mob-schedule">
+            <i class="fas fa-calendar-day"></i><span>برنامه</span>
+        </div>
+        <div onclick="showPage('standings')" class="nav-item" id="mob-standings">
+            <i class="fas fa-list-ol"></i><span>جدول</span>
+        </div>
+        <div onclick="showPage('teams')" class="nav-item" id="mob-teams">
+            <i class="fas fa-shield-alt"></i><span>تیم‌ها</span>
+        </div>
+    </nav>
 
-  <nav class="main-nav">
-    <a href="#home" class="nav-item active">
-      <i class="fas fa-home"></i>
-      <span>خانه</span>
-    </a>
-    <a href="#news" class="nav-item">
-      <i class="fas fa-newspaper"></i>
-      <span>اخبار</span>
-    </a>
-    <a href="#schedule" class="nav-item">
-      <i class="fas fa-calendar-alt"></i>
-      <span>برنامه</span>
-    </a>
-  </nav>
+    <!-- Logic -->
+    <script>
+        // --- DATA ---
+        const groupA_Teams = ["شاهین اوز", "اتحاد کهنه و توحید", "نفت اوز", "جوانان شمس اوز", "پرسپولیس اوز", "یاران مبین و عبدالله (محلچه)"];
+        const groupB_Teams = ["جوانان نفت اوز", "شمس اوز", "وحدت فیشور", "جوانان سده", "وحدت کوره", "جوانان کهنه و توحید"];
 
-  <script src="script.js"></script>
+        const scheduleData = [
+            { isoDate: "2026-02-19", displayDate: "پنجشنبه ۳۰ بهمن ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "یاران مبین و عبدالله", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
+            { isoDate: "2026-02-20", displayDate: "جمعه ۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "نفت اوز", group: "گروه A" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت فیشور", group: "گروه B" }] },
+            { isoDate: "2026-02-21", displayDate: "شنبه ۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه و توحید", t2: "جوانان نفت اوز", group: "گروه B" }, { time: "22:30", t1: "وحدت کوره", t2: "جوانان شمس اوز", group: "گروه B" }] },
+            { isoDate: "2026-02-22", displayDate: "یکشنبه ۳ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "یاران مبین", group: "گروه A" }, { time: "22:30", t1: "شاهین اوز", t2: "پرسپولیس اوز", group: "گروه A" }] },
+            { isoDate: "2026-02-23", displayDate: "دوشنبه ۴ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان سده", t2: "جوانان کهنه و توحید", group: "گروه B" }, { time: "22:30", t1: "نفت اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
+            { isoDate: "2026-02-24", displayDate: "سه‌شنبه ۵ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت کوره", group: "گروه B" }, { time: "22:30", t1: "وحدت فیشور", t2: "جوانان شمس اوز", group: "گروه B" }] },
+            { isoDate: "2026-02-25", displayDate: "چهارشنبه ۶ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "اتحاد کهنه", t2: "یاران مبین", group: "گروه A" }] },
+            { isoDate: "2026-02-26", displayDate: "پنجشنبه ۷ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "جوانان سده", group: "گروه B" }, { time: "22:30", t1: "نفت اوز", t2: "پرسپولیس اوز", group: "گروه A" }] },
+            { isoDate: "2026-02-27", displayDate: "جمعه ۸ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "جوانان کهنه و توحید", group: "گروه B" }, { time: "22:30", t1: "وحدت فیشور", t2: "وحدت کوره", group: "گروه B" }] },
+            { isoDate: "2026-02-28", displayDate: "شنبه ۹ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "اتحاد کهنه", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "یاران مبین", group: "گروه A" }] },
+            { isoDate: "2026-03-01", displayDate: "یکشنبه ۱۰ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, { time: "22:30", t1: "شاهین اوز", t2: "نفت اوز", group: "گروه A" }] },
+            { isoDate: "2026-03-02", displayDate: "دوشنبه ۱۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه", t2: "وحدت کوره", group: "گروه B" }, { time: "22:30", t1: "جوانان شمس اوز", t2: "جوانان سده", group: "گروه B" }] },
+            { isoDate: "2026-03-03", displayDate: "سه‌شنبه ۱۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "پرسپولیس اوز", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "نفت اوز", t2: "یاران مبین", group: "گروه A" }] },
+            { isoDate: "2026-03-04", displayDate: "چهارشنبه ۱۳ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, { time: "22:30", t1: "شاهین اوز", t2: "اتحاد کهنه", group: "گروه A" }] },
+            { isoDate: "2026-03-05", displayDate: "پنجشنبه ۱۴ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "جوانان شمس اوز", group: "گروه B" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت کوره", group: "گروه B" }] }
+        ];
+
+        // --- RENDER LOGIC ---
+        const now = new Date(); 
+
+        function renderSchedule(containerId, mode) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            let matchGlobalCounter = 1;
+
+            if (mode === 'home') {
+                // Find Next/Current Match Day
+                const todayStr = now.toISOString().split('T')[0];
+                let targetDay = scheduleData.find(d => d.isoDate === todayStr);
+
+                // If no matches today, find next match day
+                if (!targetDay) {
+                    targetDay = scheduleData.find(d => new Date(d.isoDate) > now);
+                }
+
+                // If found a target day, render it
+                if (targetDay) {
+                    const groupEl = document.createElement('div');
+                    groupEl.className = 'schedule-group';
+                    
+                    const header = document.createElement('div');
+                    header.className = 'date-header';
+                    header.innerHTML = `<i class="far fa-calendar-alt"></i> ${targetDay.displayDate}`;
+                    groupEl.appendChild(header);
+
+                    targetDay.matches.forEach(match => {
+                        const row = createMatchRow(match, targetDay.isoDate, false); 
+                        groupEl.appendChild(row);
+                    });
+                    container.appendChild(groupEl);
+                    
+                    // Start countdown to the first match of this day if it's in future
+                    startCountdown(targetDay.isoDate, targetDay.matches[0].time);
+                } else {
+                    container.innerHTML = '<div style="text-align:center; padding:20px; color:#666;">بازی‌ای یافت نشد.</div>';
+                }
+            } else {
+                // Full Schedule with Numbering
+                scheduleData.forEach(day => {
+                    const groupEl = document.createElement('div');
+                    groupEl.className = 'schedule-group';
+                    const header = document.createElement('div');
+                    header.className = 'date-header';
+                    header.innerHTML = `<i class="far fa-calendar-alt"></i> ${day.displayDate}`;
+                    groupEl.appendChild(header);
+
+                    day.matches.forEach(match => {
+                        const row = createMatchRow(match, day.isoDate, matchGlobalCounter++);
+                        groupEl.appendChild(row);
+                    });
+                    container.appendChild(groupEl);
+                });
+            }
+        }
+
+        function createMatchRow(match, dateStr, matchNum) {
+            const matchDate = new Date(`${dateStr}T${match.time}:00`);
+            const isPast = matchDate < now;
+            
+            const row = document.createElement('div');
+            row.className = `match-row ${isPast ? 'faded' : ''}`;
+            
+            let numHtml = matchNum ? `<div class="match-number-box">${matchNum}</div>` : '<div style="width:32px"></div>';
+
+            row.innerHTML = `
+                ${numHtml}
+                <div class="match-time">
+                    <span class="time-val">${match.time}</span>
+                    <span class="group-tag">${match.group}</span>
+                </div>
+                <div class="match-teams">
+                    <div class="team right">${match.t1}</div>
+                    <div class="vs-badge">VS</div>
+                    <div class="team left">${match.t2}</div>
+                </div>
+            `;
+            return row;
+        }
+
+        function renderTable(containerId, teams) {
+            const container = document.getElementById(containerId);
+            teams.forEach((team, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${index + 1}</td><td class="t-name">${team}</td><td>0</td><td>0</td>`;
+                container.appendChild(row);
+            });
+        }
+
+        function renderTeamsGrid() {
+            const container = document.getElementById('teamsGrid');
+            [...groupA_Teams, ...groupB_Teams].forEach(team => {
+                const card = document.createElement('div');
+                card.className = 'team-card';
+                card.innerHTML = `
+                    <div class="team-avatar"><i class="fas fa-shield-alt"></i></div>
+                    <div class="team-name">${team}</div>
+                    <div class="team-group">${groupA_Teams.includes(team) ? 'گروه A' : 'گروه B'}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function startCountdown(dateStr, timeStr) {
+            const target = new Date(`${dateStr}T${timeStr}:00`).getTime();
+            
+            const timer = setInterval(() => {
+                const current = new Date().getTime();
+                const diff = target - current;
+
+                if (diff < 0) {
+                    clearInterval(timer);
+                    document.getElementById("cd-days").innerText = "0";
+                    return;
+                }
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById("cd-days").innerText = d;
+                document.getElementById("cd-hours").innerText = h;
+                document.getElementById("cd-min").innerText = m;
+                document.getElementById("cd-sec").innerText = s;
+            }, 1000);
+        }
+
+        // --- NAVIGATION ---
+        function showPage(pageId) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+            document.getElementById(`page-${pageId}`).classList.add('active');
+
+            document.querySelectorAll('.sidebar .menu-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(`desk-${pageId}`).classList.add('active');
+
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(`mob-${pageId}`).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // --- INIT ---
+        renderTable('tableGroupA', groupA_Teams);
+        renderTable('tableGroupB', groupB_Teams);
+        renderTeamsGrid();
+        renderSchedule('homeMatchList', 'home');
+        renderSchedule('fullScheduleList', 'full');
+
+    </script>
 </body>
 </html>
