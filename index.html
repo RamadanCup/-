@@ -90,12 +90,12 @@
 
         .sidebar-logo {
             width: 100%;
-            max-width: 130px; /* Limit max width */
+            max-width: 130px;
             height: auto;
             object-fit: contain;
             filter: drop-shadow(0 0 15px rgba(214, 178, 94, 0.3));
             margin-bottom: 15px;
-            border-radius: 0 !important; /* No border radius for transparent logo */
+            border-radius: 0 !important;
         }
 
         .logo-text {
@@ -143,18 +143,17 @@
             align-items: center;
             height: var(--header-height);
             border-bottom: 1px solid var(--border);
-            gap: 15px; /* Gap between logo and text */
+            gap: 15px;
         }
 
-        /* Responsive Header Logo */
         .header-logo {
-            height: 55px; /* Default height */
+            height: 55px;
             width: auto;
             max-width: 100px;
             object-fit: contain;
             filter: drop-shadow(0 0 8px rgba(214, 178, 94, 0.3));
             border-radius: 0 !important;
-            flex-shrink: 0; /* Prevent logo from shrinking too much */
+            flex-shrink: 0;
         }
 
         .header-title-wrapper {
@@ -162,8 +161,8 @@
             flex-direction: column;
             align-items: flex-end;
             justify-content: center;
-            flex-grow: 1; /* Take up available space */
-            min-width: 0; /* Important for text truncation */
+            flex-grow: 1;
+            min-width: 0;
         }
         
         .page-title { 
@@ -175,7 +174,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             width: 100%;
-            text-align: left; /* Align text next to logo */
+            text-align: left;
             direction: rtl;
         }
         .page-subtitle { 
@@ -190,10 +189,9 @@
             direction: rtl;
         }
 
-        /* Mobile Adjustments for Header */
         @media (max-width: 480px) {
             .top-header { padding: 10px 15px; }
-            .header-logo { height: 45px; } /* Smaller logo on mobile */
+            .header-logo { height: 45px; }
             .page-title { font-size: 0.95rem; }
             .page-subtitle { font-size: 0.65rem; }
         }
@@ -253,7 +251,7 @@
             margin-bottom: 20px;
             align-self: flex-start;
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            flex-wrap: wrap; /* Prevent overflow on tiny screens */
+            flex-wrap: wrap;
         }
         .countdown-item {
             text-align: center;
@@ -546,7 +544,7 @@
     <!-- Sidebar (Desktop) -->
     <aside class="sidebar">
         <div class="sidebar-logo-container">
-            <!-- Sidebar Logo: Auto width, controlled max width -->
+            <!-- Sidebar Logo -->
             <img src="logo.png" alt="Ramadan Cup Logo" class="sidebar-logo">
             <div class="logo-text">جام رمضان اوز</div>
         </div>
@@ -561,14 +559,14 @@
     <!-- Main Wrapper -->
     <main>
         <header class="top-header">
-            <!-- HEADER LOGO: Fixed Height, Auto Width -->
+            <!-- HEADER LOGO -->
             <img src="logo.png" alt="Ramadan Cup Logo" class="header-logo">
             
             <div class="header-title-wrapper">
                 <span class="page-title">جام رمضان اوز ۲۰۲۶</span>
                 <span class="page-subtitle">سی‌و‌چهارمین دوره مسابقات</span>
             </div>
-            <div style="width: 10px;"></div> <!-- Small Spacer -->
+            <div style="width: 10px;"></div>
         </header>
 
         <!-- PAGE 1: HOME -->
@@ -673,25 +671,162 @@
     <!-- Logic -->
     <script>
         // --- DATA ---
-        const groupA_Teams = ["شاهین اوز", "اتحاد کهنه و توحید", "نفت اوز", "جوانان شمس اوز", "پرسپولیس اوز", "یاران مبین و عبدالله (محلچه)"];
-        const groupB_Teams = ["جوانان نفت اوز", "شمس اوز", "وحدت فیشور", "جوانان سده", "وحدت کوره", "جوانان کهنه و توحید"];
+        // Teams derived from the provided schedule
+        const groupA_Teams = [
+            "شاهین اوز",
+            "اتحاد کهنه و توحید",
+            "نفت اوز",
+            "جوانان شمس اوز",
+            "پرسپولیس اوز",
+            "یاران مبین و عبدالله (محلچه)"
+        ];
+        
+        const groupB_Teams = [
+            "جوانان نفت اوز",
+            "شمس اوز",
+            "وحدت فیشور",
+            "جوانان سده",
+            "وحدت کوره",
+            "جوانان کهنه و توحید"
+        ];
 
+        // 30 Matches EXACTLY as requested
         const scheduleData = [
-            { isoDate: "2026-02-19", displayDate: "پنجشنبه ۳۰ بهمن ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "یاران مبین و عبدالله", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
-            { isoDate: "2026-02-20", displayDate: "جمعه ۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "نفت اوز", group: "گروه A" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت فیشور", group: "گروه B" }] },
-            { isoDate: "2026-02-21", displayDate: "شنبه ۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه و توحید", t2: "جوانان نفت اوز", group: "گروه B" }, { time: "22:30", t1: "وحدت کوره", t2: "جوانان شمس اوز", group: "گروه B" }] },
-            { isoDate: "2026-02-22", displayDate: "یکشنبه ۳ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "یاران مبین", group: "گروه A" }, { time: "22:30", t1: "شاهین اوز", t2: "پرسپولیس اوز", group: "گروه A" }] },
-            { isoDate: "2026-02-23", displayDate: "دوشنبه ۴ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان سده", t2: "جوانان کهنه و توحید", group: "گروه B" }, { time: "22:30", t1: "نفت اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
-            { isoDate: "2026-02-24", displayDate: "سه‌شنبه ۵ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت کوره", group: "گروه B" }, { time: "22:30", t1: "وحدت فیشور", t2: "جوانان شمس اوز", group: "گروه B" }] },
-            { isoDate: "2026-02-25", displayDate: "چهارشنبه ۶ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "اتحاد کهنه", t2: "یاران مبین", group: "گروه A" }] },
-            { isoDate: "2026-02-26", displayDate: "پنجشنبه ۷ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "جوانان سده", group: "گروه B" }, { time: "22:30", t1: "نفت اوز", t2: "پرسپولیس اوز", group: "گروه A" }] },
-            { isoDate: "2026-02-27", displayDate: "جمعه ۸ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "جوانان کهنه و توحید", group: "گروه B" }, { time: "22:30", t1: "وحدت فیشور", t2: "وحدت کوره", group: "گروه B" }] },
-            { isoDate: "2026-02-28", displayDate: "شنبه ۹ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "اتحاد کهنه", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "یاران مبین", group: "گروه A" }] },
-            { isoDate: "2026-03-01", displayDate: "یکشنبه ۱۰ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, { time: "22:30", t1: "شاهین اوز", t2: "نفت اوز", group: "گروه A" }] },
-            { isoDate: "2026-03-02", displayDate: "دوشنبه ۱۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه", t2: "وحدت کوره", group: "گروه B" }, { time: "22:30", t1: "جوانان شمس اوز", t2: "جوانان سده", group: "گروه B" }] },
-            { isoDate: "2026-03-03", displayDate: "سه‌شنبه ۱۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "پرسپولیس اوز", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "نفت اوز", t2: "یاران مبین", group: "گروه A" }] },
-            { isoDate: "2026-03-04", displayDate: "چهارشنبه ۱۳ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, { time: "22:30", t1: "شاهین اوز", t2: "اتحاد کهنه", group: "گروه A" }] },
-            { isoDate: "2026-03-05", displayDate: "پنجشنبه ۱۴ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "جوانان شمس اوز", group: "گروه B" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت کوره", group: "گروه B" }] }
+            // Day 1: Thursday 30 Bahman
+            { 
+                isoDate: "2026-02-19", 
+                displayDate: "پنجشنبه ۳۰ بهمن ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "شاهین اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, 
+                    { time: "22:30", t1: "پرسپولیس اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }
+                ] 
+            },
+            // Day 2: Friday 1 Esfand
+            { 
+                isoDate: "2026-02-20", 
+                displayDate: "جمعه ۱ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان شمس اوز", t2: "نفت اوز", group: "گروه A" }, 
+                    { time: "22:30", t1: "جوانان سده", t2: "وحدت فیشور", group: "گروه B" }
+                ] 
+            },
+            // Day 3: Saturday 2 Esfand
+            { 
+                isoDate: "2026-02-21", 
+                displayDate: "شنبه ۲ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان کهنه و توحید", t2: "جوانان نفت اوز", group: "گروه B" }, 
+                    { time: "22:30", t1: "وحدت کوره", t2: "شمس اوز", group: "گروه B" }
+                ] 
+            },
+            // Day 4: Sunday 3 Esfand
+            { 
+                isoDate: "2026-02-22", 
+                displayDate: "یکشنبه ۳ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان شمس اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, 
+                    { time: "22:30", t1: "شاهین اوز", t2: "پرسپولیس اوز", group: "گروه A" }
+                ] 
+            },
+            // Day 5: Monday 4 Esfand
+            { 
+                isoDate: "2026-02-23", 
+                displayDate: "دوشنبه ۴ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان سده", t2: "جوانان کهنه و توحید", group: "گروه B" }, 
+                    { time: "22:30", t1: "نفت اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }
+                ] 
+            },
+            // Day 6: Tuesday 5 Esfand
+            { 
+                isoDate: "2026-02-24", 
+                displayDate: "سه‌شنبه ۵ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت کوره", group: "گروه B" }, 
+                    { time: "22:30", t1: "وحدت فیشور", t2: "شمس اوز", group: "گروه B" }
+                ] 
+            },
+            // Day 7: Wednesday 6 Esfand
+            { 
+                isoDate: "2026-02-25", 
+                displayDate: "چهارشنبه ۶ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "شاهین اوز", t2: "جوانان شمس اوز", group: "گروه A" }, 
+                    { time: "22:30", t1: "اتحاد کهنه و توحید", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }
+                ] 
+            },
+            // Day 8: Thursday 7 Esfand
+            { 
+                isoDate: "2026-02-26", 
+                displayDate: "پنجشنبه ۷ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان نفت اوز", t2: "جوانان سده", group: "گروه B" }, 
+                    { time: "22:30", t1: "نفت اوز", t2: "پرسپولیس اوز", group: "گروه A" }
+                ] 
+            },
+            // Day 9: Friday 8 Esfand
+            { 
+                isoDate: "2026-02-27", 
+                displayDate: "جمعه ۸ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "شمس اوز", t2: "جوانان کهنه و توحید", group: "گروه B" }, 
+                    { time: "22:30", t1: "وحدت فیشور", t2: "وحدت کوره", group: "گروه B" }
+                ] 
+            },
+            // Day 10: Saturday 9 Esfand
+            { 
+                isoDate: "2026-02-28", 
+                displayDate: "شنبه ۹ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "اتحاد کهنه و توحید", t2: "جوانان شمس اوز", group: "گروه A" }, 
+                    { time: "22:30", t1: "پرسپولیس اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }
+                ] 
+            },
+            // Day 11: Sunday 10 Esfand
+            { 
+                isoDate: "2026-03-01", 
+                displayDate: "یکشنبه ۱۰ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, 
+                    { time: "22:30", t1: "شاهین اوز", t2: "نفت اوز", group: "گروه A" }
+                ] 
+            },
+            // Day 12: Monday 11 Esfand
+            { 
+                isoDate: "2026-03-02", 
+                displayDate: "دوشنبه ۱۱ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان کهنه و توحید", t2: "وحدت کوره", group: "گروه B" }, 
+                    { time: "22:30", t1: "شمس اوز", t2: "جوانان سده", group: "گروه B" }
+                ] 
+            },
+            // Day 13: Tuesday 12 Esfand
+            { 
+                isoDate: "2026-03-03", 
+                displayDate: "سه‌شنبه ۱۲ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "پرسپولیس اوز", t2: "جوانان شمس اوز", group: "گروه A" }, 
+                    { time: "22:30", t1: "نفت اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }
+                ] 
+            },
+            // Day 14: Wednesday 13 Esfand
+            { 
+                isoDate: "2026-03-04", 
+                displayDate: "چهارشنبه ۱۳ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, 
+                    { time: "22:30", t1: "شاهین اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }
+                ] 
+            },
+            // Day 15: Thursday 14 Esfand
+            { 
+                isoDate: "2026-03-05", 
+                displayDate: "پنجشنبه ۱۴ اسفند ۱۴۰۴", 
+                matches: [
+                    { time: "21:00", t1: "جوانان نفت اوز", t2: "شمس اوز", group: "گروه B" }, 
+                    { time: "22:30", t1: "جوانان سده", t2: "وحدت کوره", group: "گروه B" }
+                ] 
+            }
         ];
 
         // --- RENDER LOGIC ---
