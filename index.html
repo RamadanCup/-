@@ -3,43 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>جام رمضان اوز ۲۰۲۶</title>
+    <title>جام رمضان اوز ۲۰۲۶ | مسابقات فوتسال</title>
     
-    <!-- PWA Meta Tags -->
+    <!-- تنظیمات سئو -->
+    <meta name="description" content="برنامه و نتایج جام رمضان شهرستان اوز ۱۴۰۴ (2026).">
+    <meta name="author" content="مهند مولوی">
+    
+    <!-- تنظیمات PWA -->
     <meta name="theme-color" content="#071A2F">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="RamadanCup">
     
-    <!-- Icons & Fonts -->
+    <!-- فونت و آیکون -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- RESET & VARIABLES --- */
         :root {
-            /* Theme: Premium Navy & Gold */
-            --bg-body: #071A2F;          /* Deep Navy Background */
-            --bg-sidebar: #0A2342;       /* Sidebar Navy */
-            --bg-card: #0E2A4B;          /* Card Background */
-            --bg-card-hover: #13345E;    /* Card Hover Lighter Navy */
-            
-            --primary: #D6B25E;          /* Main Metallic Gold */
-            --primary-bright: #F2D27A;   /* Bright Gold (Highlights) */
-            --primary-dark: #B8923A;     /* Deep Gold (Shadows) */
-            
-            --accent-blue: #2DA8FF;      /* Minimal Blue Accent */
-            
-            --accent-glow: rgba(214, 178, 94, 0.25); /* Gold Glow */
-            
-            --text-main: #EAEAEA;        /* Light Text */
-            --text-muted: #A3A3A3;       /* Muted Text */
-            --border: rgba(255, 255, 255, 0.08); /* Subtle Border */
-            
-            --radius: 16px;
-            --sidebar-width: 280px;
-            --header-height: 80px;      
-            --bottom-nav-height: 70px;
+            --bg-body: #071A2F;          
+            --bg-sidebar: #0A2342;       
+            --bg-card: #0E2A4B;          
+            --bg-card-hover: #13345E;    
+            --primary: #D6B25E;          
+            --primary-bright: #F2D27A;   
+            --primary-dark: #B8923A;     
+            --text-main: #EAEAEA;        
+            --text-muted: #A3A3A3;       
+            --border: rgba(255, 255, 255, 0.1); 
+            --radius: 14px;
+            --header-height: 65px;      
+            --bottom-nav-height: 65px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -49,503 +42,193 @@
             color: var(--text-main);
             font-family: 'Vazirmatn', sans-serif;
             overflow-x: hidden;
-            padding-bottom: var(--bottom-nav-height);
-        }
-
-        @media (min-width: 769px) {
-            body { padding-bottom: 0; padding-right: var(--sidebar-width); padding-left: 0; }
-        }
-
-        a { text-decoration: none; color: inherit; transition: 0.2s; cursor: pointer; }
-        ul { list-style: none; }
-        img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
-
-        /* --- UI COMPONENTS --- */
-        
-        /* 1. SIDEBAR */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            height: 100vh;
-            width: var(--sidebar-width);
-            background: var(--bg-sidebar);
-            border-left: 1px solid var(--border);
-            padding: 30px 20px;
-            display: none;
-            flex-direction: column;
-            z-index: 1000;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-        }
-
-        .sidebar-logo-container {
+            padding-bottom: calc(var(--bottom-nav-height) + 10px); /* فاصله کم برای پایین */
+            padding-top: var(--header-height);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
+            min-height: 100vh;
         }
 
-        .sidebar-logo {
-            width: 100%;
-            max-width: 130px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(214, 178, 94, 0.3));
-            margin-bottom: 15px;
-            border-radius: 0 !important;
-        }
+        a { text-decoration: none; color: inherit; cursor: pointer; }
+        img { display: block; max-width: 100%; height: auto; }
 
-        .logo-text {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--text-main);
-            text-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 20px;
-            border-radius: 12px;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 8px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-        .menu-item:hover { 
-            background: var(--bg-card-hover); 
-            color: var(--primary-bright);
-            border-color: var(--border);
-        }
-        .menu-item.active {
-            background: linear-gradient(90deg, rgba(214, 178, 94, 0.15), transparent);
-            color: var(--primary);
-            border-right: 3px solid var(--primary);
-            border-top: 1px solid rgba(255,255,255,0.03);
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-
-        /* 2. HEADER */
+        /* --- 1. هدر --- */
         .top-header {
-            position: sticky;
-            top: 0;
-            z-index: 900;
-            background: rgba(7, 26, 47, 0.95);
-            backdrop-filter: blur(12px);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: var(--header-height);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(7, 26, 47, 0.98); backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            gap: 15px;
+            height: var(--header-height);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 15px;
+        }
+        .header-logo { height: 42px; width: auto; filter: drop-shadow(0 0 5px rgba(214, 178, 94, 0.4)); }
+        .header-title-wrapper { display: flex; flex-direction: column; align-items: flex-end; margin-right: 10px; }
+        .page-title { font-size: 0.95rem; font-weight: 800; color: var(--text-main); }
+        .page-subtitle { font-size: 0.65rem; color: var(--primary); }
+
+        /* --- 2. سایدبار --- */
+        .sidebar {
+            position: fixed; right: 0; top: 0; height: 100vh; width: 260px;
+            background: var(--bg-sidebar); border-left: 1px solid var(--border);
+            padding: 20px; display: none; flex-direction: column; z-index: 1100;
+        }
+        .sidebar-logo-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .sidebar-logo { width: 90px; margin-bottom: 10px; }
+        .menu-item { display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-radius: 10px; color: var(--text-muted); font-weight: 600; margin-bottom: 5px; transition: 0.2s; cursor: pointer; }
+        .menu-item:hover, .menu-item.active { background: var(--bg-card-hover); color: var(--primary); }
+        .menu-item.active { border-right: 3px solid var(--primary); }
+
+        /* --- 3. محتوای اصلی --- */
+        .main-content { 
+            padding: 15px; max-width: 800px; margin: 0 auto; width: 100%;
+            /* حذف min-height بزرگ برای جلوگیری از فضای خالی */
+            flex: 1; 
         }
 
-        .header-logo {
-            height: 55px;
-            width: auto;
-            max-width: 100px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(214, 178, 94, 0.3));
-            border-radius: 0 !important;
-            flex-shrink: 0;
-        }
-
-        .header-title-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            justify-content: center;
-            flex-grow: 1;
-            min-width: 0;
-        }
-        
-        .page-title { 
-            font-size: 1.1rem; 
-            font-weight: 800; 
-            color: var(--text-main);
-            letter-spacing: -0.5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
-            text-align: left;
-            direction: rtl;
-        }
-        .page-subtitle { 
-            font-size: 0.75rem; 
-            color: var(--primary); 
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
-            text-align: left;
-            direction: rtl;
-        }
-
-        @media (max-width: 480px) {
-            .top-header { padding: 10px 15px; }
-            .header-logo { height: 45px; }
-            .page-title { font-size: 0.95rem; }
-            .page-subtitle { font-size: 0.65rem; }
-        }
-
-        /* 3. HERO & COUNTDOWN */
-        .main-content { padding: 20px; max-width: 1200px; margin: 0 auto; min-height: 80vh; }
-
+        /* بنر (Hero) */
         .hero-banner {
-            min-height: 420px;
-            border-radius: 24px;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px;
-            border: 1px solid var(--border);
-            background: linear-gradient(180deg, rgba(7, 26, 47, 0.4) 0%, rgba(7, 26, 47, 0.95) 100%),
-                        url('https://placehold.co/1200x800/0A2342/D6B25E?text=Ramadan+Cup+2026');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative; border-radius: 20px; overflow: hidden;
+            margin-bottom: 20px; border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(7, 26, 47, 0.3) 0%, rgba(7, 26, 47, 0.95) 100%), url('hero.jpg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 25px 15px; text-align: center;
         }
-        
+        .hero-logo-main { width: 130px; margin-bottom: 10px; filter: drop-shadow(0 0 20px rgba(214, 178, 94, 0.6)); animation: float 4s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+        /* بج (Badge) اصلاح شده */
         .hero-badge {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: #051424;
-            font-weight: 800;
-            padding: 6px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-bottom: 12px;
-            align-self: flex-start;
-            box-shadow: 0 4px 15px rgba(214, 178, 94, 0.3);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--primary); color: #000; font-weight: 800;
+            padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: inline-block;
         }
         
-        .hero-title { 
-            font-size: 2.4rem; 
-            font-weight: 900; 
-            line-height: 1.2; 
-            margin-bottom: 25px; 
-            color: #fff;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-        
-        .countdown-container {
-            background: rgba(14, 42, 75, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 15px;
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            align-self: flex-start;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            flex-wrap: wrap;
-        }
+        .hero-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 15px; color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.8); line-height: 1.3; }
+
+        /* شمارش معکوس */
+        .countdown-container { display: flex; gap: 8px; margin-bottom: 15px; justify-content: center; flex-wrap: wrap; }
         .countdown-item {
-            text-align: center;
-            min-width: 50px;
+            background: rgba(0,0,0,0.6); border: 1px solid var(--border);
+            border-radius: 10px; padding: 6px 10px; min-width: 50px; text-align: center;
+            backdrop-filter: blur(4px);
         }
-        .count-val {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(180deg, var(--primary-bright), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-            font-family: 'Vazirmatn', sans-serif;
-            filter: drop-shadow(0 0 5px rgba(214, 178, 94, 0.3));
-        }
-        .count-label {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-            font-weight: 500;
-        }
+        .count-val { font-size: 1.2rem; font-weight: 700; color: var(--primary); line-height: 1; }
+        .count-label { font-size: 0.6rem; color: #ccc; margin-top: 2px; }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: #071A2F;
-            font-weight: 800;
-            padding: 14px 32px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            align-self: flex-start;
-            margin-top: 5px;
-            cursor: pointer;
-            box-shadow: 0 0 25px rgba(214, 178, 94, 0.25);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: 0.3s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 30px rgba(214, 178, 94, 0.4);
-            filter: brightness(1.1);
+            color: #051424; font-weight: 700; padding: 10px 25px; border-radius: 10px;
+            display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(214, 178, 94, 0.3); border: none;
         }
 
-        /* 4. SECTIONS */
-        .page-view { display: none; animation: fadeIn 0.4s ease-out; }
-        .page-view.active { display: block; }
-
-        .section-header { margin: 10px 0 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-        .section-title { 
-            font-size: 1.5rem; 
-            font-weight: 800; 
-            color: var(--text-main); 
-            border-right: 4px solid var(--primary); 
-            padding-right: 15px;
-            display: inline-block;
-        }
-        
-        .schedule-group { margin-bottom: 30px; }
-        
+        /* --- 4. لیست بازی‌ها (طراحی دقیق طبق درخواست) --- */
         .date-header {
-            background: linear-gradient(90deg, #0A2342, #0E2A4B);
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 8px 12px; border-radius: 8px; margin: 15px 0 10px;
+            color: var(--primary); font-weight: 700; font-size: 0.85rem;
+            display: flex; align-items: center; gap: 8px;
         }
-        .date-header i { color: var(--primary-bright); }
 
         .match-row {
-            display: grid;
-            grid-template-columns: 50px 70px 1fr;
-            align-items: center;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 18px;
-            border-radius: 14px;
-            margin-bottom: 12px;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .match-row::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; width: 4px; height: 100%;
-            background: var(--primary);
-            opacity: 0;
-            transition: 0.3s;
-        }
-        .match-row:hover { 
-            border-color: rgba(214, 178, 94, 0.3); 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2); 
-            background: var(--bg-card-hover);
-        }
-        .match-row:hover::before { opacity: 1; }
-        .match-row.faded { opacity: 0.5; filter: grayscale(80%); }
-
-        .match-number-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0,0,0,0.2);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 700;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-        }
-
-        .match-time {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-right: 1px solid var(--border);
-            padding-right: 12px;
-            margin-right: 8px;
-            color: var(--primary-bright);
-        }
-        .time-val { 
-            font-size: 1.25rem; 
-            font-weight: 800; 
-            direction: ltr; 
-            line-height: 1; 
-            text-shadow: 0 0 10px rgba(214, 178, 94, 0.2);
-        }
-        .group-tag { font-size: 0.65rem; color: var(--text-muted); margin-top: 5px; letter-spacing: 0.5px; }
-        
-        .match-teams { 
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 0; margin-bottom: 10px;
             display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 20px; 
-            padding-right: 15px;
+            overflow: hidden; min-height: 70px;
         }
-        .team { font-weight: 600; font-size: 1rem; text-align: center; color: var(--text-main); }
-        .vs-badge { 
-            background: rgba(0,0,0,0.3); 
-            color: var(--primary);
-            width: 28px; height: 28px; 
-            border-radius: 50%; 
+
+        /* ستون شماره بازی (سمت راست) */
+        .match-num-col {
+            width: 35px;
+            background: rgba(255,255,255,0.03);
+            border-left: 1px solid var(--border);
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.65rem; font-weight: 800;
+            font-weight: 700; color: var(--text-muted); font-size: 0.8rem;
             flex-shrink: 0;
-            border: 1px solid var(--border);
         }
 
-        /* 5. TABLES */
-        .table-container {
-            overflow-x: auto;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        /* ستون وسط (تیم‌ها) */
+        .match-teams-center {
+            flex: 1; padding: 10px 12px;
+            display: flex; flex-direction: column; justify-content: center; gap: 6px;
         }
-        .group-header {
-            background: linear-gradient(90deg, #0A2342, #11345c);
-            color: var(--primary);
-            padding: 15px 20px;
-            font-weight: 800;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .team-name-row {
+            font-size: 0.9rem; font-weight: 600; color: #fff;
+            text-align: right; width: 100%; line-height: 1.3;
         }
-        .group-header::before {
-            content: '';
-            display: block;
-            width: 8px; height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--primary);
-        }
-        table { width: 100%; border-collapse: collapse; text-align: center; }
-        th { 
-            background: rgba(0,0,0,0.2); 
-            padding: 16px; 
-            font-size: 0.85rem; 
-            color: var(--text-muted); 
-            font-weight: 600;
-        }
-        td { padding: 16px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
-        tr:last-child td { border-bottom: none; }
-        .t-name { text-align: right; font-weight: 700; color: var(--text-main); }
-        tr:hover td { background: rgba(255,255,255,0.02); }
-        
-        /* 6. TEAMS GRID */
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-        }
-        .team-card {
-            background: var(--bg-card);
-            padding: 25px 20px;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .team-card:hover { 
-            border-color: var(--primary); 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .team-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            opacity: 0; transition: 0.3s;
-        }
-        .team-card:hover::after { opacity: 1; }
 
-        .team-avatar {
-            width: 65px; height: 65px;
-            background: #071A2F;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--primary);
-            font-size: 1.8rem;
-            border: 1px solid var(--border);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        /* ستون چپ (زمان و گروه) */
+        .match-info-left {
+            width: 70px; 
+            background: rgba(0,0,0,0.2);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            border-right: 1px solid var(--border);
+            padding: 10px 5px; flex-shrink: 0;
         }
-        .team-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; color: var(--text-main); }
-        .team-group { font-size: 0.75rem; color: var(--primary-bright); opacity: 0.8; }
+        .time-val { font-size: 1.2rem; font-weight: 800; color: var(--primary-bright); direction: ltr; }
+        .group-tag { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
 
-        /* 7. BOTTOM NAV */
+        /* --- 5. سایر بخش‌ها --- */
+        .section-header { margin: 15px 0; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        .section-title { font-size: 1.1rem; border-right: 3px solid var(--primary); padding-right: 10px; color: #fff; font-weight: 800; }
+
+        .table-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+        .group-header { background: #112d4e; color: var(--primary); padding: 10px 15px; font-weight: 700; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th { background: rgba(0,0,0,0.2); padding: 10px; color: var(--text-muted); }
+        td { padding: 10px; border-bottom: 1px solid var(--border); text-align: center; }
+        .t-name { text-align: right; font-weight: 600; color: #fff; }
+
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+        .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 15px; text-align: center; }
+        .team-avatar { width: 45px; height: 45px; background: #071A2F; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.3rem; border: 1px solid var(--border); }
+        .team-name { font-size: 0.8rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .team-group { font-size: 0.65rem; color: var(--primary); }
+
+        /* فوتر */
+        .footer-credit {
+            text-align: center; padding: 20px 0; 
+            color: var(--text-muted); font-size: 0.7rem; 
+            border-top: 1px solid var(--border); margin-top: 20px;
+        }
+        .footer-credit span { color: var(--primary); font-weight: bold; }
+
+        /* منوی پایین */
         .bottom-nav {
-            position: fixed;
-            bottom: 0; left: 0; width: 100%;
-            height: var(--bottom-nav-height);
-            background: rgba(7, 26, 47, 0.95);
-            backdrop-filter: blur(15px);
-            border-top: 1px solid var(--border);
-            display: flex; justify-content: space-around; align-items: center;
-            z-index: 1000;
-            padding-bottom: 5px;
+            position: fixed; bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
+            background: rgba(7, 26, 47, 0.98); border-top: 1px solid var(--border);
+            display: flex; justify-content: space-around; align-items: center; z-index: 2000;
+            padding-bottom: env(safe-area-inset-bottom);
         }
-        .nav-item {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 6px; color: var(--text-muted);
-            transition: 0.2s;
-            cursor: pointer;
-            padding: 8px;
-            position: relative;
-        }
+        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); padding: 8px; flex: 1; }
+        .nav-item i { font-size: 1.1rem; }
+        .nav-item span { font-size: 0.6rem; font-weight: 600; }
         .nav-item.active { color: var(--primary); }
-        .nav-item.active i { text-shadow: 0 0 10px var(--accent-glow); }
-        .nav-item i { font-size: 1.3rem; transition: 0.2s; }
-        .nav-item.active i { transform: translateY(-2px); }
-        .nav-item span { font-size: 0.7rem; font-weight: 600; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .page-view { display: none; }
+        .page-view.active { display: block; animation: fadeUp 0.3s ease-out; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (min-width: 769px) {
             .sidebar { display: flex; }
             .bottom-nav { display: none; }
-        }
-        @media (max-width: 600px) {
-            .match-row {
-                grid-template-columns: 40px 65px 1fr;
-                padding: 12px;
-            }
-            .match-teams { flex-direction: column; gap: 5px; align-items: flex-start; padding-right: 12px; border-right: 1px solid var(--border); margin-right: 10px;}
-            .vs-badge { display: none; }
-            .team { font-size: 0.9rem; text-align: right; }
-            .hero-title { font-size: 1.8rem; }
-            .match-time { border-right: none; margin-right: 0; padding-right: 0; align-items: center; }
+            body { padding-right: 260px; padding-bottom: 0; }
+            .top-header { padding-right: 280px; }
+            .hero-banner { min-height: 450px; }
+            .match-row { padding: 0 15px; }
+            .match-num-col { width: 50px; }
+            .match-info-left { width: 100px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sidebar (Desktop) -->
+    <!-- سایدبار (دسکتاپ) -->
     <aside class="sidebar">
         <div class="sidebar-logo-container">
-            <!-- Sidebar Logo -->
-            <img src="logo.png" alt="Ramadan Cup Logo" class="sidebar-logo">
+            <img src="logo.png" alt="لوگو" class="sidebar-logo">
             <div class="logo-text">جام رمضان اوز</div>
         </div>
         <nav>
@@ -556,73 +239,47 @@
         </nav>
     </aside>
 
-    <!-- Main Wrapper -->
-    <main>
-        <header class="top-header">
-            <!-- HEADER LOGO -->
-            <img src="logo.png" alt="Ramadan Cup Logo" class="header-logo">
-            
-            <div class="header-title-wrapper">
-                <span class="page-title">جام رمضان اوز ۲۰۲۶</span>
-                <span class="page-subtitle">سی‌و‌چهارمین دوره مسابقات</span>
-            </div>
-            <div style="width: 10px;"></div>
-        </header>
+    <!-- هدر -->
+    <header class="top-header">
+        <img src="logo.png" alt="Logo" class="header-logo">
+        <div class="header-title-wrapper">
+            <h1 class="page-title">جام رمضان اوز ۲۰۲۶</h1>
+            <span class="page-subtitle">سی‌و‌چهارمین دوره</span>
+        </div>
+    </header>
 
-        <!-- PAGE 1: HOME -->
+    <main class="main-content">
+        <!-- صفحه خانه -->
         <div id="page-home" class="page-view active">
-            <!-- Hero with Countdown -->
-            <section class="hero-banner">
+            <div class="hero-banner">
+                <img src="logo.png" alt="Ramadan Cup" class="hero-logo-main">
                 <div class="hero-badge">مرحله مقدماتی</div>
-                <h1 class="hero-title">جام رمضان<br>شهرستان اوز ۲۰۲۶</h1>
+                <h2 class="hero-title">جام رمضان<br>شهرستان اوز ۲۰۲۶</h2>
                 
-                <div class="countdown-container" id="countdownBox">
-                    <div class="countdown-item">
-                        <div class="count-val" id="cd-days">0</div>
-                        <div class="count-label">روز</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="count-val" id="cd-hours">0</div>
-                        <div class="count-label">ساعت</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="count-val" id="cd-min">0</div>
-                        <div class="count-label">دقیقه</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="count-val" id="cd-sec">0</div>
-                        <div class="count-label">ثانیه</div>
-                    </div>
+                <div class="countdown-container">
+                    <div class="countdown-item"><div class="count-val" id="cd-days">0</div><div class="count-label">روز</div></div>
+                    <div class="countdown-item"><div class="count-val" id="cd-hours">0</div><div class="count-label">ساعت</div></div>
+                    <div class="countdown-item"><div class="count-val" id="cd-min">0</div><div class="count-label">دقیقه</div></div>
+                    <div class="countdown-item"><div class="count-val" id="cd-sec">0</div><div class="count-label">ثانیه</div></div>
                 </div>
 
                 <div class="btn-primary" onclick="showPage('schedule')">
                     <i class="fas fa-calendar-check"></i> مشاهده برنامه کامل
                 </div>
-            </section>
-
-            <!-- Matches List (Dynamic Today/Next) -->
-            <section>
-                <div id="homeMatchList">
-                    <!-- Populated by JS -->
-                </div>
-            </section>
+            </div>
+            
+            <div id="homeMatchList"></div>
         </div>
 
-        <!-- PAGE 2: SCHEDULE -->
+        <!-- صفحه برنامه -->
         <div id="page-schedule" class="page-view">
-            <div class="section-header">
-                <h2 class="section-title">برنامه کامل مسابقات</h2>
-            </div>
-            <div id="fullScheduleList">
-                <!-- Populated by JS -->
-            </div>
+            <div class="section-header"><h2 class="section-title">برنامه کامل بازی‌ها</h2></div>
+            <div id="fullScheduleList"></div>
         </div>
 
-        <!-- PAGE 3: STANDINGS -->
+        <!-- صفحه جدول -->
         <div id="page-standings" class="page-view">
-            <div class="section-header">
-                <h2 class="section-title">جدول رده‌بندی</h2>
-            </div>
+            <div class="section-header"><h2 class="section-title">جدول رده‌بندی</h2></div>
             <div class="table-container">
                 <div class="group-header">گروه A</div>
                 <table>
@@ -639,273 +296,107 @@
             </div>
         </div>
 
-        <!-- PAGE 4: TEAMS -->
+        <!-- صفحه تیم‌ها -->
         <div id="page-teams" class="page-view">
-            <div class="section-header">
-                <h2 class="section-title">تیم‌های حاضر</h2>
-            </div>
+            <div class="section-header"><h2 class="section-title">تیم‌های حاضر</h2></div>
             <div class="teams-grid" id="teamsGrid"></div>
         </div>
 
-        <footer style="text-align: center; padding: 40px 0; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 40px;">
-            <p>طراحی و توسعه برای جام رمضان اوز &copy; ۲۰۲۶</p>
-        </footer>
+        <!-- فوتر -->
+        <div class="footer-credit">
+            ساخته شده توسط <span>مهند مولوی</span>
+        </div>
     </main>
 
-    <!-- Bottom Nav -->
+    <!-- منوی موبایل -->
     <nav class="bottom-nav">
-        <div onclick="showPage('home')" class="nav-item active" id="mob-home">
-            <i class="fas fa-home"></i><span>خانه</span>
-        </div>
-        <div onclick="showPage('schedule')" class="nav-item" id="mob-schedule">
-            <i class="fas fa-calendar-day"></i><span>برنامه</span>
-        </div>
-        <div onclick="showPage('standings')" class="nav-item" id="mob-standings">
-            <i class="fas fa-list-ol"></i><span>جدول</span>
-        </div>
-        <div onclick="showPage('teams')" class="nav-item" id="mob-teams">
-            <i class="fas fa-shield-alt"></i><span>تیم‌ها</span>
-        </div>
+        <div onclick="showPage('home')" class="nav-item active" id="mob-home"><i class="fas fa-home"></i><span>خانه</span></div>
+        <div onclick="showPage('schedule')" class="nav-item" id="mob-schedule"><i class="fas fa-calendar-alt"></i><span>برنامه</span></div>
+        <div onclick="showPage('standings')" class="nav-item" id="mob-standings"><i class="fas fa-list-ol"></i><span>جدول</span></div>
+        <div onclick="showPage('teams')" class="nav-item" id="mob-teams"><i class="fas fa-shield-alt"></i><span>تیم‌ها</span></div>
     </nav>
 
-    <!-- Logic -->
     <script>
-        // --- DATA ---
-        // Teams derived from the provided schedule
-        const groupA_Teams = [
-            "شاهین اوز",
-            "اتحاد کهنه و توحید",
-            "نفت اوز",
-            "جوانان شمس اوز",
-            "پرسپولیس اوز",
-            "یاران مبین و عبدالله (محلچه)"
-        ];
-        
-        const groupB_Teams = [
-            "جوانان نفت اوز",
-            "شمس اوز",
-            "وحدت فیشور",
-            "جوانان سده",
-            "وحدت کوره",
-            "جوانان کهنه و توحید"
-        ];
+        const groupA_Teams = ["شاهین اوز", "اتحاد کهنه و توحید", "نفت اوز", "جوانان شمس اوز", "پرسپولیس اوز", "یاران مبین و عبدالله (محلچه)"];
+        const groupB_Teams = ["جوانان نفت اوز", "شمس اوز", "وحدت فیشور", "جوانان سده", "وحدت کوره", "جوانان کهنه و توحید"];
 
-        // 30 Matches EXACTLY as requested
         const scheduleData = [
-            // Day 1: Thursday 30 Bahman
-            { 
-                isoDate: "2026-02-19", 
-                displayDate: "پنجشنبه ۳۰ بهمن ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "شاهین اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, 
-                    { time: "22:30", t1: "پرسپولیس اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }
-                ] 
-            },
-            // Day 2: Friday 1 Esfand
-            { 
-                isoDate: "2026-02-20", 
-                displayDate: "جمعه ۱ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان شمس اوز", t2: "نفت اوز", group: "گروه A" }, 
-                    { time: "22:30", t1: "جوانان سده", t2: "وحدت فیشور", group: "گروه B" }
-                ] 
-            },
-            // Day 3: Saturday 2 Esfand
-            { 
-                isoDate: "2026-02-21", 
-                displayDate: "شنبه ۲ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان کهنه و توحید", t2: "جوانان نفت اوز", group: "گروه B" }, 
-                    { time: "22:30", t1: "وحدت کوره", t2: "شمس اوز", group: "گروه B" }
-                ] 
-            },
-            // Day 4: Sunday 3 Esfand
-            { 
-                isoDate: "2026-02-22", 
-                displayDate: "یکشنبه ۳ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان شمس اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, 
-                    { time: "22:30", t1: "شاهین اوز", t2: "پرسپولیس اوز", group: "گروه A" }
-                ] 
-            },
-            // Day 5: Monday 4 Esfand
-            { 
-                isoDate: "2026-02-23", 
-                displayDate: "دوشنبه ۴ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان سده", t2: "جوانان کهنه و توحید", group: "گروه B" }, 
-                    { time: "22:30", t1: "نفت اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }
-                ] 
-            },
-            // Day 6: Tuesday 5 Esfand
-            { 
-                isoDate: "2026-02-24", 
-                displayDate: "سه‌شنبه ۵ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت کوره", group: "گروه B" }, 
-                    { time: "22:30", t1: "وحدت فیشور", t2: "شمس اوز", group: "گروه B" }
-                ] 
-            },
-            // Day 7: Wednesday 6 Esfand
-            { 
-                isoDate: "2026-02-25", 
-                displayDate: "چهارشنبه ۶ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "شاهین اوز", t2: "جوانان شمس اوز", group: "گروه A" }, 
-                    { time: "22:30", t1: "اتحاد کهنه و توحید", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }
-                ] 
-            },
-            // Day 8: Thursday 7 Esfand
-            { 
-                isoDate: "2026-02-26", 
-                displayDate: "پنجشنبه ۷ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان نفت اوز", t2: "جوانان سده", group: "گروه B" }, 
-                    { time: "22:30", t1: "نفت اوز", t2: "پرسپولیس اوز", group: "گروه A" }
-                ] 
-            },
-            // Day 9: Friday 8 Esfand
-            { 
-                isoDate: "2026-02-27", 
-                displayDate: "جمعه ۸ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "شمس اوز", t2: "جوانان کهنه و توحید", group: "گروه B" }, 
-                    { time: "22:30", t1: "وحدت فیشور", t2: "وحدت کوره", group: "گروه B" }
-                ] 
-            },
-            // Day 10: Saturday 9 Esfand
-            { 
-                isoDate: "2026-02-28", 
-                displayDate: "شنبه ۹ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "اتحاد کهنه و توحید", t2: "جوانان شمس اوز", group: "گروه A" }, 
-                    { time: "22:30", t1: "پرسپولیس اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }
-                ] 
-            },
-            // Day 11: Sunday 10 Esfand
-            { 
-                isoDate: "2026-03-01", 
-                displayDate: "یکشنبه ۱۰ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, 
-                    { time: "22:30", t1: "شاهین اوز", t2: "نفت اوز", group: "گروه A" }
-                ] 
-            },
-            // Day 12: Monday 11 Esfand
-            { 
-                isoDate: "2026-03-02", 
-                displayDate: "دوشنبه ۱۱ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان کهنه و توحید", t2: "وحدت کوره", group: "گروه B" }, 
-                    { time: "22:30", t1: "شمس اوز", t2: "جوانان سده", group: "گروه B" }
-                ] 
-            },
-            // Day 13: Tuesday 12 Esfand
-            { 
-                isoDate: "2026-03-03", 
-                displayDate: "سه‌شنبه ۱۲ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "پرسپولیس اوز", t2: "جوانان شمس اوز", group: "گروه A" }, 
-                    { time: "22:30", t1: "نفت اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }
-                ] 
-            },
-            // Day 14: Wednesday 13 Esfand
-            { 
-                isoDate: "2026-03-04", 
-                displayDate: "چهارشنبه ۱۳ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, 
-                    { time: "22:30", t1: "شاهین اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }
-                ] 
-            },
-            // Day 15: Thursday 14 Esfand
-            { 
-                isoDate: "2026-03-05", 
-                displayDate: "پنجشنبه ۱۴ اسفند ۱۴۰۴", 
-                matches: [
-                    { time: "21:00", t1: "جوانان نفت اوز", t2: "شمس اوز", group: "گروه B" }, 
-                    { time: "22:30", t1: "جوانان سده", t2: "وحدت کوره", group: "گروه B" }
-                ] 
-            }
+            { isoDate: "2026-02-19", displayDate: "پنجشنبه ۳۰ بهمن ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
+            { isoDate: "2026-02-20", displayDate: "جمعه ۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "نفت اوز", group: "گروه A" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت فیشور", group: "گروه B" }] },
+            { isoDate: "2026-02-21", displayDate: "شنبه ۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه و توحید", t2: "جوانان نفت اوز", group: "گروه B" }, { time: "22:30", t1: "شمس اوز", t2: "وحدت کوره", group: "گروه B" }] },
+            { isoDate: "2026-02-22", displayDate: "یکشنبه ۳ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, { time: "22:30", t1: "شاهین اوز", t2: "پرسپولیس اوز", group: "گروه A" }] },
+            { isoDate: "2026-02-23", displayDate: "دوشنبه ۴ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان سده", t2: "جوانان کهنه و توحید", group: "گروه B" }, { time: "22:30", t1: "نفت اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
+            { isoDate: "2026-02-24", displayDate: "سه‌شنبه ۵ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت کوره", group: "گروه B" }, { time: "22:30", t1: "وحدت فیشور", t2: "شمس اوز", group: "گروه B" }] },
+            { isoDate: "2026-02-25", displayDate: "چهارشنبه ۶ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "اتحاد کهنه و توحید", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }] },
+            { isoDate: "2026-02-26", displayDate: "پنجشنبه ۷ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "جوانان سده", group: "گروه B" }, { time: "22:30", t1: "نفت اوز", t2: "پرسپولیس اوز", group: "گروه A" }] },
+            { isoDate: "2026-02-27", displayDate: "جمعه ۸ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "شمس اوز", t2: "جوانان کهنه و توحید", group: "گروه B" }, { time: "22:30", t1: "وحدت فیشور", t2: "وحدت کوره", group: "گروه B" }] },
+            { isoDate: "2026-02-28", displayDate: "شنبه ۹ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "اتحاد کهنه و توحید", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }] },
+            { isoDate: "2026-03-01", displayDate: "یکشنبه ۱۰ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, { time: "22:30", t1: "شاهین اوز", t2: "نفت اوز", group: "گروه A" }] },
+            { isoDate: "2026-03-02", displayDate: "دوشنبه ۱۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه و توحید", t2: "وحدت کوره", group: "گروه B" }, { time: "22:30", t1: "شمس اوز", t2: "جوانان سده", group: "گروه B" }] },
+            { isoDate: "2026-03-03", displayDate: "سه‌شنبه ۱۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "پرسپولیس اوز", t2: "جوانان شمس اوز", group: "گروه A" }, { time: "22:30", t1: "نفت اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }] },
+            { isoDate: "2026-03-04", displayDate: "چهارشنبه ۱۳ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت فیشور", group: "گروه B" }, { time: "22:30", t1: "شاهین اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
+            { isoDate: "2026-03-05", displayDate: "پنجشنبه ۱۴ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "شمس اوز", group: "گروه B" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت کوره", group: "گروه B" }] }
         ];
 
-        // --- RENDER LOGIC ---
         const now = new Date(); 
-
         function renderSchedule(containerId, mode) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
+            const container = document.getElementById(containerId); container.innerHTML = '';
             let matchGlobalCounter = 1;
-
+            
+            // اگر صفحه خانه باشد
             if (mode === 'home') {
-                // Find Next/Current Match Day
                 const todayStr = now.toISOString().split('T')[0];
                 let targetDay = scheduleData.find(d => d.isoDate === todayStr);
+                if (!targetDay) targetDay = scheduleData.find(d => new Date(d.isoDate) > now);
 
-                // If no matches today, find next match day
-                if (!targetDay) {
-                    targetDay = scheduleData.find(d => new Date(d.isoDate) > now);
-                }
-
-                // If found a target day, render it
                 if (targetDay) {
                     const groupEl = document.createElement('div');
-                    groupEl.className = 'schedule-group';
+                    groupEl.innerHTML = `<div class="date-header"><i class="far fa-calendar-alt"></i> ${targetDay.displayDate}</div>`;
                     
-                    const header = document.createElement('div');
-                    header.className = 'date-header';
-                    header.innerHTML = `<i class="far fa-calendar-alt"></i> ${targetDay.displayDate}`;
-                    groupEl.appendChild(header);
+                    // برای پیدا کردن شماره بازی واقعی در روز جاری، باید بازی‌های روزهای قبل را بشماریم
+                    let currentDayMatchStart = 1;
+                    for(let day of scheduleData) {
+                        if(day.isoDate === targetDay.isoDate) break;
+                        currentDayMatchStart += day.matches.length;
+                    }
 
-                    targetDay.matches.forEach(match => {
-                        const row = createMatchRow(match, targetDay.isoDate, false); 
-                        groupEl.appendChild(row);
+                    targetDay.matches.forEach((match, idx) => {
+                        // شماره بازی = شروع شمارنده روز + ایندکس بازی در روز
+                        groupEl.appendChild(createMatchRow(match, targetDay.isoDate, currentDayMatchStart + idx));
                     });
                     container.appendChild(groupEl);
-                    
-                    // Start countdown to the first match of this day if it's in future
                     startCountdown(targetDay.isoDate, targetDay.matches[0].time);
                 } else {
-                    container.innerHTML = '<div style="text-align:center; padding:20px; color:#666;">بازی‌ای یافت نشد.</div>';
+                    container.innerHTML = '<div style="text-align:center; padding:20px; color:#aaa;">بازی‌های این مرحله به پایان رسید.</div>';
                 }
-            } else {
-                // Full Schedule with Numbering
+            } 
+            // اگر صفحه کامل برنامه باشد
+            else {
                 scheduleData.forEach(day => {
                     const groupEl = document.createElement('div');
-                    groupEl.className = 'schedule-group';
-                    const header = document.createElement('div');
-                    header.className = 'date-header';
-                    header.innerHTML = `<i class="far fa-calendar-alt"></i> ${day.displayDate}`;
-                    groupEl.appendChild(header);
-
-                    day.matches.forEach(match => {
-                        const row = createMatchRow(match, day.isoDate, matchGlobalCounter++);
-                        groupEl.appendChild(row);
-                    });
+                    groupEl.innerHTML = `<div class="date-header"><i class="far fa-calendar-alt"></i> ${day.displayDate}</div>`;
+                    day.matches.forEach(match => groupEl.appendChild(createMatchRow(match, day.isoDate, matchGlobalCounter++)));
                     container.appendChild(groupEl);
                 });
             }
         }
 
         function createMatchRow(match, dateStr, matchNum) {
-            const matchDate = new Date(`${dateStr}T${match.time}:00`);
-            const isPast = matchDate < now;
-            
-            const row = document.createElement('div');
+            const isPast = new Date(`${dateStr}T${match.time}:00`) < now;
+            const row = document.createElement('div'); 
             row.className = `match-row ${isPast ? 'faded' : ''}`;
             
-            let numHtml = matchNum ? `<div class="match-number-box">${matchNum}</div>` : '<div style="width:32px"></div>';
-
             row.innerHTML = `
-                ${numHtml}
-                <div class="match-time">
+                <div class="match-num-col">
+                    ${matchNum}
+                </div>
+                <div class="match-teams-center">
+                    <div class="team-name-row">${match.t1}</div>
+                    <div class="team-name-row">${match.t2}</div>
+                </div>
+                <div class="match-info-left">
                     <span class="time-val">${match.time}</span>
                     <span class="group-tag">${match.group}</span>
-                </div>
-                <div class="match-teams">
-                    <div class="team right">${match.t1}</div>
-                    <div class="vs-badge">VS</div>
-                    <div class="team left">${match.t2}</div>
                 </div>
             `;
             return row;
@@ -913,72 +404,47 @@
 
         function renderTable(containerId, teams) {
             const container = document.getElementById(containerId);
-            teams.forEach((team, index) => {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${index + 1}</td><td class="t-name">${team}</td><td>0</td><td>0</td>`;
-                container.appendChild(row);
-            });
+            teams.forEach((team, index) => { container.innerHTML += `<tr><td>${index + 1}</td><td class="t-name">${team}</td><td>0</td><td>0</td></tr>`; });
         }
 
         function renderTeamsGrid() {
             const container = document.getElementById('teamsGrid');
             [...groupA_Teams, ...groupB_Teams].forEach(team => {
-                const card = document.createElement('div');
-                card.className = 'team-card';
-                card.innerHTML = `
-                    <div class="team-avatar"><i class="fas fa-shield-alt"></i></div>
-                    <div class="team-name">${team}</div>
-                    <div class="team-group">${groupA_Teams.includes(team) ? 'گروه A' : 'گروه B'}</div>
-                `;
-                container.appendChild(card);
+                container.innerHTML += `<div class="team-card"><div class="team-avatar"><i class="fas fa-shield-alt"></i></div><div class="team-name">${team}</div><div class="team-group">${groupA_Teams.includes(team) ? 'گروه A' : 'گروه B'}</div></div>`;
             });
         }
 
         function startCountdown(dateStr, timeStr) {
             const target = new Date(`${dateStr}T${timeStr}:00`).getTime();
-            
-            const timer = setInterval(() => {
-                const current = new Date().getTime();
-                const diff = target - current;
-
+            setInterval(() => {
+                const diff = target - new Date().getTime();
                 if (diff < 0) {
-                    clearInterval(timer);
                     document.getElementById("cd-days").innerText = "0";
                     return;
                 }
-
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById("cd-days").innerText = d;
-                document.getElementById("cd-hours").innerText = h;
-                document.getElementById("cd-min").innerText = m;
-                document.getElementById("cd-sec").innerText = s;
+                document.getElementById("cd-days").innerText = Math.floor(diff / 86400000);
+                document.getElementById("cd-hours").innerText = Math.floor((diff % 86400000) / 3600000);
+                document.getElementById("cd-min").innerText = Math.floor((diff % 3600000) / 60000);
+                document.getElementById("cd-sec").innerText = Math.floor((diff % 60000) / 1000);
             }, 1000);
         }
 
-        // --- NAVIGATION ---
         function showPage(pageId) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
             document.getElementById(`page-${pageId}`).classList.add('active');
-
-            document.querySelectorAll('.sidebar .menu-item').forEach(i => i.classList.remove('active'));
-            document.getElementById(`desk-${pageId}`).classList.add('active');
-
-            document.querySelectorAll('.bottom-nav .nav-item').forEach(i => i.classList.remove('active'));
-            document.getElementById(`mob-${pageId}`).classList.add('active');
+            document.querySelectorAll('.menu-item, .nav-item').forEach(i => i.classList.remove('active'));
+            if(document.getElementById(`desk-${pageId}`)) document.getElementById(`desk-${pageId}`).classList.add('active');
+            if(document.getElementById(`mob-${pageId}`)) document.getElementById(`mob-${pageId}`).classList.add('active');
             window.scrollTo(0,0);
         }
 
-        // --- INIT ---
-        renderTable('tableGroupA', groupA_Teams);
+        renderTable('tableGroupA', groupA_Teams); 
         renderTable('tableGroupB', groupB_Teams);
-        renderTeamsGrid();
-        renderSchedule('homeMatchList', 'home');
+        renderTeamsGrid(); 
+        renderSchedule('homeMatchList', 'home'); 
         renderSchedule('fullScheduleList', 'full');
-
     </script>
 </body>
 </html>
+
+
