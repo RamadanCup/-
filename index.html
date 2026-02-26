@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>جام رمضان اوز ۲۰۲۶ | مسابقات فوتسال</title>
     
-    <!-- تنظیمات سئو -->
-    <meta name="description" content="برنامه و نتایج جام رمضان شهرستان اوز ۱۴۰۴ (2026).">
+    <!-- تنظیمات سئو (SEO) -->
+    <meta name="description" content="برنامه کامل بازی‌ها، نتایج زنده و جدول رده‌بندی سی‌و‌چهارمین دوره مسابقات فوتسال جام رمضان شهرستان اوز ۱۴۰۴-۱۴۰۵.">
+    <meta name="keywords" content="جام رمضان اوز, فوتسال اوز, مسابقات رمضان 1404, ورزشگاه اوز, نتایج فوتسال, جدول جام رمضان, شاهین اوز, نفت اوز, مهند مولوی">
     <meta name="author" content="مهند مولوی">
+    <meta name="robots" content="index, follow">
     
     <!-- تنظیمات PWA -->
     <meta name="theme-color" content="#071A2F">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ramadan Cup">
     
     <!-- فونت و آیکون -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,8 +33,9 @@
             --text-main: #EAEAEA;        
             --text-muted: #A3A3A3;       
             --border: rgba(255, 255, 255, 0.1); 
-            --radius: 14px;
-            --header-height: 65px;      
+            --radius: 12px;
+            --sidebar-width: 280px;
+            --header-height: 70px;      
             --bottom-nav-height: 65px;
         }
 
@@ -42,152 +46,184 @@
             color: var(--text-main);
             font-family: 'Vazirmatn', sans-serif;
             overflow-x: hidden;
-            padding-bottom: calc(var(--bottom-nav-height) + 10px); /* فاصله کم برای پایین */
+            padding-bottom: var(--bottom-nav-height);
             padding-top: var(--header-height);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         a { text-decoration: none; color: inherit; cursor: pointer; }
+        ul { list-style: none; }
         img { display: block; max-width: 100%; height: auto; }
 
-        /* --- 1. هدر --- */
+        /* --- 1. هدر ثابت --- */
         .top-header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(7, 26, 47, 0.98); backdrop-filter: blur(10px);
+            background: rgba(7, 26, 47, 0.95); backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             height: var(--header-height);
             display: flex; align-items: center; justify-content: space-between;
             padding: 0 15px;
         }
-        .header-logo { height: 42px; width: auto; filter: drop-shadow(0 0 5px rgba(214, 178, 94, 0.4)); }
-        .header-title-wrapper { display: flex; flex-direction: column; align-items: flex-end; margin-right: 10px; }
-        .page-title { font-size: 0.95rem; font-weight: 800; color: var(--text-main); }
-        .page-subtitle { font-size: 0.65rem; color: var(--primary); }
+
+        .header-logo { 
+            height: 45px; width: auto; object-fit: contain; 
+            filter: drop-shadow(0 0 5px rgba(214, 178, 94, 0.4));
+        }
+
+        .header-title-wrapper {
+            display: flex; flex-direction: column; align-items: flex-end; justify-content: center;
+            flex-grow: 1; margin-right: 12px;
+        }
+        
+        .page-title { 
+            font-size: 1rem; font-weight: 800; color: var(--text-main);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .page-subtitle { font-size: 0.7rem; color: var(--primary); font-weight: 500; }
 
         /* --- 2. سایدبار --- */
         .sidebar {
-            position: fixed; right: 0; top: 0; height: 100vh; width: 260px;
-            background: var(--bg-sidebar); border-left: 1px solid var(--border);
-            padding: 20px; display: none; flex-direction: column; z-index: 1100;
+            position: fixed; right: 0; top: 0; height: 100vh;
+            width: var(--sidebar-width); background: var(--bg-sidebar);
+            border-left: 1px solid var(--border); padding: 20px;
+            display: none; flex-direction: column; z-index: 1100; overflow-y: auto;
         }
-        .sidebar-logo-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
-        .sidebar-logo { width: 90px; margin-bottom: 10px; }
-        .menu-item { display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-radius: 10px; color: var(--text-muted); font-weight: 600; margin-bottom: 5px; transition: 0.2s; cursor: pointer; }
+        .sidebar-logo-container {
+            display: flex; flex-direction: column; align-items: center;
+            margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+        }
+        .sidebar-logo { width: 100px; margin-bottom: 10px; }
+        .menu-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px 15px;
+            border-radius: 12px; color: var(--text-muted); font-weight: 600;
+            margin-bottom: 5px; transition: 0.2s; cursor: pointer;
+        }
         .menu-item:hover, .menu-item.active { background: var(--bg-card-hover); color: var(--primary); }
         .menu-item.active { border-right: 3px solid var(--primary); }
 
         /* --- 3. محتوای اصلی --- */
-        .main-content { 
-            padding: 15px; max-width: 800px; margin: 0 auto; width: 100%;
-            /* حذف min-height بزرگ برای جلوگیری از فضای خالی */
-            flex: 1; 
-        }
+        .main-content { padding: 15px; max-width: 800px; margin: 0 auto; min-height: 80vh; }
 
-        /* بنر (Hero) */
+        /* بنر و لوگوی متحرک */
         .hero-banner {
             position: relative; border-radius: 20px; overflow: hidden;
-            margin-bottom: 20px; border: 1px solid var(--border);
-            background: linear-gradient(180deg, rgba(7, 26, 47, 0.3) 0%, rgba(7, 26, 47, 0.95) 100%), url('hero.jpg');
+            margin-bottom: 25px; border: 1px solid var(--border);
+            /* آدرس عکس بنر */
+            background: linear-gradient(180deg, rgba(7, 26, 47, 0.4) 0%, rgba(7, 26, 47, 0.95) 100%), url('hero.jpg');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 25px 15px; text-align: center;
+            padding: 30px 15px; text-align: center; min-height: 400px;
         }
-        .hero-logo-main { width: 130px; margin-bottom: 10px; filter: drop-shadow(0 0 20px rgba(214, 178, 94, 0.6)); animation: float 4s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-        /* بج (Badge) اصلاح شده */
+        .hero-logo-main {
+            width: 150px; margin-bottom: 15px;
+            filter: drop-shadow(0 0 20px rgba(214, 178, 94, 0.6));
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
         .hero-badge {
             background: var(--primary); color: #000; font-weight: 800;
-            padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 8px;
+            padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: inline-block;
         }
-        
-        .hero-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 15px; color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.8); line-height: 1.3; }
+
+        .hero-title { 
+            font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; color: #fff;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8); line-height: 1.4;
+        }
 
         /* شمارش معکوس */
-        .countdown-container { display: flex; gap: 8px; margin-bottom: 15px; justify-content: center; flex-wrap: wrap; }
+        .countdown-container {
+            display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center;
+        }
         .countdown-item {
             background: rgba(0,0,0,0.6); border: 1px solid var(--border);
-            border-radius: 10px; padding: 6px 10px; min-width: 50px; text-align: center;
+            border-radius: 12px; padding: 8px 10px; min-width: 55px; text-align: center;
             backdrop-filter: blur(4px);
         }
-        .count-val { font-size: 1.2rem; font-weight: 700; color: var(--primary); line-height: 1; }
-        .count-label { font-size: 0.6rem; color: #ccc; margin-top: 2px; }
+        .count-val { font-size: 1.3rem; font-weight: 700; color: var(--primary); line-height: 1; }
+        .count-label { font-size: 0.6rem; color: #ccc; margin-top: 4px; }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: #051424; font-weight: 700; padding: 10px 25px; border-radius: 10px;
+            color: #051424; font-weight: 800; padding: 12px 30px; border-radius: 12px;
             display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem;
-            box-shadow: 0 5px 15px rgba(214, 178, 94, 0.3); border: none;
+            box-shadow: 0 5px 20px rgba(214, 178, 94, 0.3); border: none;
         }
 
-        /* --- 4. لیست بازی‌ها (طراحی دقیق طبق درخواست) --- */
+        /* --- 4. لیست بازی‌ها (طراحی دقیق) --- */
         .date-header {
             background: var(--bg-card); border: 1px solid var(--border);
-            padding: 8px 12px; border-radius: 8px; margin: 15px 0 10px;
-            color: var(--primary); font-weight: 700; font-size: 0.85rem;
+            padding: 10px 15px; border-radius: 10px; margin: 25px 0 10px;
+            color: var(--primary); font-weight: 700; font-size: 0.9rem;
             display: flex; align-items: center; gap: 8px;
         }
 
+        /* کانتینر کارت بازی */
         .match-row {
             background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: 12px; padding: 0; margin-bottom: 10px;
-            display: flex; 
-            overflow: hidden; min-height: 70px;
+            border-radius: 16px; padding: 0; margin-bottom: 12px;
+            display: flex; flex-direction: row-reverse; /* ساعت راست، تیم‌ها چپ */
+            overflow: hidden; min-height: 80px;
         }
 
-        /* ستون شماره بازی (سمت راست) */
-        .match-num-col {
-            width: 35px;
-            background: rgba(255,255,255,0.03);
-            border-left: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; color: var(--text-muted); font-size: 0.8rem;
-            flex-shrink: 0;
-        }
-
-        /* ستون وسط (تیم‌ها) */
-        .match-teams-center {
-            flex: 1; padding: 10px 12px;
-            display: flex; flex-direction: column; justify-content: center; gap: 6px;
-        }
-        .team-name-row {
-            font-size: 0.9rem; font-weight: 600; color: #fff;
-            text-align: right; width: 100%; line-height: 1.3;
-        }
-
-        /* ستون چپ (زمان و گروه) */
-        .match-info-left {
-            width: 70px; 
+        /* بخش سمت راست: ساعت و گروه */
+        .match-info-right {
+            width: 75px; 
             background: rgba(0,0,0,0.2);
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            border-right: 1px solid var(--border);
+            border-left: 1px solid var(--border);
             padding: 10px 5px; flex-shrink: 0;
         }
         .time-val { font-size: 1.2rem; font-weight: 800; color: var(--primary-bright); direction: ltr; }
-        .group-tag { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+        .group-tag { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
 
-        /* --- 5. سایر بخش‌ها --- */
+        /* ستون وسط (تیم‌ها) */
+        .match-teams-left {
+            flex-grow: 1; padding: 12px 15px;
+            display: flex; flex-direction: column; justify-content: center; gap: 8px;
+        }
+        .team-name-row {
+            font-size: 0.95rem; font-weight: 700; color: #fff;
+            text-align: right; width: 100%; white-space: normal; line-height: 1.4;
+        }
+
+        /* ستون شماره بازی (سمت راست ترین) */
+        .match-num-col {
+            width: 35px; background: rgba(255,255,255,0.03);
+            border-left: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: var(--text-muted); font-size: 0.8rem; flex-shrink: 0;
+        }
+
+        /* --- 5. جداول --- */
         .section-header { margin: 15px 0; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-        .section-title { font-size: 1.1rem; border-right: 3px solid var(--primary); padding-right: 10px; color: #fff; font-weight: 800; }
+        .section-title { font-size: 1.2rem; border-right: 3px solid var(--primary); padding-right: 10px; color: #fff; font-weight: 800; }
 
-        .table-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
-        .group-header { background: #112d4e; color: var(--primary); padding: 10px 15px; font-weight: 700; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-        th { background: rgba(0,0,0,0.2); padding: 10px; color: var(--text-muted); }
-        td { padding: 10px; border-bottom: 1px solid var(--border); text-align: center; }
-        .t-name { text-align: right; font-weight: 600; color: #fff; }
+        .table-container { 
+            background: var(--bg-card); border: 1px solid var(--border); 
+            border-radius: 12px; overflow-x: auto; margin-bottom: 25px; 
+        }
+        .group-header { 
+            background: #112d4e; color: var(--primary); padding: 10px 15px; 
+            font-weight: 700; border-bottom: 1px solid var(--border); font-size: 0.95rem; 
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 400px; }
+        th { background: rgba(0,0,0,0.2); padding: 10px 5px; color: var(--text-muted); text-align: center; }
+        td { padding: 12px 5px; border-bottom: 1px solid var(--border); text-align: center; }
+        .t-name { text-align: right; font-weight: 700; color: #fff; padding-right: 10px; }
+        .t-pts { color: var(--primary-bright); font-weight: 800; font-size: 1rem; }
+        .t-diff { direction: ltr; font-weight: 600; }
 
-        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
-        .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 15px; text-align: center; }
-        .team-avatar { width: 45px; height: 45px; background: #071A2F; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.3rem; border: 1px solid var(--border); }
-        .team-name { font-size: 0.8rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-        .team-group { font-size: 0.65rem; color: var(--primary); }
+        /* --- 6. تیم‌ها --- */
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+        .team-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 15px; text-align: center; }
+        .team-avatar { width: 50px; height: 50px; background: #071A2F; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem; border: 1px solid var(--border); }
+        .team-name { font-size: 0.85rem; font-weight: 700; margin-bottom: 5px; color: #fff; }
+        .team-group { font-size: 0.7rem; color: var(--primary); }
 
-        /* فوتر */
+        /* --- فوتر --- */
         .footer-credit {
             text-align: center; padding: 20px 0; 
             color: var(--text-muted); font-size: 0.7rem; 
@@ -195,7 +231,7 @@
         }
         .footer-credit span { color: var(--primary); font-weight: bold; }
 
-        /* منوی پایین */
+        /* --- منوی پایین --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%; height: var(--bottom-nav-height);
             background: rgba(7, 26, 47, 0.98); border-top: 1px solid var(--border);
@@ -203,10 +239,11 @@
             padding-bottom: env(safe-area-inset-bottom);
         }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); padding: 8px; flex: 1; }
-        .nav-item i { font-size: 1.1rem; }
-        .nav-item span { font-size: 0.6rem; font-weight: 600; }
+        .nav-item i { font-size: 1.2rem; }
+        .nav-item span { font-size: 0.65rem; font-weight: 600; }
         .nav-item.active { color: var(--primary); }
 
+        /* --- مدیریت صفحات --- */
         .page-view { display: none; }
         .page-view.active { display: block; animation: fadeUp 0.3s ease-out; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -214,12 +251,12 @@
         @media (min-width: 769px) {
             .sidebar { display: flex; }
             .bottom-nav { display: none; }
-            body { padding-right: 260px; padding-bottom: 0; }
-            .top-header { padding-right: 280px; }
-            .hero-banner { min-height: 450px; }
-            .match-row { padding: 0 15px; }
-            .match-num-col { width: 50px; }
-            .match-info-left { width: 100px; }
+            body { padding-right: var(--sidebar-width); }
+            .top-header { padding-right: 300px; }
+            .hero-banner { min-height: 500px; }
+            .hero-title { font-size: 2.2rem; }
+            .match-row { padding-right: 0; }
+            table { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -228,7 +265,7 @@
     <!-- سایدبار (دسکتاپ) -->
     <aside class="sidebar">
         <div class="sidebar-logo-container">
-            <img src="logo.png" alt="لوگو" class="sidebar-logo">
+            <img src="logo.png" alt="لوگو جام رمضان" class="sidebar-logo">
             <div class="logo-text">جام رمضان اوز</div>
         </div>
         <nav>
@@ -244,7 +281,7 @@
         <img src="logo.png" alt="Logo" class="header-logo">
         <div class="header-title-wrapper">
             <h1 class="page-title">جام رمضان اوز ۲۰۲۶</h1>
-            <span class="page-subtitle">سی‌و‌چهارمین دوره</span>
+            <span class="page-subtitle">سی‌و‌چهارمین دوره مسابقات</span>
         </div>
     </header>
 
@@ -252,7 +289,7 @@
         <!-- صفحه خانه -->
         <div id="page-home" class="page-view active">
             <div class="hero-banner">
-                <img src="logo.png" alt="Ramadan Cup" class="hero-logo-main">
+                <img src="logo.png" alt="Ramadan Cup 2026" class="hero-logo-main">
                 <div class="hero-badge">مرحله مقدماتی</div>
                 <h2 class="hero-title">جام رمضان<br>شهرستان اوز ۲۰۲۶</h2>
                 
@@ -280,20 +317,47 @@
         <!-- صفحه جدول -->
         <div id="page-standings" class="page-view">
             <div class="section-header"><h2 class="section-title">جدول رده‌بندی</h2></div>
+            
             <div class="table-container">
                 <div class="group-header">گروه A</div>
                 <table>
-                    <thead><tr><th>#</th><th style="text-align:right">تیم</th><th>بازی</th><th>امتیاز</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">#</th>
+                            <th style="text-align:right">تیم</th>
+                            <th style="width: 40px;">بازی</th>
+                            <th style="width: 30px;">ب</th>
+                            <th style="width: 30px;">م</th>
+                            <th style="width: 30px;">بـ</th>
+                            <th style="width: 50px;">تفاضل</th>
+                            <th style="width: 50px;">امتیاز</th>
+                        </tr>
+                    </thead>
                     <tbody id="tableGroupA"></tbody>
                 </table>
             </div>
+
             <div class="table-container">
                 <div class="group-header">گروه B</div>
                 <table>
-                    <thead><tr><th>#</th><th style="text-align:right">تیم</th><th>بازی</th><th>امتیاز</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th style="width: 30px;">#</th>
+                            <th style="text-align:right">تیم</th>
+                            <th style="width: 40px;">بازی</th>
+                            <th style="width: 30px;">ب</th>
+                            <th style="width: 30px;">م</th>
+                            <th style="width: 30px;">بـ</th>
+                            <th style="width: 50px;">تفاضل</th>
+                            <th style="width: 50px;">امتیاز</th>
+                        </tr>
+                    </thead>
                     <tbody id="tableGroupB"></tbody>
                 </table>
             </div>
+            <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
+                راهنما: ب (برد) | م (مساوی) | بـ (باخت)
+            </p>
         </div>
 
         <!-- صفحه تیم‌ها -->
@@ -311,19 +375,40 @@
     <!-- منوی موبایل -->
     <nav class="bottom-nav">
         <div onclick="showPage('home')" class="nav-item active" id="mob-home"><i class="fas fa-home"></i><span>خانه</span></div>
-        <div onclick="showPage('schedule')" class="nav-item" id="mob-schedule"><i class="fas fa-calendar-alt"></i><span>برنامه</span></div>
+        <div onclick="showPage('schedule')" class="nav-item" id="mob-schedule"><i class="fas fa-calendar-day"></i><span>برنامه</span></div>
         <div onclick="showPage('standings')" class="nav-item" id="mob-standings"><i class="fas fa-list-ol"></i><span>جدول</span></div>
         <div onclick="showPage('teams')" class="nav-item" id="mob-teams"><i class="fas fa-shield-alt"></i><span>تیم‌ها</span></div>
     </nav>
 
     <script>
+        // اطلاعات تیم‌ها برای بخش تیم‌های حاضر
         const groupA_Teams = ["شاهین اوز", "اتحاد کهنه و توحید", "نفت اوز", "جوانان شمس اوز", "پرسپولیس اوز", "یاران مبین و عبدالله (محلچه)"];
         const groupB_Teams = ["جوانان نفت اوز", "شمس اوز", "وحدت فیشور", "جوانان سده", "وحدت کوره", "جوانان کهنه و توحید"];
 
+        // آمار واقعی استخراج شده از بازی‌ها
+        const standingsA = [
+            { name: "اتحاد کهنه و توحید", p: 3, w: 3, d: 0, l: 0, gf: 18, ga: 2, pts: 9 },
+            { name: "جوانان شمس اوز", p: 3, w: 2, d: 0, l: 1, gf: 8, ga: 12, pts: 6 },
+            { name: "نفت اوز", p: 3, w: 1, d: 0, l: 2, gf: 9, ga: 8, pts: 3 },
+            { name: "پرسپولیس اوز", p: 2, w: 1, d: 0, l: 1, gf: 3, ga: 4, pts: 3 },
+            { name: "شاهین اوز", p: 3, w: 1, d: 0, l: 2, gf: 5, ga: 6, pts: 3 },
+            { name: "یاران مبین و عبدالله (محلچه)", p: 3, w: 0, d: 0, l: 3, gf: 5, ga: 19, pts: 0 }
+        ];
+
+        const standingsB = [
+            { name: "وحدت کوره", p: 2, w: 2, d: 0, l: 0, gf: 17, ga: 1, pts: 6 },
+            { name: "وحدت فیشور", p: 2, w: 1, d: 1, l: 0, gf: 7, ga: 6, pts: 4 },
+            { name: "جوانان سده", p: 2, w: 1, d: 1, l: 0, gf: 5, ga: 4, pts: 4 },
+            { name: "جوانان کهنه و توحید", p: 2, w: 1, d: 0, l: 1, gf: 6, ga: 4, pts: 3 },
+            { name: "شمس اوز", p: 2, w: 0, d: 0, l: 2, gf: 4, ga: 7, pts: 0 },
+            { name: "جوانان نفت اوز", p: 2, w: 0, d: 0, l: 2, gf: 2, ga: 19, pts: 0 }
+        ];
+
+        // برنامه بازی‌ها
         const scheduleData = [
             { isoDate: "2026-02-19", displayDate: "پنجشنبه ۳۰ بهمن ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
             { isoDate: "2026-02-20", displayDate: "جمعه ۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "نفت اوز", group: "گروه A" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت فیشور", group: "گروه B" }] },
-            { isoDate: "2026-02-21", displayDate: "شنبه ۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه و توحید", t2: "جوانان نفت اوز", group: "گروه B" }, { time: "22:30", t1: "شمس اوز", t2: "وحدت کوره", group: "گروه B" }] },
+            { isoDate: "2026-02-21", displayDate: "شنبه ۲ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان کهنه و توحید", t2: "جوانان نفت اوز", group: "گروه B" }, { time: "22:30", t1: "وحدت کوره", t2: "شمس اوز", group: "گروه B" }] },
             { isoDate: "2026-02-22", displayDate: "یکشنبه ۳ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, { time: "22:30", t1: "شاهین اوز", t2: "پرسپولیس اوز", group: "گروه A" }] },
             { isoDate: "2026-02-23", displayDate: "دوشنبه ۴ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان سده", t2: "جوانان کهنه و توحید", group: "گروه B" }, { time: "22:30", t1: "نفت اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
             { isoDate: "2026-02-24", displayDate: "سه‌شنبه ۵ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان نفت اوز", t2: "وحدت کوره", group: "گروه B" }, { time: "22:30", t1: "وحدت فیشور", t2: "شمس اوز", group: "گروه B" }] },
@@ -343,17 +428,17 @@
             const container = document.getElementById(containerId); container.innerHTML = '';
             let matchGlobalCounter = 1;
             
-            // اگر صفحه خانه باشد
+            // رندر برای صفحه خانه (بازی‌های امروز یا روز آینده)
             if (mode === 'home') {
                 const todayStr = now.toISOString().split('T')[0];
                 let targetDay = scheduleData.find(d => d.isoDate === todayStr);
+                
                 if (!targetDay) targetDay = scheduleData.find(d => new Date(d.isoDate) > now);
 
                 if (targetDay) {
                     const groupEl = document.createElement('div');
                     groupEl.innerHTML = `<div class="date-header"><i class="far fa-calendar-alt"></i> ${targetDay.displayDate}</div>`;
                     
-                    // برای پیدا کردن شماره بازی واقعی در روز جاری، باید بازی‌های روزهای قبل را بشماریم
                     let currentDayMatchStart = 1;
                     for(let day of scheduleData) {
                         if(day.isoDate === targetDay.isoDate) break;
@@ -361,7 +446,6 @@
                     }
 
                     targetDay.matches.forEach((match, idx) => {
-                        // شماره بازی = شروع شمارنده روز + ایندکس بازی در روز
                         groupEl.appendChild(createMatchRow(match, targetDay.isoDate, currentDayMatchStart + idx));
                     });
                     container.appendChild(groupEl);
@@ -370,7 +454,7 @@
                     container.innerHTML = '<div style="text-align:center; padding:20px; color:#aaa;">بازی‌های این مرحله به پایان رسید.</div>';
                 }
             } 
-            // اگر صفحه کامل برنامه باشد
+            // رندر کل برنامه مسابقات
             else {
                 scheduleData.forEach(day => {
                     const groupEl = document.createElement('div');
@@ -390,27 +474,58 @@
                 <div class="match-num-col">
                     ${matchNum}
                 </div>
-                <div class="match-teams-center">
-                    <div class="team-name-row">${match.t1}</div>
-                    <div class="team-name-row">${match.t2}</div>
-                </div>
-                <div class="match-info-left">
+                <div class="match-info-right">
                     <span class="time-val">${match.time}</span>
                     <span class="group-tag">${match.group}</span>
+                </div>
+                <div class="match-teams-left">
+                    <div class="team-name-row">${match.t1}</div>
+                    <div class="team-name-row">${match.t2}</div>
                 </div>
             `;
             return row;
         }
 
-        function renderTable(containerId, teams) {
+        function renderTable(containerId, data) {
             const container = document.getElementById(containerId);
-            teams.forEach((team, index) => { container.innerHTML += `<tr><td>${index + 1}</td><td class="t-name">${team}</td><td>0</td><td>0</td></tr>`; });
+            container.innerHTML = '';
+            
+            // مرتب‌سازی: ۱. امتیاز ۲. تفاضل گل ۳. گل زده
+            const sortedData = [...data].sort((a, b) => {
+                if (b.pts !== a.pts) return b.pts - a.pts;
+                const diffA = a.gf - a.ga;
+                const diffB = b.gf - b.ga;
+                if (diffB !== diffA) return diffB - diffA;
+                return b.gf - a.gf;
+            });
+            
+            sortedData.forEach((team, index) => {
+                const diff = team.gf - team.ga;
+                const diffDisplay = diff > 0 ? '+' + diff : diff;
+                
+                container.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td class="t-name">${team.name}</td>
+                        <td>${team.p}</td>
+                        <td>${team.w}</td>
+                        <td>${team.d}</td>
+                        <td>${team.l}</td>
+                        <td class="t-diff">${diffDisplay}</td>
+                        <td class="t-pts">${team.pts}</td>
+                    </tr>`;
+            });
         }
 
         function renderTeamsGrid() {
             const container = document.getElementById('teamsGrid');
             [...groupA_Teams, ...groupB_Teams].forEach(team => {
-                container.innerHTML += `<div class="team-card"><div class="team-avatar"><i class="fas fa-shield-alt"></i></div><div class="team-name">${team}</div><div class="team-group">${groupA_Teams.includes(team) ? 'گروه A' : 'گروه B'}</div></div>`;
+                container.innerHTML += `
+                    <div class="team-card">
+                        <div class="team-avatar"><i class="fas fa-shield-alt"></i></div>
+                        <div class="team-name">${team}</div>
+                        <div class="team-group">${groupA_Teams.includes(team) ? 'گروه A' : 'گروه B'}</div>
+                    </div>`;
             });
         }
 
@@ -420,6 +535,9 @@
                 const diff = target - new Date().getTime();
                 if (diff < 0) {
                     document.getElementById("cd-days").innerText = "0";
+                    document.getElementById("cd-hours").innerText = "0";
+                    document.getElementById("cd-min").innerText = "0";
+                    document.getElementById("cd-sec").innerText = "0";
                     return;
                 }
                 document.getElementById("cd-days").innerText = Math.floor(diff / 86400000);
@@ -438,11 +556,14 @@
             window.scrollTo(0,0);
         }
 
-        renderTable('tableGroupA', groupA_Teams); 
-        renderTable('tableGroupB', groupB_Teams);
+        // مقداردهی اولیه سایت
+        renderTable('tableGroupA', standingsA); 
+        renderTable('tableGroupB', standingsB);
         renderTeamsGrid(); 
         renderSchedule('homeMatchList', 'home'); 
         renderSchedule('fullScheduleList', 'full');
     </script>
 </body>
 </html>
+
+
