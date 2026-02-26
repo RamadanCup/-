@@ -381,15 +381,15 @@
     </nav>
 
     <script>
-        // اطلاعات تیم‌ها برای بخش تیم‌های حاضر
+        // اطلاعات تیم‌ها
         const groupA_Teams = ["شاهین اوز", "اتحاد کهنه و توحید", "نفت اوز", "جوانان شمس اوز", "پرسپولیس اوز", "یاران مبین و عبدالله (محلچه)"];
         const groupB_Teams = ["جوانان نفت اوز", "شمس اوز", "وحدت فیشور", "جوانان سده", "وحدت کوره", "جوانان کهنه و توحید"];
 
-        // آمار واقعی استخراج شده از بازی‌ها
+        // آمار کاملا دقیق محاسبه شده بر اساس نتایج دستی شما
         const standingsA = [
             { name: "اتحاد کهنه و توحید", p: 3, w: 3, d: 0, l: 0, gf: 18, ga: 2, pts: 9 },
             { name: "جوانان شمس اوز", p: 3, w: 2, d: 0, l: 1, gf: 8, ga: 12, pts: 6 },
-            { name: "نفت اوز", p: 3, w: 1, d: 0, l: 2, gf: 9, ga: 8, pts: 3 },
+            { name: "نفت اوز", p: 2, w: 1, d: 0, l: 1, gf: 8, ga: 4, pts: 3 },
             { name: "پرسپولیس اوز", p: 2, w: 1, d: 0, l: 1, gf: 3, ga: 4, pts: 3 },
             { name: "شاهین اوز", p: 3, w: 1, d: 0, l: 2, gf: 5, ga: 6, pts: 3 },
             { name: "یاران مبین و عبدالله (محلچه)", p: 3, w: 0, d: 0, l: 3, gf: 5, ga: 19, pts: 0 }
@@ -404,7 +404,7 @@
             { name: "جوانان نفت اوز", p: 2, w: 0, d: 0, l: 2, gf: 2, ga: 19, pts: 0 }
         ];
 
-        // برنامه بازی‌ها
+        // برنامه مسابقات کامل (با اعمال آخرین اصلاح در بازی ۲۷)
         const scheduleData = [
             { isoDate: "2026-02-19", displayDate: "پنجشنبه ۳۰ بهمن ۱۴۰۴", matches: [{ time: "21:00", t1: "شاهین اوز", t2: "یاران مبین و عبدالله (محلچه)", group: "گروه A" }, { time: "22:30", t1: "پرسپولیس اوز", t2: "اتحاد کهنه و توحید", group: "گروه A" }] },
             { isoDate: "2026-02-20", displayDate: "جمعه ۱ اسفند ۱۴۰۴", matches: [{ time: "21:00", t1: "جوانان شمس اوز", t2: "نفت اوز", group: "گروه A" }, { time: "22:30", t1: "جوانان سده", t2: "وحدت فیشور", group: "گروه B" }] },
@@ -428,7 +428,6 @@
             const container = document.getElementById(containerId); container.innerHTML = '';
             let matchGlobalCounter = 1;
             
-            // رندر برای صفحه خانه (بازی‌های امروز یا روز آینده)
             if (mode === 'home') {
                 const todayStr = now.toISOString().split('T')[0];
                 let targetDay = scheduleData.find(d => d.isoDate === todayStr);
@@ -454,7 +453,6 @@
                     container.innerHTML = '<div style="text-align:center; padding:20px; color:#aaa;">بازی‌های این مرحله به پایان رسید.</div>';
                 }
             } 
-            // رندر کل برنامه مسابقات
             else {
                 scheduleData.forEach(day => {
                     const groupEl = document.createElement('div');
@@ -490,7 +488,7 @@
             const container = document.getElementById(containerId);
             container.innerHTML = '';
             
-            // مرتب‌سازی: ۱. امتیاز ۲. تفاضل گل ۳. گل زده
+            // مرتب‌سازی حرفه‌ای (۱. امتیاز ۲. تفاضل گل ۳. گل زده)
             const sortedData = [...data].sort((a, b) => {
                 if (b.pts !== a.pts) return b.pts - a.pts;
                 const diffA = a.gf - a.ga;
@@ -511,7 +509,7 @@
                         <td>${team.w}</td>
                         <td>${team.d}</td>
                         <td>${team.l}</td>
-                        <td class="t-diff">${diffDisplay}</td>
+                        <td class="t-diff" dir="ltr">${diffDisplay}</td>
                         <td class="t-pts">${team.pts}</td>
                     </tr>`;
             });
@@ -556,7 +554,7 @@
             window.scrollTo(0,0);
         }
 
-        // مقداردهی اولیه سایت
+        // اجرای اولیه توابع برای ساخت بخش‌های سایت
         renderTable('tableGroupA', standingsA); 
         renderTable('tableGroupB', standingsB);
         renderTeamsGrid(); 
@@ -565,5 +563,3 @@
     </script>
 </body>
 </html>
-
-
